@@ -51,7 +51,7 @@ const About = () => {
             <p className="px-4 text-slate-600 mb-4 leading-relaxed text-lg">
               I am an Informatics student with a strong focus on secure and efficient systems.
               Currently honing my skills in Competitive Programming and exploring the field of Cyber
-              Security
+              Security.
             </p>
             <p className="p-4 text-slate-600 leading-relaxed">
               My workflow revolves around <strong>CachyOS</strong> and <strong>Neovim</strong>,
