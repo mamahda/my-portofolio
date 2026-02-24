@@ -94,7 +94,7 @@ const Contact = () => {
                     <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                       {social.icon}
                     </div>
-                    <div className="hidden sm:block">
+                    <div>
                       <span className="block text-xs text-slate-400 font-semibold uppercase tracking-wider">
                         {social.name}
                       </span>
