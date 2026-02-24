@@ -1,16 +1,59 @@
-# React + Vite
+# My Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a personal portfolio website built with React and Vite. It showcases my projects, skills, and provides a way for visitors to contact me.
 
-Currently, two official plugins are available:
+## Live Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can view the live version of the portfolio at [preview](https://mamahda-portofolio.vercel.app/).
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Responsive Design**: The website is fully responsive and works on all devices.
+- **Animations**: Smooth animations using `framer-motion` and `aos`.
+- **Component-Based**: Built with React components for easy maintenance.
+- **Contact Form**: A functional contact form with a success message.
+- **Project Showcase**: A dedicated section to display my work.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool for modern web projects.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Material-UI**: A popular React UI framework.
+- **Framer Motion**: A library for creating animations.
+- **Lucide React**: A library of beautiful and consistent icons.
+- **SweetAlert2**: A library for creating beautiful and responsive pop-up boxes.
+
+## Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/mamahda/my-portfolio.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd my-portfolio
+    ```
+3.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+-   To start the development server, run:
+    ```bash
+    npm run dev
+    ```
+-   To build the project for production, run:
+    ```bash
+    npm run build
+    ```
+-   To preview the production build, run:
+    ```bash
+    npm run preview
+    ```
+-   To lint the code, run:
+    ```bash
+    npm run lint
+    ```

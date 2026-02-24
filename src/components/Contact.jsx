@@ -2,12 +2,13 @@ import React from "react";
 import { Send, Mail, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 import { Button, TextField } from "@mui/material";
 import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 
 /**
  * Contact component for the website.
  *
  * This component provides a contact form and other contact information, including:
- * - A form to send a message.
+ * - A form to send a message using EmailJS.
  * - Direct contact information (email and location).
  * - Links to social media profiles.
  * - Responsive design that adjusts for different screen sizes.
@@ -20,18 +21,43 @@ const Contact = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Display a success message using SweetAlert2
-    Swal.fire({
-      title: "Message Sent!",
-      text: "I will get back to you as soon as possible.",
-      icon: "success",
-      confirmButtonColor: "#2563eb",
-      confirmButtonText: "Close",
-      customClass: {
-        confirmButton: "px-6 py-2.5 rounded-xl font-medium",
-        popup: "rounded-3xl",
-      },
-    });
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.target,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      .then(
+        (result) => {
+          Swal.fire({
+            title: "Message Sent!",
+            text: "I will get back to you as soon as possible.",
+            icon: "success",
+            confirmButtonColor: "#2563eb",
+            confirmButtonText: "Close",
+            customClass: {
+              confirmButton: "px-6 py-2.5 rounded-xl font-medium",
+              popup: "rounded-3xl",
+            },
+          });
+        },
+        (error) => {
+          Swal.fire({
+            title: "Error!",
+            text: "Something went wrong. Please try again later.",
+            icon: "error",
+            confirmButtonColor: "#2563eb",
+            confirmButtonText: "Close",
+            customClass: {
+              confirmButton: "px-6 py-2.5 rounded-xl font-medium",
+              popup: "rounded-3xl",
+            },
+          });
+        },
+      );
+    e.target.reset();
   };
 
   // Array of direct contact information
@@ -141,6 +167,7 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <TextField
                     label="Full Name"
+                    name="from_name"
                     variant="outlined"
                     fullWidth
                     required
@@ -148,6 +175,7 @@ const Contact = () => {
                   />
                   <TextField
                     label="Email Address"
+                    name="from_email"
                     type="email"
                     variant="outlined"
                     fullWidth
@@ -158,6 +186,7 @@ const Contact = () => {
                 <div className="mb-6">
                   <TextField
                     label="Subject"
+                    name="subject"
                     variant="outlined"
                     fullWidth
                     InputProps={{ sx: { borderRadius: "12px" } }}
@@ -166,6 +195,7 @@ const Contact = () => {
                 <div className="mb-8">
                   <TextField
                     label="Your Message"
+                    name="message"
                     multiline
                     rows={4}
                     variant="outlined"
