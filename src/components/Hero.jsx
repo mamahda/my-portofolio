@@ -1,13 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@mui/material";
-import { ChevronRight, Github, Linkedin, Instagram } from "lucide-react";
+import { ChevronRight, Github, Linkedin, Instagram, ExternalLink } from "lucide-react";
 
 const Hero = () => {
   const socials = [
-    { icon: <Github size={24} />, href: "https://github.com/", label: "GitHub" },
-    { icon: <Linkedin size={24} />, href: "https://linkedin.com/", label: "LinkedIn" },
-    { icon: <Instagram size={24} />, href: "https://instagram.com/", label: "Instagram" },
+    { icon: <Github size={24} />, href: "https://github.com/mamahda", label: "GitHub" },
+    {
+      icon: <Linkedin size={24} />,
+      href: "https://linkedin.com/in/gilbran-mahda",
+      label: "LinkedIn",
+    },
+    { icon: <Instagram size={24} />, href: "https://instagram.com/gbrn.mhd", label: "Instagram" },
   ];
 
   return (
@@ -26,7 +30,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-block px-4 py-1 mb-6 border border-blue-100 bg-blue-50/50 text-blue-600 text-sm font-semibold tracking-wider rounded-full">
-            INFORMATICS STUDENT
+            Teknik Informatika - ITS
           </div>
           {/* PERUBAHAN NAMA DI SINI */}
           <h1 className="text-6xl md:text-8xl font-bold text-slate-900 leading-tight mb-6 tracking-tight">
@@ -36,9 +40,8 @@ const Hero = () => {
               Mahda
             </span>
           </h1>
-          <p className="text-slate-600 text-lg mb-8 max-w-lg leading-relaxed">
-            Focusing on Backend development with Go, IoT Systems, and performance optimization using
-            the Linux ecosystem.
+          <p className="px-2 text-slate-600 text-lg mb-8 max-w-lg leading-relaxed">
+            Enthusiastic student with a strong interest in computer science and engineering.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -62,6 +65,26 @@ const Hero = () => {
             >
               View Projects
             </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              href="https://drive.google.com/file/d/1gvg_UIFG6BwVlGfthQST5PJmE87x4GGK/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                color: "#1e293b",
+                borderColor: "#cbd5e1",
+                borderRadius: "12px",
+                textTransform: "none",
+                fontSize: "1rem",
+                padding: "12px 32px",
+                borderWidth: "1.5px",
+                "&:hover": { borderColor: "#2563eb", color: "#2563eb", bgcolor: "transparent" },
+              }}
+              endIcon={<ExternalLink size={18} />}
+            >
+              CV
+            </Button>{" "}
             <Button
               variant="outlined"
               size="large"
