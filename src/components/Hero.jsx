@@ -3,7 +3,19 @@ import { motion } from "framer-motion";
 import { Button } from "@mui/material";
 import { ChevronRight, Github, Linkedin, Instagram, ExternalLink } from "lucide-react";
 
+/**
+ * Hero component for the website's homepage.
+ *
+ * This component serves as the main introduction on the website, featuring:
+ * - A prominent headline with the user's name.
+ * - A brief description of the user's professional interests.
+ * - Call-to-action buttons for viewing projects, downloading a CV, and getting in touch.
+ * - Social media links for professional networking.
+ * - A decorative, non-interactive terminal animation on larger screens.
+ * - Responsive design that adjusts the layout for different screen sizes.
+ */
 const Hero = () => {
+  // Array of social media links
   const socials = [
     { icon: <Github size={24} />, href: "https://github.com/mamahda", label: "GitHub" },
     {
@@ -15,7 +27,6 @@ const Hero = () => {
   ];
 
   return (
-    // Class snap-start sudah dihapus dari sini
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white"
@@ -24,6 +35,7 @@ const Hero = () => {
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -z-10 opacity-60"></div>
 
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Column: Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -32,7 +44,6 @@ const Hero = () => {
           <div className="inline-block px-4 py-1 mb-6 border border-blue-100 bg-blue-50/50 text-blue-600 text-sm font-semibold tracking-wider rounded-full">
             Teknik Informatika - ITS
           </div>
-          {/* PERUBAHAN NAMA DI SINI */}
           <h1 className="text-6xl md:text-8xl font-bold text-slate-900 leading-tight mb-6 tracking-tight">
             <span className="text-slate-900">Gilbran </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block z-10">
@@ -44,6 +55,7 @@ const Hero = () => {
             Enthusiastic student with a strong interest in computer science and engineering.
           </p>
 
+          {/* Call-to-action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             <Button
               variant="contained"
@@ -84,7 +96,7 @@ const Hero = () => {
               endIcon={<ExternalLink size={18} />}
             >
               CV
-            </Button>{" "}
+            </Button>
             <Button
               variant="outlined"
               size="large"
@@ -124,7 +136,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Visual Element: Terminal */}
+        {/* Right Column: Visual Element (Terminal) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

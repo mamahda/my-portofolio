@@ -1,9 +1,18 @@
 import React from "react";
 import { Terminal, Shield, Globe, Server } from "lucide-react";
-// Import gambar dari folder assets
 import myPhoto from "../assets/myphoto.jpeg";
 
+/**
+ * About component that provides a summary of skills and background.
+ *
+ * This component includes:
+ * - A profile picture and a brief bio.
+ * - A grid of skills with icons and descriptions.
+ * - Responsive design that adjusts for different screen sizes.
+ * - Animations on scroll.
+ */
 const About = () => {
+  // Array of skills with icons, titles, and descriptions
   const skills = [
     {
       icon: <Server size={32} />,
@@ -33,9 +42,9 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-16 items-center">
           {/* Left Side: Image & Text */}
           <div className="md:w-5/12" data-aos="fade-right">
-            {/* Foto Profil */}
+            {/* Profile Picture */}
             <div className="relative mb-8 group w-fit mx-auto md:mx-0">
-              {/* Efek Blur di belakang gambar */}
+              {/* Background blur effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 transform translate-x-2 translate-y-2"></div>
 
               <img
@@ -45,6 +54,7 @@ const About = () => {
               />
             </div>
 
+            {/* About Me Section */}
             <div className="inline-block px-0 py-2 w-fit rounded-2xl4">
               <h2 className="px-4 text-3xl font-bold text-slate-900">About Me</h2>
             </div>
@@ -59,7 +69,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* Right Side: Grid Skills */}
+          {/* Right Side: Grid of Skills */}
           <div className="md:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {skills.map((skill, index) => (
               <div
@@ -75,15 +85,18 @@ const About = () => {
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                {/* Efek Blob Hover */}
+                {/* Hover effect blob */}
                 <div className="absolute -right-10 -top-10 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
+                {/* Skill Icon */}
                 <div className="w-14 h-14 bg-blue-50/80 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm relative z-10">
                   {skill.icon}
                 </div>
+                {/* Skill Title */}
                 <h3 className="text-xl font-bold text-slate-800 mb-2 relative z-10">
                   {skill.title}
                 </h3>
+                {/* Skill Description */}
                 <p className="text-slate-500 text-sm leading-relaxed relative z-10">{skill.desc}</p>
               </div>
             ))}

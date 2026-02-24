@@ -3,9 +3,24 @@ import { Send, Mail, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 import { Button, TextField } from "@mui/material";
 import Swal from "sweetalert2";
 
+/**
+ * Contact component for the website.
+ *
+ * This component provides a contact form and other contact information, including:
+ * - A form to send a message.
+ * - Direct contact information (email and location).
+ * - Links to social media profiles.
+ * - Responsive design that adjusts for different screen sizes.
+ */
 const Contact = () => {
+  /**
+   * Handles the form submission.
+   *
+   * @param {React.FormEvent} e - The form event.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Display a success message using SweetAlert2
     Swal.fire({
       title: "Message Sent!",
       text: "I will get back to you as soon as possible.",
@@ -19,11 +34,13 @@ const Contact = () => {
     });
   };
 
+  // Array of direct contact information
   const contactInfo = [
     { icon: <Mail size={20} />, title: "Email", content: "gilmavira@gmail.com" },
     { icon: <MapPin size={20} />, title: "Location", content: "Surabaya, Indonesia" },
   ];
 
+  // Array of social media links
   const socialLinks = [
     {
       icon: <Github size={20} />,
@@ -55,7 +72,7 @@ const Contact = () => {
 
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-16 items-start justify-between">
-          {/* Info & Socials */}
+          {/* Left Side: Info & Socials */}
           <div className="md:w-5/12 my-8" data-aos="fade-right">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Let's Collaborate</h2>
             <p className="text-slate-600 mb-8 text-lg">
@@ -63,7 +80,7 @@ const Contact = () => {
               reach out.
             </p>
 
-            {/* Direct Contact */}
+            {/* Direct Contact Information */}
             <div className="space-y-6 mb-10">
               {contactInfo.map((item, index) => (
                 <div
@@ -79,7 +96,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Links */}
+            {/* Social Media Links */}
             <div>
               <h3 className="text-lg font-bold text-slate-800 mb-4">Social Connect</h3>
               <div className="flex flex-col md:flex-row gap-4">
@@ -108,9 +125,10 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Right Side: Contact Form */}
           <div className="md:w-6/12 w-full" data-aos="fade-up">
             <div className="relative">
+              {/* Background blur effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-[2rem] blur-xl opacity-20 transform translate-y-4 scale-95"></div>
 
               <form
@@ -119,6 +137,7 @@ const Contact = () => {
               >
                 <h3 className="text-2xl font-bold text-slate-900 mb-8">Send a Message</h3>
 
+                {/* Form Fields */}
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <TextField
                     label="Full Name"
@@ -156,6 +175,7 @@ const Contact = () => {
                   />
                 </div>
 
+                {/* Submit Button */}
                 <div className="flex justify-end">
                   <Button
                     type="submit"

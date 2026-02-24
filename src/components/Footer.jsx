@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Footer component for the website.
+ *
+ * This component displays a simple footer with a copyright notice.
+ */
 const Footer = () => {
   return (
     <footer className="bg-white border-t border-slate-200 py-8">

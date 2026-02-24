@@ -5,7 +5,18 @@ import portfolioImage from "../assets/portofolio.png";
 import vpImage from "../assets/vp.png";
 import tcanteenImage from "../assets/tcanteen.png";
 
+/**
+ * Portfolio component that showcases a collection of projects.
+ *
+ * This component displays a grid of projects, each with:
+ * - A project image or placeholder.
+ * - A category, title, and description.
+ * - A list of technologies used.
+ * - Links to the project's repository and live version (if available).
+ * - Responsive design that adjusts the number of columns based on screen size.
+ */
 const Portfolio = () => {
+  // Array of project data
   const projects = [
     {
       title: "Victoria Property",
@@ -39,6 +50,7 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="min-h-screen flex items-center py-20 bg-white">
       <div className="container mx-auto px-6">
+        {/* Section Header */}
         <div className="mb-16 flex flex-col items-center text-center" data-aos="fade-up">
           <span className="text-blue-600 font-semibold tracking-wider text-sm uppercase mb-2">
             My Work
@@ -46,6 +58,7 @@ const Portfolio = () => {
           <h2 className="text-4xl font-bold text-slate-900">Featured Projects</h2>
         </div>
 
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <div
@@ -61,6 +74,7 @@ const Portfolio = () => {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
+              {/* Project Image */}
               <div className="h-56 bg-slate-50 relative overflow-hidden group-hover:shadow-inner flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 {project.image ? (
@@ -80,20 +94,25 @@ const Portfolio = () => {
                 )}
               </div>
 
+              {/* Project Content */}
               <div className="p-8">
+                {/* Project Category */}
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider">
                     {project.category}
                   </span>
                 </div>
 
+                {/* Project Title */}
                 <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                   {project.title}
                 </h3>
+                {/* Project Description */}
                 <p className="text-slate-600 mb-6 text-sm line-clamp-3 leading-relaxed">
                   {project.desc}
                 </p>
 
+                {/* Technologies Used */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((t, i) => (
                     <span
@@ -105,6 +124,7 @@ const Portfolio = () => {
                   ))}
                 </div>
 
+                {/* Action Buttons */}
                 <div className="flex gap-3">
                   <Button
                     variant="outlined"
