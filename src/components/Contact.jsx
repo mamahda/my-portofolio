@@ -82,7 +82,7 @@ const Contact = () => {
             {/* Social Links */}
             <div>
               <h3 className="text-lg font-bold text-slate-800 mb-4">Social Connect</h3>
-              <div className="flex gap-4">
+              <div className="flex flex-col md:flex-row gap-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
