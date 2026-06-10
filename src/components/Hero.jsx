@@ -80,7 +80,7 @@ const Hero = () => {
             <Button
               variant="outlined"
               size="large"
-              href="https://drive.google.com/file/d/1gvg_UIFG6BwVlGfthQST5PJmE87x4GGK/view?usp=sharing"
+              href="https://its.id/m/cvmahda"
               target="_blank"
               rel="noopener noreferrer"
               sx={{
@@ -118,7 +118,7 @@ const Hero = () => {
 
           {/* Social Media Icons */}
           <div className="flex items-center gap-6">
-            <span className="text-slate-400 text-sm font-medium">Follow me:</span>
+            <span className="text-slate-400 text-sm font-medium">Let's Connect:</span>
             <div className="flex gap-4">
               {socials.map((social, index) => (
                 <a

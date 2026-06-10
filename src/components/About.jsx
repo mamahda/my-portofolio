@@ -13,29 +13,28 @@ import myPhoto from "../assets/myphoto.jpeg";
  */
 const About = () => {
   // Array of skills with icons, titles, and descriptions
-  const skills = [
+    const skills = [
     {
-      icon: <Server size={32} />,
-      title: "Backend Systems",
-      desc: "Golang, TCP/HTTP Servers, SQL, & High Concurrency Systems",
+        icon: <Server size={32} />,
+        title: "Backend Engineering",
+        desc: "Golang, REST APIs, MySQL, Laravel, and scalable backend system development.",
     },
     {
-      icon: <Shield size={32} />,
-      title: "Cyber Security",
-      desc: "Network Security, Linux Hardening, Penetration Testing & Cryptography",
+        icon: <Shield size={32} />,
+        title: "Cyber Security",
+        desc: "Network Security, Linux Hardening, System Security, and Security Fundamentals.",
     },
     {
-      icon: <Terminal size={32} />,
-      title: "Development Tools",
-      desc: "Neovim (Lua Config), Git, Docker, & Linux (Arch/CachyOS)",
+        icon: <Terminal size={32} />,
+        title: "DevOps & Cloud",
+        desc: "Docker, GitHub Actions, Azure, CI/CD Pipelines, and Linux Administration.",
     },
     {
-      icon: <Globe size={32} />,
-      title: "Computer Network",
-      desc: "TCP/IP, DNS, HTTP, and network security protocols.",
+        icon: <Globe size={32} />,
+        title: "Networking",
+        desc: "TCP/IP, DNS, HTTP/HTTPS, Routing, and Network Infrastructure Fundamentals.",
     },
-  ];
-
+    ];
   return (
     <section id="about" className="min-h-screen flex items-center py-20 bg-slate-50 relative">
       <div className="container mx-auto px-6">
@@ -59,9 +58,10 @@ const About = () => {
               <h2 className="px-4 text-3xl font-bold text-slate-900">About Me</h2>
             </div>
             <p className="px-4 text-slate-600 mb-4 leading-relaxed text-lg">
-              I am an Informatics student with a strong focus on secure and efficient systems.
-              Currently honing my skills in Competitive Programming and exploring the field of Cyber
-              Security.
+            I am an Informatics Engineering student at Institut Teknologi Sepuluh Nopember (ITS)
+            with a strong interest in Backend Engineering, DevOps, Networking, and Cybersecurity.
+            I enjoy building reliable systems, automating workflows, and exploring secure
+            infrastructure technologies.
             </p>
             <p className="p-4 text-slate-600 leading-relaxed">
               My workflow revolves around <strong>CachyOS</strong> and <strong>Neovim</strong>,
