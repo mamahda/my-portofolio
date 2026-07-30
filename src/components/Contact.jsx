@@ -30,7 +30,7 @@ const Contact = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(
-        (result) => {
+        () => {
           Swal.fire({
             title: "Message Sent!",
             text: "I will get back to you as soon as possible.",
@@ -43,7 +43,7 @@ const Contact = () => {
             },
           });
         },
-        (error) => {
+        () => {
           Swal.fire({
             title: "Error!",
             text: "Something went wrong. Please try again later.",
@@ -89,17 +89,14 @@ const Contact = () => {
   ];
 
   return (
-    <section
-      id="contact"
-      className="min-h-screen flex items-center py-20 bg-slate-50 relative overflow-hidden"
-    >
+    <section className="relative flex h-screen items-center overflow-hidden bg-white px-4 pb-24 pt-24 sm:px-6 lg:px-12">
       {/* Background Gradient Blob */}
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row gap-16 items-start justify-between">
           {/* Left Side: Info & Socials */}
-          <div className="md:w-5/12 my-8" data-aos="fade-right">
+          <div className="md:w-5/12 my-4">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Let's Collaborate</h2>
             <p className="text-slate-600 mb-8 text-lg">
               Interested in Cyber Security, Computer Network, or Linux discussions? Feel free to
@@ -111,7 +108,7 @@ const Contact = () => {
               {contactInfo.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 rounded-2xl bg-white/60 border border-white hover:bg-white transition-colors shadow-sm"
+                  className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors hover:border-blue-200 hover:bg-white"
                 >
                   <div className="text-blue-600 mt-1">{item.icon}</div>
                   <div>
@@ -132,7 +129,7 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center gap-4 p-3 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 group border border-transparent hover:border-blue-100"
+                    className="group flex flex-1 items-center gap-4 rounded-xl border border-transparent bg-transparent p-3 transition-all duration-300 hover:border-blue-200 hover:bg-white hover:shadow-md"
                   >
                     <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                       {social.icon}
@@ -152,14 +149,14 @@ const Contact = () => {
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="md:w-6/12 w-full" data-aos="fade-up">
+          <div className="md:w-6/12 w-full">
             <div className="relative">
               {/* Background blur effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-[2rem] blur-xl opacity-20 transform translate-y-4 scale-95"></div>
 
               <form
                 onSubmit={handleSubmit}
-                className="relative bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-white"
+                className="relative rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl md:p-12"
               >
                 <h3 className="text-2xl font-bold text-slate-900 mb-8">Send a Message</h3>
 

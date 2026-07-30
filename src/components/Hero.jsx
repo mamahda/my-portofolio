@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import { ChevronRight, Github, Linkedin, Instagram, ExternalLink } from "lucide-react";
 
 /**
@@ -9,12 +10,14 @@ import { ChevronRight, Github, Linkedin, Instagram, ExternalLink } from "lucide-
  * This component serves as the main introduction on the website, featuring:
  * - A prominent headline with the user's name.
  * - A brief description of the user's professional interests.
- * - Call-to-action buttons for viewing projects, downloading a CV, and getting in touch.
+ * - Call-to-action buttons for viewing a CV and learning more about the profile.
  * - Social media links for professional networking.
  * - A decorative, non-interactive terminal animation on larger screens.
  * - Responsive design that adjusts the layout for different screen sizes.
  */
 const Hero = () => {
+  const MotionDiv = motion.div;
+
   // Array of social media links
   const socials = [
     { icon: <Github size={24} />, href: "https://github.com/mamahda", label: "GitHub" },
@@ -27,16 +30,13 @@ const Hero = () => {
   ];
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white"
-    >
+    <section className="relative flex h-screen items-center justify-center overflow-hidden bg-white px-4 pb-24 pt-28 sm:px-6 lg:px-12">
       {/* Background Gradient Blob */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -z-10 opacity-60"></div>
 
-      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto grid items-center px-2 md:pr-0 md:pl-12 gap-12 md:grid-cols-2">
         {/* Left Column: Text Content */}
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -56,10 +56,13 @@ const Hero = () => {
           </p>
 
           {/* Call-to-action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+          <div className="mb-10 flex flex-col gap-4 sm:flex-row">
             <Button
               variant="contained"
               size="large"
+              href="https://its.id/m/cvmahda"
+              target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 bgcolor: "#2563eb",
                 borderRadius: "12px",
@@ -72,32 +75,13 @@ const Hero = () => {
                   boxShadow: "0 20px 30px -10px rgba(37, 99, 235, 0.5)",
                 },
               }}
-              endIcon={<ChevronRight />}
-              href="#portfolio"
-            >
-              View Projects
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              href="https://its.id/m/cvmahda"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                color: "#1e293b",
-                borderColor: "#cbd5e1",
-                borderRadius: "12px",
-                textTransform: "none",
-                fontSize: "1rem",
-                padding: "12px 32px",
-                borderWidth: "1.5px",
-                "&:hover": { borderColor: "#2563eb", color: "#2563eb", bgcolor: "transparent" },
-              }}
               endIcon={<ExternalLink size={18} />}
             >
-              CV
+              View CV
             </Button>
             <Button
+              component={Link}
+              to="/about"
               variant="outlined"
               size="large"
               sx={{
@@ -110,9 +94,9 @@ const Hero = () => {
                 borderWidth: "1.5px",
                 "&:hover": { borderColor: "#2563eb", color: "#2563eb", bgcolor: "transparent" },
               }}
-              href="#contact"
+              endIcon={<ChevronRight />}
             >
-              Contact Me
+              Get to Know Me
             </Button>
           </div>
 
@@ -134,10 +118,10 @@ const Hero = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </MotionDiv>
 
         {/* Right Column: Visual Element (Terminal) */}
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -163,7 +147,7 @@ const Hero = () => {
               <p className="mt-2 animate-pulse">_</p>
             </div>
           </div>
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   );

@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    title: "Gerigi X UKM Expo ITS",
+    category: "Fullstack Development",
+    tech: ["TypeScript", "ReactJS", "Tailwind", "Convex"],
+    desc: "Developed a responsive website for Gerigi X UKM Expo ITS, a high-traffic platform supporting the university's annual orientation and exhibition.",
+    privateRepo: true,
+    live: "https://gerigixukmexpoits.com",
+    image: "/images/project/gerex.png",
+  },
+  {
+    title: "Victoria Property",
+    category: "Backend Development",
+    tech: ["Go (Golang)", "HTTP", "JWTAuth"],
+    desc: "Built a scalable backend system using Go, developed RESTful APIs, and managed the database for reliable property data management.",
+    privateRepo: true,
+    status: "Under Development",
+    image: "/images/project/vp.png",
+  },
+  {
+    title: "TCanteen",
+    category: "Backend Development",
+    tech: ["Laravel", "PHP", "MySQL"],
+    desc: "Built a scalable backend system using Laravel, developed RESTful APIs, and managed the database for efficient canteen data management.",
+    repo: "https://github.com/mamahda/tcanteen-backend",
+    status: "Not Deployed",
+    image: "/images/project/tcanteen.png",
+  },
+  {
+    title: "Portfolio Website",
+    category: "Web Development",
+    tech: ["Javascript", "ReactJS", "Tailwind"],
+    desc: "Developed a personal website to showcase projects, skills, and professional experience in a structured and visually clear manner.",
+    repo: "https://github.com/mamahda/my-portofolio",
+    live: "https://your-live-portfolio-url.com",
+    image: "/images/project/portofolio.png",
+  },
+];
