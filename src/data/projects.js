@@ -5,7 +5,7 @@ export const projects = [
     tech: ["TypeScript", "ReactJS", "Tailwind", "Convex"],
     desc: "Developed a responsive website for Gerigi X UKM Expo ITS, a high-traffic platform supporting the university's annual orientation and exhibition.",
     privateRepo: true,
-    live: "https://gerigixukmexpoits.com",
+    live: "https://gerigixukmexpoits.id",
     image: "/images/project/gerex.png",
   },
   {

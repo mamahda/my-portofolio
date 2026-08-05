@@ -55,7 +55,7 @@ function App() {
         </AnimatePresence>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { name: "Home", to: "/" },
@@ -19,6 +20,18 @@ const Navbar = () => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const linkClassName = ({ isActive }) =>
     `font-medium transition-colors relative group ${
@@ -44,13 +57,16 @@ const Navbar = () => {
         <ul className="hidden md:flex flex-1 justify-center items-center gap-5 lg:gap-8">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <NavLink to={link.to} className={linkClassName}>
+              <NavLink
+                to={link.to}
+                className={linkClassName}
+              >
                 {({ isActive }) => (
                   <>
                     {link.name}
                     <span
                       className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                        isActive ? "w-full font-bold" : "w-0 group-hover:w-full"
                       }`}
                     />
                   </>
@@ -65,7 +81,7 @@ const Navbar = () => {
             <span
               className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                 isActive
-                  ? "border-blue-600 bg-transparent text-blue-600"
+                  ? "border-blue-600 bg-white/80 text-blue-600 shadow-sm backdrop-blur-sm"
                   : "border-blue-600 bg-blue-600 text-white hover:bg-transparent hover:text-blue-600"
               }`}
             >
@@ -85,7 +101,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white/95 border-t border-slate-100 absolute left-0 top-full w-full shadow-xl backdrop-blur-md">
+        <div className="md:hidden absolute left-0 top-full z-50 w-full border-t border-slate-100 bg-white/95 shadow-xl backdrop-blur-md">
           <ul className="flex flex-col p-4 space-y-4">
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -109,9 +125,9 @@ const Navbar = () => {
                 to="/contact"
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `inline-flex items-center gap-2 rounded-xl border w-full item-center justify-center px-4 py-2 font-semibold transition-colors ${
+                  `inline-flex w-full items-center justify-center gap-2 rounded-xl border px-4 py-2 font-semibold transition-colors ${
                     isActive
-                      ? "border-blue-600 bg-transparent text-blue-600"
+                      ? "border-blue-600 bg-blue-50 text-blue-600"
                       : "border-blue-600 bg-blue-600 text-white"
                   }`
                 }

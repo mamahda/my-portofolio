@@ -89,9 +89,9 @@ const Contact = () => {
   ];
 
   return (
-    <section className="relative flex h-screen items-center overflow-hidden bg-white px-4 pb-24 pt-24 sm:px-6 lg:px-12">
+    <section className="relative min-h-screen bg-white px-4 py-24 sm:px-6 lg:px-12 lg:py-36">
       {/* Background Gradient Blob */}
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+      {/* <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div> */}
 
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row gap-16 items-start justify-between">

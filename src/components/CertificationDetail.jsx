@@ -21,7 +21,7 @@ const CertificationDetail = () => {
   }
 
   return (
-    <section className="min-h-screen bg-white px-4 pb-8  pt-28 sm:px-6 lg:px-12">
+    <section className="min-h-screen bg-white px-4 pb-8 pt-24 sm:px-6 lg:px-12 lg:pt-36">
       <div className="container mx-auto max-w-6xl">
         <Link
           to="/certification"
