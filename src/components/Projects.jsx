@@ -20,7 +20,7 @@ const Projects = () => {
   const project = projects[activeIndex];
 
   return (
-    <section className="relative h-screen overflow-hidden bg-white px-4 pb-20 pt-24 sm:px-6 lg:px-12 lg:pt-36">
+    <section className="relative h-dvh overflow-hidden bg-white px-4 pb-5 pt-20 sm:px-6 sm:pb-10 sm:pt-24 lg:px-12 lg:pb-20 lg:pt-36">
       <div className="container mx-auto flex h-full min-h-0 flex-col">
         {/* <div className="shrink-0 text-center">
           <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">Featured Projects</h1>
@@ -36,21 +36,23 @@ const Projects = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -80 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="grid min-h-[25rem] grid-cols-1 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm md:grid-cols-2 xl:min-h-[29rem]"
+                className="grid grid-cols-1 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm md:min-h-[25rem] md:grid-cols-2 xl:min-h-[29rem]"
               >
-                <div className="h-56 bg-slate-50 md:h-full">
+                <div className="aspect-video bg-slate-50 md:h-full md:aspect-auto">
                   <img src={project.image} alt={project.title} className="h-full w-full object-contain p-3 md:p-5" />
                 </div>
 
-                <div className="flex flex-col justify-center p-6 sm:p-8">
-                  <span className="mb-4 w-fit rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-600">
+                <div className="flex flex-col justify-center p-4 sm:p-6 md:p-8">
+                  <span className="mb-3 w-fit rounded-full bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-600 sm:text-xs">
                     {project.category}
                   </span>
-                  <h2 className="mb-3 text-3xl font-bold text-slate-900 sm:text-5xl">{project.title}</h2>
-                  <p className="mb-5 text-sm leading-relaxed text-slate-600">{project.desc}</p>
-                  <div className="mb-6 flex flex-wrap gap-2">
+                  <h2 className="mb-2 text-2xl font-bold leading-tight text-slate-900 sm:mb-3 sm:text-3xl md:text-4xl">
+                    {project.title}
+                  </h2>
+                  <p className="mb-4 text-xs leading-relaxed text-slate-600 sm:mb-5 sm:text-sm">{project.desc}</p>
+                  <div className="mb-4 flex flex-wrap gap-1.5 sm:mb-6 sm:gap-2">
                     {project.tech.map((technology) => (
-                      <span key={technology} className="rounded-lg border border-slate-200 px-3 py-1 text-xs font-medium text-slate-500">
+                      <span key={technology} className="rounded-lg border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-500 sm:px-3 sm:py-1 sm:text-xs">
                         {technology}
                       </span>
                     ))}
@@ -68,8 +70,8 @@ const Projects = () => {
                       sx={{
                         borderRadius: "12px",
                         textTransform: "none",
-                        fontSize: "0.875rem",
-                        padding: "7px 12px",
+                        fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                        padding: { xs: "6px 10px", sm: "7px 12px" },
                         borderColor: "#e2e8f0",
                         color: "#64748b",
                         flex: 1,
@@ -90,8 +92,8 @@ const Projects = () => {
                       sx={{
                         borderRadius: "12px",
                         textTransform: "none",
-                        fontSize: "0.875rem",
-                        padding: "7px 12px",
+                        fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                        padding: { xs: "6px 10px", sm: "7px 12px" },
                         bgcolor: project.live && !project.status ? "#eff6ff" : "#f1f5f9",
                         color: project.live && !project.status ? "#2563eb" : "#94a3b8",
                         boxShadow: "none",
@@ -108,23 +110,23 @@ const Projects = () => {
             </AnimatePresence>
           </div>
 
-          <div className="mt-8 flex items-center justify-between">
+          <div className="mt-4 flex items-center justify-between sm:mt-8">
             <button
               type="button"
               onClick={showPrevious}
-              className="inline-flex w-32 items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-600 transition-colors hover:border-blue-600 hover:text-blue-600"
+              className="inline-flex w-28 items-center justify-center gap-1.5 rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:border-blue-600 hover:text-blue-600 sm:w-32 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm"
               aria-label="Previous project"
             >
               <ChevronLeft size={18} />
               Previous
             </button>
-            <span className="text-sm font-medium text-slate-400">
+            <span className="text-xs font-medium text-slate-400 sm:text-sm">
               {activeIndex + 1} / {projects.length}
             </span>
             <button
               type="button"
               onClick={showNext}
-              className="inline-flex w-32 items-center justify-center gap-2 rounded-xl border border-blue-600 bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-transparent hover:text-blue-600"
+              className="inline-flex w-28 items-center justify-center gap-1.5 rounded-xl border border-blue-600 bg-blue-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-transparent hover:text-blue-600 sm:w-32 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm"
               aria-label="Next project"
             >
               Next

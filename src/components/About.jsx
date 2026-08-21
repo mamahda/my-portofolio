@@ -3,11 +3,11 @@ import { interests } from "../data/interests";
 
 const About = () => {
   return (
-    <section className="min-h-screen bg-white px-4 py-24 sm:px-8 lg:h-screen lg:overflow-hidden lg:px-16 lg:py-32">
+    <section className="min-h-screen bg-white px-4 py-24 sm:px-8 lg:px-16 lg:py-32">
       <div className="mx-auto flex min-h-full max-w-7xl flex-col">
 
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:items-stretch lg:min-h-0 lg:flex-1">
-          <article className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
+          <article className="flex h-full flex-col justify-center rounded-3xl border border-slate-200 bg-white p-5 pt-10 shadow-sm sm:p-8 lg:p-10">
             <div>
               <div className="flex flex-col items-center gap-10 text-center sm:flex-row sm:items-center sm:text-left">
                 <div className="relative shrink-0">
@@ -57,9 +57,9 @@ const About = () => {
             </div>
           </article>
 
-          <section className="flex h-full min-h-0 flex-col">
+          <section className="flex flex-col">
             <h2 className="mb-6 text-center text-3xl font-bold text-slate-900">Interest Field</h2>
-            <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6 sm:grid-rows-2">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6 sm:grid-rows-2">
               {interests.map((interest) => (
                 <article
                   key={interest.title}

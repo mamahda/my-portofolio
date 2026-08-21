@@ -15,10 +15,10 @@ const Certification = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden bg-white px-4 pb-4 pt-24 sm:px-6 lg:px-12 lg:pt-36">
+    <section className="relative h-screen overflow-hidden bg-white px-4 pb-4 pt-24 sm:px-6 lg:px-12 lg:pt-24">
       <div className="container mx-auto flex h-full min-h-0 flex-col">
         {/* <header className="shrink-0 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">Certification</h1>
+          <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">Certification</h1>  
           <div className="mt-8 h-px w-full bg-slate-200" />
         </header> */}
 
