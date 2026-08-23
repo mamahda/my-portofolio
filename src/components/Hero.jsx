@@ -30,33 +30,34 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative flex h-screen items-center justify-center overflow-hidden bg-white px-4 pb-24 pt-28 sm:px-6 lg:px-12">
+    <section className="relative flex h-dvh items-center justify-center overflow-hidden bg-white px-4 pb-6 pt-20 sm:px-6 sm:pb-24 sm:pt-28 lg:px-12">
       {/* Background Gradient Blob */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -z-10 opacity-60"></div>
 
-      <div className="container mx-auto grid items-center px-2 md:pr-0 md:pl-12 gap-12 md:grid-cols-2">
+      <div className="container mx-auto grid h-full min-h-0 items-center gap-8 overflow-y-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-12 md:overflow-visible md:pl-12 md:pr-0 md:grid-cols-2">
         {/* Left Column: Text Content */}
         <MotionDiv
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="min-h-0 py-4 md:py-0"
         >
-          <div className="inline-block px-4 py-1 mb-6 border border-blue-100 bg-blue-50/50 text-blue-600 text-sm font-semibold tracking-wider rounded-full">
+          <div className="mb-4 inline-block rounded-full border border-blue-100 bg-blue-50/50 px-3 py-1 text-xs font-semibold tracking-wider text-blue-600 sm:mb-6 sm:px-4 sm:text-sm">
             Teknik Informatika - ITS
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-slate-900 leading-tight mb-6 tracking-tight">
+          <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:mb-6 sm:text-6xl md:text-8xl">
             <span className="text-slate-900">Gilbran </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block z-10">
               {" "}
               Mahda
             </span>
           </h1>
-          <p className="px-2 text-slate-600 text-lg mb-8 max-w-lg leading-relaxed">
+          <p className="mb-5 max-w-lg text-base leading-relaxed text-slate-600 sm:mb-8 sm:px-2 sm:text-lg">
             Enthusiastic student with a strong interest in computer science and engineering.
           </p>
 
           {/* Call-to-action Buttons */}
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mb-6 flex flex-col gap-3 sm:mb-10 sm:gap-4 sm:flex-row">
             <Button
               variant="contained"
               size="large"
@@ -67,8 +68,8 @@ const Hero = () => {
                 bgcolor: "#2563eb",
                 borderRadius: "12px",
                 textTransform: "none",
-                fontSize: "1rem",
-                padding: "12px 32px",
+                fontSize: { xs: "0.875rem", sm: "1rem" },
+                padding: { xs: "10px 20px", sm: "12px 32px" },
                 boxShadow: "0 10px 25px -5px rgba(37, 99, 235, 0.4)",
                 "&:hover": {
                   bgcolor: "#1d4ed8",
@@ -89,8 +90,8 @@ const Hero = () => {
                 borderColor: "#cbd5e1",
                 borderRadius: "12px",
                 textTransform: "none",
-                fontSize: "1rem",
-                padding: "12px 32px",
+                fontSize: { xs: "0.875rem", sm: "1rem" },
+                padding: { xs: "10px 20px", sm: "12px 32px" },
                 borderWidth: "1.5px",
                 "&:hover": { borderColor: "#2563eb", color: "#2563eb", bgcolor: "transparent" },
               }}
@@ -101,7 +102,7 @@ const Hero = () => {
           </div>
 
           {/* Social Media Icons */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             <span className="text-slate-400 text-sm font-medium">Let's Connect:</span>
             <div className="flex gap-4">
               {socials.map((social, index) => (
