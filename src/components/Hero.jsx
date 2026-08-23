@@ -30,7 +30,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative flex h-dvh items-center justify-center overflow-hidden bg-white px-4 pb-6 pt-20 sm:px-6 sm:pb-24 sm:pt-28 lg:px-12">
+    <section className="relative flex h-dvh items-center justify-center overflow-hidden bg-white px-4 sm:px-6 lg:px-12">
       {/* Background Gradient Blob */}
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -z-10 opacity-60"></div>
 
@@ -45,7 +45,7 @@ const Hero = () => {
           <div className="mb-4 inline-block rounded-full border border-blue-100 bg-blue-50/50 px-3 py-1 text-xs font-semibold tracking-wider text-blue-600 sm:mb-6 sm:px-4 sm:text-sm">
             Teknik Informatika - ITS
           </div>
-          <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:mb-6 sm:text-6xl md:text-8xl">
+          <h1 className="mb-4 text-7xl font-bold leading-tight tracking-tight text-slate-900 sm:mb-6">
             <span className="text-slate-900">Gilbran </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block z-10">
               {" "}

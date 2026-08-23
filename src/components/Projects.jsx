@@ -20,7 +20,7 @@ const Projects = () => {
   const project = projects[activeIndex];
 
   return (
-    <section className="relative h-dvh overflow-hidden bg-white px-4 pb-5 pt-20 sm:px-6 sm:pb-10 sm:pt-24 lg:px-12 lg:pb-20 lg:pt-36">
+    <section className="relative h-dvh overflow-hidden bg-white px-4 sm:px-6 lg:px-12">
       <div className="container mx-auto flex h-full min-h-0 flex-col">
         {/* <div className="shrink-0 text-center">
           <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">Featured Projects</h1>
