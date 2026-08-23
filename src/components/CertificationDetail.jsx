@@ -9,7 +9,7 @@ const CertificationDetail = () => {
 
   if (!certification) {
     return (
-      <section className="flex min-h-screen items-center justify-center bg-white px-4">
+      <section className="flex min-h-dvh items-center justify-center bg-white px-4">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-slate-900">Certification not found</h1>
           <Link to="/certification" className="mt-6 inline-flex text-blue-600 hover:underline">

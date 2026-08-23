@@ -3,7 +3,7 @@ import { interests } from "../data/interests";
 
 const About = () => {
   return (
-    <section className="min-h-screen bg-white px-4 py-24 sm:px-8 lg:px-16 lg:py-32">
+    <section className="h-dvh bg-white px-4 py-24 sm:px-8 lg:px-16 lg:py-32">
       <div className="mx-auto flex min-h-full max-w-7xl flex-col">
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
