@@ -28,7 +28,7 @@ const InterestsSection = () => {
                 <li key={title} className="flex gap-3.5">
                   <Icon size={22} className="mt-0.5 shrink-0 text-accent" />
                   <div className="min-w-0">
-                    <p className="text-[15px] font-medium leading-snug text-zinc-100">{title}</p>
+                    <p className="font-serif text-[15px] font-bold leading-snug text-zinc-100">{title}</p>
                     <p className="mt-1 text-sm leading-relaxed text-zinc-500">{desc}</p>
                   </div>
                 </li>

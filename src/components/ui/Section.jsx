@@ -32,24 +32,18 @@ const Section = ({ id, title, subtitle, action, footer, children, className = ""
   <motion.section
     {...reveal}
     id={id}
-    className={`section-index scroll-mt-20 border-t border-line-strong py-10 sm:py-12 ${bleed} ${className}`}
+    className={`scroll-mt-20 border-t border-line py-10 sm:py-12 ${bleed} ${className}`}
   >
     {title && (
-      <header className="flex items-end justify-between gap-4 border-b border-line-strong pb-4">
+      <header className="flex items-end justify-between gap-4">
         <div className="min-w-0">
-          <h2 className="flex items-baseline gap-3 text-2xl font-semibold tracking-tight text-zinc-50 sm:gap-3.5 sm:text-[28px]">
-            <span
-              aria-hidden="true"
-              className="section-index-label font-mono text-[26px] font-medium tracking-tight text-accent sm:text-[30px]"
-            />
-            {title}
-          </h2>
+          <h2 className="font-serif text-[25px] font-bold leading-tight tracking-tight text-zinc-50 sm:text-[30px]">{title}</h2>
           {subtitle && <p className="mt-1.5 text-sm text-zinc-500">{subtitle}</p>}
         </div>
         {action}
       </header>
     )}
-    <div className={title ? "mt-6" : ""}>{children}</div>
+    <div className={title ? "mt-4 sm:mt-5" : ""}>{children}</div>
     {footer}
   </motion.section>
 );

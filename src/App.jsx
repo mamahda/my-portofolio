@@ -16,7 +16,7 @@ function NotFound() {
     <PageShell>
       <section className="py-24 sm:py-32">
         <p className="font-mono text-sm text-accent">404</p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-50">This page does not exist</h1>
+        <h1 className="mt-2 font-serif text-3xl font-bold tracking-tight text-zinc-50">This page does not exist</h1>
         <p className="mt-2 text-sm text-zinc-500">The link might be broken, or the page may have moved.</p>
         <Link to="/" className={button("primary", "mt-6")}>
           Go to profile

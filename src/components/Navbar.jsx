@@ -12,11 +12,11 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-backdrop/80 backdrop-blur-xl backdrop-saturate-150">
-        <div className="mx-auto flex h-14 max-w-[1128px] items-center gap-3 bg-ink-950/70 px-4 sm:border-x sm:border-line sm:px-6">
+        <div className="mx-auto flex h-14 max-w-[1128px] items-center gap-3 bg-ink-950/70 px-4 sm:px-6">
           <Link
             to="/"
             aria-label="mamahda home"
-            className="shrink-0 text-lg font-semibold tracking-tighter text-zinc-100 transition-opacity hover:opacity-80 active:scale-[0.98]"
+            className="shrink-0 font-serif text-lg font-bold tracking-tighter text-zinc-100 transition-opacity hover:opacity-80 active:scale-[0.98]"
           >
             ma<span className="text-accent">mahda</span>
           </Link>

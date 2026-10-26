@@ -24,12 +24,12 @@ const ProfilePage = () => (
   >
     <ProfileHeader />
     <AboutSection />
-    <ExperienceSection />
-    <ProjectsSection />
     <EducationSection />
+    <ProjectsSection />
     <CertificationsSection />
-    <VolunteeringSection />
     <SkillsSection />
+    <ExperienceSection />
+    <VolunteeringSection />
     <InterestsSection />
   </PageShell>
 );

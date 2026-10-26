@@ -21,9 +21,9 @@ export const AsideBlock = ({ title, children, first = false, className = "" }) =
     initial={{ opacity: 0, y: 12 }}
     animate={{ opacity: 1, y: 0 }}
     transition={spring}
-    className={`py-6 ${first ? "md:pt-0" : "border-t border-line"} ${className}`}
+    className={`py-5 ${first ? "md:pt-0" : "mt-2"} ${className}`}
   >
-    <h2 className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">{title}</h2>
+    <h2 className="text-sm font-medium text-zinc-400">{title}</h2>
     <div className="mt-3">{children}</div>
   </motion.section>
 );
@@ -41,8 +41,8 @@ export const SectionNav = () => {
 
   return (
     <AsideBlock title="On this page" first className="hidden md:block">
-      <ul className="border-l border-line">
-        {profileSections.map((section, index) => {
+      <ul className="space-y-0.5">
+        {profileSections.map((section) => {
           const isActive = active === section.id;
           return (
             <li key={section.id} className="relative">
@@ -50,20 +50,17 @@ export const SectionNav = () => {
                 <motion.span
                   layoutId="toc-indicator"
                   transition={snappy}
-                  className="absolute inset-y-1 -left-px w-px bg-accent"
+                  className="absolute inset-y-1 left-0 w-0.5 bg-accent"
                 />
               )}
               <button
                 type="button"
                 onClick={() => jump(section.id)}
                 aria-current={isActive ? "location" : undefined}
-                className={`flex w-full items-baseline gap-3 py-1.5 pl-4 text-left text-sm transition-colors ${
-                  isActive ? "text-zinc-50" : "text-zinc-400 hover:text-zinc-100"
+                className={`flex w-full items-baseline rounded-md py-1.5 pl-3 text-left text-sm transition-colors ${
+                  isActive ? "bg-white/[0.06] text-zinc-50" : "text-zinc-400 hover:bg-white/[0.03] hover:text-zinc-100"
                 }`}
               >
-                <span className={`font-mono text-[11px] ${isActive ? "text-accent" : "text-zinc-500"}`}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 {section.label}
               </button>
             </li>
@@ -75,7 +72,7 @@ export const SectionNav = () => {
 };
 
 const actionRow =
-  "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition-colors hover:bg-white/[0.04]";
+  "group flex w-full items-center gap-3 rounded-md px-2 py-2 text-left transition-colors hover:bg-white/[0.04]";
 const actionIcon = "shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-100";
 
 export const QuickActions = ({ className = "", title = "Quick actions", hideMessage = false }) => {
@@ -127,11 +124,11 @@ export const QuickActions = ({ className = "", title = "Quick actions", hideMess
 /* Shared building blocks for page-specific sidebars. */
 
 export const StatGrid = ({ stats }) => (
-  <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-line ring-1 ring-line">
+  <dl className="grid grid-cols-2 gap-2">
     {stats.map((stat) => (
-      <div key={stat.label} className="bg-ink-950 px-3 py-2.5">
+      <div key={stat.label} className="content-surface px-3 py-3">
         <dt className="text-xs text-zinc-500">{stat.label}</dt>
-        <dd className="mt-0.5 font-mono text-lg font-medium text-zinc-100">{stat.value}</dd>
+        <dd className="mt-0.5 text-lg font-semibold tabular-nums text-zinc-100">{stat.value}</dd>
       </div>
     ))}
   </dl>
@@ -178,7 +175,7 @@ export const TagCloud = ({ items, active, onSelect }) => (
             type="button"
             onClick={() => onSelect(isActive ? null : item.value)}
             aria-pressed={isActive}
-            className={`rounded-md px-2 py-0.5 font-mono text-[11.5px] ring-1 ring-inset transition-colors active:scale-[0.97] ${
+            className={`rounded-md px-2 py-0.5 text-xs ring-1 ring-inset transition-colors active:scale-[0.97] ${
               isActive
                 ? "bg-accent text-ink-950 ring-accent"
                 : "bg-white/[0.03] text-zinc-400 ring-white/[0.07] hover:text-zinc-100 hover:ring-white/20"

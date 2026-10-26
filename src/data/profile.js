@@ -85,20 +85,28 @@ export const profile = {
           start: "2026-01",
           end: null,
         },
+        {
+          title: "Staff of Branding and Marketing",
+          start: "2025-03",
+          end: "2025-12",
+        }
       ],
     },
     {
       org: "INI LHO ITS!",
-      roles: [{ title: "Director of Media Creative at Wengker ITS", start: "2025-10", end: "2026-02" }],
+      roles: [
+        { 
+          title: "Director of Media Creative at Wengker ITS", 
+          start: "2025-10", 
+          end: "2026-02" 
+        },
+        { 
+          title: "Staff of Media Creative at Wengker ITS", 
+          start: "2024-11", 
+          end: "2025-02" 
+        },
+      ],
     },
-    {
-      org: "Schematics ITS",
-      roles: [{ title: "Staff of Branding and Marketing", start: "2025-03", end: "2025-12" }],
-    },
-    {
-      org: "INI LHO ITS!",
-      roles: [{ title: "Staff of Media Creative at Wengker ITS", start: "2024-11", end: "2025-02" }],
-    }
   ],
   socials: [
     {

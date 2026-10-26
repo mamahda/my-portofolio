@@ -13,7 +13,7 @@ const statusDot = (project) => {
 };
 
 export const ProjectStatus = ({ project }) => (
-  <span className="inline-flex items-center gap-1.5 font-mono text-[11.5px] text-zinc-400">
+  <span className="inline-flex items-center gap-1.5 text-xs text-zinc-400">
     <span className={`size-1.5 rounded-full ${statusDot(project)}`} />
     {project.status || "Live"}
   </span>
@@ -23,7 +23,7 @@ const Summary = ({ project, trailing }) => (
   <>
     <div className="min-w-0 flex-1">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-        <h3 className="text-base font-medium leading-snug text-zinc-100 transition-colors group-hover:text-accent">
+        <h3 className="font-serif text-base font-bold leading-snug text-zinc-100 transition-colors group-hover:text-accent">
           {project.title}
         </h3>
         <ProjectStatus project={project} />
@@ -37,7 +37,7 @@ const Summary = ({ project, trailing }) => (
           </>
         )}
       </p>
-      <TagList items={project.tech} className="mt-3" />
+      <TagList items={project.tech} className="mt-2.5" />
     </div>
     {trailing}
   </>

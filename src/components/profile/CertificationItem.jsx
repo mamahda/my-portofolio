@@ -10,7 +10,7 @@ const CertificationItem = ({ certification, showLogo = true }) => (
     <div className="min-w-0 flex-1">
       <Link
         to={`/certification/${certification.id}`}
-        className="group inline-flex items-center gap-1.5 text-base font-medium leading-snug text-zinc-100 transition-colors hover:text-accent"
+        className="group inline-flex items-center gap-1.5 font-serif text-base font-bold leading-snug text-zinc-100 transition-colors hover:text-accent"
       >
         {certification.title}
         <ArrowUpRightIcon
@@ -21,7 +21,6 @@ const CertificationItem = ({ certification, showLogo = true }) => (
       <p className="mt-0.5 text-sm text-zinc-500">
         {certification.issuer} <span className="px-0.5 text-zinc-600">/</span> Issued {certification.year}
       </p>
-      <p className="mt-1 break-all font-mono text-[11.5px] text-zinc-500">ID {certification.code}</p>
       {certification.skills?.length > 0 && <TagList items={certification.skills} className="mt-3" />}
     </div>
   </article>

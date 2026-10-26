@@ -81,7 +81,7 @@ const ProfileHeader = () => {
         <div className="bg-dot-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_30%,black_10%,transparent_75%)]" />
         <div className="absolute -right-20 -top-40 size-[420px] rounded-full bg-accent/[0.09] blur-3xl" />
         <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink-950 to-transparent" />
-        <p className="absolute left-4 top-4 font-mono text-[11px] tracking-wide text-zinc-500 sm:left-6 sm:top-5">
+        <p className="absolute left-4 top-4 text-xs text-zinc-400 sm:left-6 sm:top-5">
           backend <span className="text-zinc-600">/</span> devops <span className="text-zinc-600">/</span> networking{" "}
           <span className="text-zinc-600">/</span> security
         </p>
@@ -102,16 +102,16 @@ const ProfileHeader = () => {
           </div>
         </motion.div>
 
-        <div className="mt-4 grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-10">
+        <div className="mt-5 grid gap-7 lg:grid-cols-[minmax(0,1fr)_190px] lg:gap-12">
           <div className="min-w-0">
             <motion.div variants={rise} className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <h1 className="text-[28px] font-semibold leading-tight tracking-tight text-zinc-50 sm:text-[32px]">
+              <h1 className="font-serif text-[32px] font-bold leading-[1.1] tracking-tight text-zinc-50 sm:text-[42px]">
                 {profile.name}
               </h1>
               <SealCheckIcon size={22} weight="fill" className="text-accent" aria-label="Verified student" />
               <span className="text-sm text-zinc-500">{profile.pronouns}</span>
             </motion.div>
-            <motion.p variants={rise} className="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-zinc-300">
+            <motion.p variants={rise} className="mt-3 max-w-[53ch] text-[16px] leading-relaxed text-zinc-200">
               {profile.headline}
             </motion.p>
             <motion.p variants={rise} className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500">
@@ -128,13 +128,13 @@ const ProfileHeader = () => {
             </motion.p>
             <motion.div variants={rise} className="mt-4 flex gap-6 text-sm">
               <Link to="/projects" className="group">
-                <span className="font-mono text-base font-medium text-zinc-100 group-hover:text-accent">
+                <span className="text-base font-semibold tabular-nums text-zinc-100 group-hover:text-accent">
                   {projects.length}
                 </span>{" "}
                 <span className="text-zinc-500">projects</span>
               </Link>
               <Link to="/certification" className="group">
-                <span className="font-mono text-base font-medium text-zinc-100 group-hover:text-accent">
+                <span className="text-base font-semibold tabular-nums text-zinc-100 group-hover:text-accent">
                   {certifications.length}
                 </span>{" "}
                 <span className="text-zinc-500">certifications</span>
@@ -153,38 +153,6 @@ const ProfileHeader = () => {
               <MoreMenu />
             </motion.div>
           </div>
-
-          <motion.ul variants={rise} className="space-y-3 self-start border-l border-line pl-5 md:mt-1">
-            <li>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">Studying at</p>
-              <p className="mt-0.5 max-w-[22ch] text-sm leading-snug text-zinc-200">{school.school}</p>
-            </li>
-            <li>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">Code at</p>
-              <a
-                href={profile.socials[0].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-0.5 inline-flex items-center gap-1.5 text-sm text-zinc-200 transition-colors hover:text-accent"
-              >
-                <GithubLogoIcon size={15} /> github.com/{profile.handle}
-              </a>
-            </li>
-            <li>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">Status</p>
-              <Link
-                to="/contact"
-                className="group mt-1 inline-flex items-center gap-2 text-sm text-zinc-200 transition-colors hover:text-accent"
-              >
-                <span className="relative flex size-2">
-                  <span className="absolute inset-0 animate-breathe rounded-full bg-accent" />
-                  <span className="relative size-2 rounded-full bg-accent" />
-                </span>
-                {profile.openTo.title}
-              </Link>
-              <p className="mt-0.5 max-w-[30ch] text-xs leading-relaxed text-zinc-500">{profile.openTo.roles}</p>
-            </li>
-          </motion.ul>
         </div>
       </motion.div>
 

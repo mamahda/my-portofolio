@@ -60,7 +60,7 @@ const SearchBox = ({ className = "" }) => {
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <label className="flex h-9 items-center gap-2 rounded-full bg-white/[0.05] px-3.5 text-sm ring-1 ring-inset ring-white/[0.06] transition-[box-shadow,background-color] focus-within:bg-white/[0.07] focus-within:ring-white/20">
+      <label className="flex h-9 items-center gap-2 rounded-md bg-white/[0.05] px-3.5 text-sm transition-[box-shadow,background-color] focus-within:bg-white/[0.09]">
         <MagnifyingGlassIcon size={16} className="shrink-0 text-zinc-500" />
         <span className="sr-only">Search the portfolio</span>
         <input
@@ -108,7 +108,7 @@ const SearchBox = ({ className = "" }) => {
           >
             {!hasQuery && (
               <div className="p-4">
-                <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">Try searching for</p>
+                <p className="text-sm text-zinc-500">Try searching for</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {suggestions.map((term) => (
                     <button
@@ -119,7 +119,7 @@ const SearchBox = ({ className = "" }) => {
                         setActive(0);
                         inputRef.current?.focus();
                       }}
-                      className="rounded-full px-3 py-1 text-sm text-zinc-300 ring-1 ring-inset ring-white/10 transition-colors hover:bg-white/[0.06] hover:text-zinc-100 active:scale-[0.98]"
+                      className="rounded-md bg-white/[0.05] px-3 py-1 text-sm text-zinc-300 transition-colors hover:bg-white/[0.1] hover:text-zinc-100 active:scale-[0.98]"
                     >
                       {term}
                     </button>
@@ -142,8 +142,8 @@ const SearchBox = ({ className = "" }) => {
                 const items = results.filter((entry) => entry.type === group);
                 if (!items.length) return null;
                 return (
-                  <div key={group} className="border-b border-line py-2 last:border-0">
-                    <p className="px-4 pb-1 pt-1.5 font-mono text-[11px] uppercase tracking-widest text-zinc-500">
+                  <div key={group} className="py-2">
+                    <p className="px-4 pb-1 pt-1.5 text-sm text-zinc-500">
                       {group}
                     </p>
                     {items.map((entry) => {

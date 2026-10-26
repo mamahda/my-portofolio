@@ -13,7 +13,7 @@ export const projects = [
   {
     id: "advise-dast",
     mark: "AD",
-    title: "ADVISE DAST",
+    title: "Advise DAST",
     category: "Fullstack Development",
     tech: ["Laravel", "PHP", "MySQL"],
     desc: "Developed backend service for IOX Adventure Club Android Apps",

@@ -1,11 +1,9 @@
 export const Tag = ({ children }) => (
-  <li className="rounded-md bg-white/[0.04] px-2 py-0.5 font-mono text-[11.5px] text-zinc-400 ring-1 ring-inset ring-white/[0.07]">
-    {children}
-  </li>
+  <li className="text-xs text-zinc-500 after:ml-1.5 after:text-zinc-700 after:content-['·'] last:after:hidden">{children}</li>
 );
 
 const TagList = ({ items, className = "" }) => (
-  <ul className={`flex flex-wrap gap-1.5 ${className}`}>
+  <ul className={`flex flex-wrap ${className}`}>
     {items.map((item) => (
       <Tag key={item}>{item}</Tag>
     ))}

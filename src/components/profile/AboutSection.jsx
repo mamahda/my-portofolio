@@ -22,7 +22,7 @@ const AboutSection = () => {
       <div className="relative max-w-[65ch]">
         <div
           ref={textRef}
-          className={`space-y-3 text-[15px] leading-relaxed text-zinc-300 ${expanded ? "" : "line-clamp-4"}`}
+          className={`space-y-3 text-[15px] leading-[1.75] text-pretty text-zinc-300 ${expanded ? "" : "line-clamp-4"}`}
         >
           {profile.about.map((paragraph) => (
             <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -39,8 +39,8 @@ const AboutSection = () => {
         )}
       </div>
 
-      <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-2">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">Top skills</p>
+        <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+          <p className="text-sm font-medium text-zinc-400">Top skills</p>
         <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-zinc-200">
           {profile.topSkills.map((skill, index) => (
             <li key={skill} className="flex items-center gap-3">

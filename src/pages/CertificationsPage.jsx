@@ -49,7 +49,7 @@ const CertificationsPage = () => {
         </>
       }
     >
-      <SubPageHeader eyebrow={`${certifications.length} credentials`} title="Licenses & certifications" />
+      <SubPageHeader eyebrow={`${certifications.length} credentials`} title="Certifications" />
 
       {certifications.length === 0 ? (
         <div className="border-t border-line py-14 text-center">

@@ -31,7 +31,7 @@ export const ProjectsSection = () => (
 );
 
 const RoleDates = ({ role }) => (
-  <p className="mt-1 font-mono text-[11.5px] text-zinc-500">
+  <p className="mt-1 text-xs tabular-nums text-zinc-500">
     {formatRange(role.start, role.end)}
     <span className="px-1.5 text-zinc-600">·</span>
     {tenure(role.start, role.end)}
@@ -109,8 +109,8 @@ const RoleSection = ({ id, title, items }) => {
           if (row.kind === "group") {
             return (
               <TimelineRow key={key} current={row.entry.roles.some((role) => !role.end)} last={last} className="pb-5">
-                <h3 className="text-base font-medium leading-snug text-zinc-100">{row.entry.org}</h3>
-                <p className="mt-1 font-mono text-[11.5px] text-zinc-500">{groupTenure(row.entry.roles)}</p>
+                <h3 className="font-serif text-base font-bold leading-snug text-zinc-100">{row.entry.org}</h3>
+                <p className="mt-1 text-xs tabular-nums text-zinc-500">{groupTenure(row.entry.roles)}</p>
                 {row.entry.location && <p className="mt-0.5 text-sm text-zinc-500">{row.entry.location}</p>}
               </TimelineRow>
             );
@@ -135,7 +135,7 @@ const RoleSection = ({ id, title, items }) => {
 
           return (
             <TimelineRow key={key} current={!row.role.end} last={last} className={last ? "" : "pb-9"}>
-              <h3 className="text-base font-medium leading-snug text-zinc-100">{row.role.title}</h3>
+              <h3 className="font-serif text-base font-bold leading-snug text-zinc-100">{row.role.title}</h3>
               <p className="mt-0.5 text-sm text-zinc-400">
                 {row.entry.org}
                 {row.role.type && <span className="text-zinc-500"> · {row.role.type}</span>}
@@ -164,8 +164,8 @@ export const EducationSection = () => (
         <li key={item.school}>
           <div className="min-w-0">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="text-base font-medium leading-snug text-zinc-100">{item.school}</h3>
-              <span className="font-mono text-[11.5px] text-zinc-500">{item.period}</span>
+              <h3 className="font-serif text-base font-bold leading-snug text-zinc-100">{item.school}</h3>
+              <span className="text-xs tabular-nums text-zinc-500">{item.period}</span>
             </div>
             <p className="mt-0.5 text-sm text-zinc-400">{item.degree}</p>
             <p className="text-sm text-zinc-500">{item.location}</p>
@@ -179,7 +179,7 @@ export const EducationSection = () => (
 export const CertificationsSection = () => (
   <Section
     id="certifications"
-    title="Licenses & certifications"
+    title="Certifications"
     footer={
       certifications.length > 2 && (
         <SectionFooterLink to="/certification">Show all {certifications.length} certifications</SectionFooterLink>

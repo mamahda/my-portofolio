@@ -19,6 +19,24 @@
     );
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Libre Baskerville", ui-serif, Georgia, serif;
+  }
+
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
   /* Film grain, kept on a fixed layer so it never repaints while scrolling. */
   body::before {
     content: "";
@@ -39,21 +57,11 @@
   }
 }
 
-@layer components {
-  .section-counter {
-    counter-reset: section;
-  }
-
-  .section-index {
-    counter-increment: section;
-  }
-
-  .section-index-label::after {
-    content: counter(section, decimal-leading-zero);
-  }
-}
-
 @layer utilities {
+  .content-surface {
+    background-color: rgba(38, 38, 43, 0.38);
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }

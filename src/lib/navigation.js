@@ -9,12 +9,12 @@ export const navItems = [
 
 export const profileSections = [
   { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
   { id: "certifications", label: "Licenses & certifications" },
-  { id: "volunteering", label: "Volunteering" },
   { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "volunteering", label: "Volunteering" },
   { id: "interests", label: "Interests" },
 ];
 

@@ -91,7 +91,7 @@ const SkillsSection = () => {
                     </p>
                   )}
                 </div>
-                <span className="shrink-0 font-mono text-[11px] text-zinc-500">{skill.group}</span>
+                <span className="shrink-0 text-xs text-zinc-500">{skill.group}</span>
               </motion.li>
             );
           })}
