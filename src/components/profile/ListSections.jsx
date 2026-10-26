@@ -13,7 +13,6 @@ export const ProjectsSection = () => (
   <Section
     id="projects"
     title="Projects"
-    subtitle="Things I have built and shipped"
     footer={
       projects.length > PREVIEW && (
         <SectionFooterLink to="/projects">Show all {projects.length} projects</SectionFooterLink>

@@ -18,7 +18,7 @@ const Navbar = () => {
             aria-label="mamahda home"
             className="shrink-0 font-serif text-lg font-bold tracking-tighter text-zinc-100 transition-opacity hover:opacity-80 active:scale-[0.98]"
           >
-            ma<span className="text-accent">mahda</span>
+            Gilbran<span className="text-accent"> Mahda</span>
           </Link>
 
           <SearchBox className="min-w-0 flex-1 md:max-w-[260px]" />
