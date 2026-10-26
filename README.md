@@ -9,7 +9,9 @@ You can view the live version of the portfolio at [preview](https://mamahda-port
 ## Features
 
 - **Responsive Design**: The website is fully responsive and works on all devices.
-- **Animations**: Smooth animations using `framer-motion` and `aos`.
+- **LinkedIn-style layout**: Profile header with cover, About, Featured, Projects, Education, Certifications, Skills and Interests sections, plus a sticky sidebar.
+- **Animations**: Spring-based motion using `framer-motion`.
+- **Search**: Navbar search across projects, certifications and skills.
 - **Component-Based**: Built with React components for easy maintenance.
 - **Contact Form**: A functional contact form with a success message.
 - **Project Showcase**: A dedicated section to display my work.
@@ -19,10 +21,9 @@ You can view the live version of the portfolio at [preview](https://mamahda-port
 - **React**: A JavaScript library for building user interfaces.
 - **Vite**: A fast build tool for modern web projects.
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **Material-UI**: A popular React UI framework.
 - **Framer Motion**: A library for creating animations.
-- **Lucide React**: A library of beautiful and consistent icons.
-- **SweetAlert2**: A library for creating beautiful and responsive pop-up boxes.
+- **Phosphor Icons**: A flexible icon family for React.
+- **EmailJS**: Sends contact form messages without a backend.
 
 ## Installation
 

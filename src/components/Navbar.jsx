@@ -1,144 +1,110 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ChatCircleDotsIcon, FileTextIcon } from "@phosphor-icons/react";
+import { profile } from "../data/profile";
+import { isNavActive, navItems } from "../lib/navigation";
+import { snappy } from "../lib/motion";
+import SearchBox from "./layout/SearchBox";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const navLinks = [
-    { name: "Home", to: "/" },
-    { name: "About", to: "/about" },
-    { name: "Certification", to: "/certification" },
-    { name: "Projects", to: "/projects" },
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  const linkClassName = ({ isActive }) =>
-    `font-medium transition-colors relative group ${
-      isActive ? "text-blue-600" : "text-slate-600 hover:text-blue-600"
-    }`;
-
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/70 py-3 shadow-sm backdrop-blur-md backdrop-saturate-150 border-b border-slate-200/70"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between gap-6">
-        <Link
-          to="/"
-          className="text-2xl font-bold text-blue-600 tracking-tighter"
-        >
-          ma<span className="text-slate-800">mahda</span>
-        </Link>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-backdrop/80 backdrop-blur-xl backdrop-saturate-150">
+        <div className="mx-auto flex h-14 max-w-[1128px] items-center gap-3 bg-ink-950/70 px-4 sm:border-x sm:border-line sm:px-6">
+          <Link
+            to="/"
+            aria-label="mamahda home"
+            className="shrink-0 text-lg font-semibold tracking-tighter text-zinc-100 transition-opacity hover:opacity-80 active:scale-[0.98]"
+          >
+            ma<span className="text-accent">mahda</span>
+          </Link>
 
-        <ul className="hidden md:flex flex-1 justify-center items-center gap-5 lg:gap-8">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <NavLink
-                to={link.to}
-                className={linkClassName}
-              >
-                {({ isActive }) => (
-                  <>
-                    {link.name}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
-                        isActive ? "w-full font-bold" : "w-0 group-hover:w-full"
-                      }`}
-                    />
-                  </>
-                )}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+          <SearchBox className="min-w-0 flex-1 md:max-w-[260px]" />
 
-        <NavLink to="/contact" className="hidden md:block group">
-          {({ isActive }) => (
-            <span
-              className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
-                isActive
-                  ? "border-blue-600 bg-white/80 text-blue-600 shadow-sm backdrop-blur-sm"
-                  : "border-blue-600 bg-blue-600 text-white hover:bg-transparent hover:text-blue-600"
-              }`}
-            >
-              Contact
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </span>
-          )}
-        </NavLink>
-
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-slate-800"
-          aria-label="Toggle navigation menu"
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      {isOpen && (
-        <div className="md:hidden absolute left-0 top-full z-50 w-full border-t border-slate-100 bg-white/95 shadow-xl backdrop-blur-md">
-          <ul className="flex flex-col p-4 space-y-4">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <NavLink
-                  to={link.to}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `block font-medium ${
-                      isActive
-                        ? "text-blue-600"
-                        : "text-slate-600 hover:text-blue-600"
-                    }`
-                  }
+          <nav aria-label="Primary" className="ml-auto hidden h-full items-stretch md:flex">
+            {navItems.map((item) => {
+              const active = isNavActive(item, location);
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.key}
+                  to={item.to}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative flex w-[68px] flex-col items-center justify-center gap-1 transition-colors lg:w-[78px] ${
+                    active ? "text-zinc-100" : "text-zinc-500 hover:text-zinc-200"
+                  }`}
                 >
-                  {link.name}
-                </NavLink>
-              </li>
-            ))}
-            <li>
-              <NavLink
-                to="/contact"
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `inline-flex w-full items-center justify-center gap-2 rounded-xl border px-4 py-2 font-semibold transition-colors ${
-                    isActive
-                      ? "border-blue-600 bg-blue-50 text-blue-600"
-                      : "border-blue-600 bg-blue-600 text-white"
-                  }`
-                }
-              >
-                Contact <ArrowRight size={16} />
-              </NavLink>
-            </li>
-          </ul>
+                  <Icon size={22} weight={active ? "fill" : "regular"} />
+                  <span className="text-[11px]">{item.label}</span>
+                  {active && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      transition={snappy}
+                      className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-accent"
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="hidden h-7 w-px bg-line-strong lg:block" />
+          <a
+            href={profile.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden flex-col items-center justify-center gap-1 text-zinc-500 transition-colors hover:text-accent lg:flex"
+          >
+            <FileTextIcon size={22} />
+            <span className="text-[11px]">View CV</span>
+          </a>
+
+          <Link
+            to="/contact"
+            aria-label="Messaging"
+            className={`flex size-9 shrink-0 items-center justify-center rounded-full md:hidden ${
+              location.pathname === "/contact" ? "text-accent" : "text-zinc-400"
+            }`}
+          >
+            <ChatCircleDotsIcon size={22} weight={location.pathname === "/contact" ? "fill" : "regular"} />
+          </Link>
         </div>
-      )}
-    </nav>
+      </header>
+
+      <nav
+        aria-label="Primary mobile"
+        className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-ink-950/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
+      >
+        <div className="grid h-14 grid-cols-4">
+          {navItems.map((item) => {
+            const active = isNavActive(item, location);
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.key}
+                to={item.to}
+                aria-current={active ? "page" : undefined}
+                className={`relative flex flex-col items-center justify-center gap-0.5 transition-colors active:scale-95 ${
+                  active ? "text-zinc-100" : "text-zinc-500"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="tab-indicator"
+                    transition={snappy}
+                    className="absolute inset-x-6 top-0 h-0.5 rounded-full bg-accent"
+                  />
+                )}
+                <Icon size={21} weight={active ? "fill" : "regular"} />
+                <span className="text-[10px]">{item.short ?? item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+    </>
   );
 };
 

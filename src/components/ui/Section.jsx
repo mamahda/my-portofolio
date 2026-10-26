@@ -1,0 +1,57 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRightIcon } from "@phosphor-icons/react";
+import { reveal } from "../../lib/motion";
+
+export const SectionFooterLink = ({ to, onClick, children }) => {
+  const className =
+    "group mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-100";
+  const content = (
+    <>
+      {children}
+      <ArrowRightIcon size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+    </>
+  );
+
+  return to ? (
+    <Link to={to} className={className}>
+      {content}
+    </Link>
+  ) : (
+    <button type="button" onClick={onClick} className={className}>
+      {content}
+    </button>
+  );
+};
+
+/* Negative margins let the divider run edge to edge across the content column,
+   meeting the frame border on the left and the sidebar divider on the right. */
+const bleed = "-mx-4 px-4 sm:-mx-6 sm:px-6 md:-mr-5 md:pr-5 lg:-mr-7 lg:pr-7";
+
+const Section = ({ id, title, subtitle, action, footer, children, className = "" }) => (
+  <motion.section
+    {...reveal}
+    id={id}
+    className={`section-index scroll-mt-20 border-t border-line-strong py-10 sm:py-12 ${bleed} ${className}`}
+  >
+    {title && (
+      <header className="flex items-end justify-between gap-4 border-b border-line-strong pb-4">
+        <div className="min-w-0">
+          <h2 className="flex items-baseline gap-3 text-2xl font-semibold tracking-tight text-zinc-50 sm:gap-3.5 sm:text-[28px]">
+            <span
+              aria-hidden="true"
+              className="section-index-label font-mono text-[26px] font-medium tracking-tight text-accent sm:text-[30px]"
+            />
+            {title}
+          </h2>
+          {subtitle && <p className="mt-1.5 text-sm text-zinc-500">{subtitle}</p>}
+        </div>
+        {action}
+      </header>
+    )}
+    <div className={title ? "mt-6" : ""}>{children}</div>
+    {footer}
+  </motion.section>
+);
+
+export default Section;

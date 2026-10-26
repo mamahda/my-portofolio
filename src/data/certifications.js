@@ -1,27 +1,18 @@
 export const certifications = [
   {
-    id: "go-intermediate-hackerrank",
-    title: "Go (Intermediate) Certificate",
-    issuer: "HackerRank",
-    field: "Programming Language",
+    id: "introduction-to-cybersecurity-cisco",
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Networking Academy",
+    field: "Cyber Security",
     year: "2026",
-    code: "050077656183",
+    code: "5f8d9a26-49c3-4647-aa78-b3e980dad27b",
+    skills: ["Cybersecurity Fundamentals", "Threats & Vulnerabilities", "Network Security"],
     description:
-      "It include working with functions, pointers, file handling, building web services in Go and error handling.",
-    logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Intermediate) Certificate.png",
-  },
-  {
-    id: "go-basic-hackerrank",
-    title: "Go (Basic) Certificate",
-    issuer: "HackerRank",
-    field: "Programming Language",
-    year: "2026",
-    code: "b23f0a25b28f",
-    description:
-      "It covers topics like basic language features of Golang, simple data structures, arrays, maps, data types, and interfaces.",
-    logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Basic) Certificate.png",
+      "It covers the basics of staying safe online, the most common cyber threats, attacks and vulnerabilities, how individuals and organizations protect themselves against them, and career paths in cybersecurity.",
+    logoLabel: "/images/certificate/logo/cisco.jpg",
+    scan: "/images/certificate/introduction-to-cybersecurity.png",
+    verifyUrl: "https://www.credly.com/badges/5f8d9a26-49c3-4647-aa78-b3e980dad27b",
+    verifyPlatform: "Credly",
   },
   {
     id: "go-intermediate-hackerrank",
@@ -30,10 +21,12 @@ export const certifications = [
     field: "Programming Language",
     year: "2026",
     code: "050077656183",
+    skills: ["Go (Golang)", "Web Services", "Error Handling"],
     description:
-      "It include working with functions, pointers, file handling, building web services in Go and error handling.",
+      "It includes working with functions, pointers, file handling, building web services in Go and error handling.",
     logoLabel: "/images/certificate/logo/hackerrank.jpg",
     scan: "/images/certificate/Go (Intermediate) Certificate.png",
+    verifyUrl: "https://www.hackerrank.com/certificates/050077656183",
   },
   {
     id: "go-basic-hackerrank",
@@ -42,58 +35,11 @@ export const certifications = [
     field: "Programming Language",
     year: "2026",
     code: "b23f0a25b28f",
+    skills: ["Go (Golang)", "Data Structures"],
     description:
       "It covers topics like basic language features of Golang, simple data structures, arrays, maps, data types, and interfaces.",
     logoLabel: "/images/certificate/logo/hackerrank.jpg",
     scan: "/images/certificate/Go (Basic) Certificate.png",
+    verifyUrl: "https://www.hackerrank.com/certificates/b23f0a25b28f",
   },
-
-  {
-    id: "go-intermediate-hackerrank",
-    title: "Go (Intermediate) Certificate",
-    issuer: "HackerRank",
-    field: "Programming Language",
-    year: "2026",
-    code: "050077656183",
-    description:
-      "It include working with functions, pointers, file handling, building web services in Go and error handling.",
-    logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Intermediate) Certificate.png",
-  },
-  {
-    id: "go-basic-hackerrank",
-    title: "Go (Basic) Certificate",
-    issuer: "HackerRank",
-    field: "Programming Language",
-    year: "2026",
-    code: "b23f0a25b28f",
-    description:
-      "It covers topics like basic language features of Golang, simple data structures, arrays, maps, data types, and interfaces.",
-    logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Basic) Certificate.png",
-  },
-  {
-    id: "go-intermediate-hackerrank",
-    title: "Go (Intermediate) Certificate",
-    issuer: "HackerRank",
-    field: "Programming Language",
-    year: "2026",
-    code: "050077656183",
-    description:
-      "It include working with functions, pointers, file handling, building web services in Go and error handling.",
-    logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Intermediate) Certificate.png",
-  },
-  {
-    id: "go-basic-hackerrank",
-    title: "Go (Basic) Certificate",
-    issuer: "HackerRank",
-    field: "Programming Language",
-    year: "2026",
-    code: "b23f0a25b28f",
-    description:
-      "It covers topics like basic language features of Golang, simple data structures, arrays, maps, data types, and interfaces.",
-    logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Basic) Certificate.png",
-  }
 ];
