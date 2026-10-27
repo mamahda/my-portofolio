@@ -8,6 +8,7 @@ import { button } from "./lib/ui";
 import CertificationDetailPage from "./pages/CertificationDetailPage";
 import CertificationsPage from "./pages/CertificationsPage";
 import ContactPage from "./pages/ContactPage";
+import CurrentlyVariants from "./pages/CurrentlyVariants"; // TEMPORARY
 import ProfilePage from "./pages/ProfilePage";
 import ProjectsPage from "./pages/ProjectsPage";
 
@@ -76,6 +77,7 @@ function App() {
               <Route path="/certification/:certificationId" element={<CertificationDetailPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/__currently" element={<CurrentlyVariants />} /> {/* TEMPORARY */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>

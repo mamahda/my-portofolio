@@ -22,6 +22,17 @@ export const projects = [
     image: "Under Development",
   },
   {
+    id: "jcc",
+    mark: "JCC",
+    title: "Jatim Cyber Security Competition",
+    category: "Infrastructure Engineer",
+    tech: ["Kubernetes", "Docker", "XML"],
+    desc: "Deploy platfrom for Jawa Timur CTF competition",
+    repo: "https://github.com/arsitektur-jaringan-komputer/jcc-2026",
+    status: "Not Deployed",
+    image: "/images/project/JCC.jpeg",
+  },
+  {
     id: "gerigi-x-ukm-expo",
     mark: "GX",
     title: "Gerigi X UKM Expo ITS",
