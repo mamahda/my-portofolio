@@ -16,7 +16,7 @@ import { spring } from "../lib/motion";
 import { button, iconButton } from "../lib/ui";
 
 const NotFound = () => (
-  <section className="border-t border-line py-14 text-center">
+  <section className="border-t border-line-strong py-14 text-center">
     <CertificateIcon size={36} className="mx-auto text-zinc-600" />
     <p className="mt-3 text-lg font-medium">This credential does not exist</p>
     <p className="mt-1 text-sm text-zinc-500">The link may be outdated, or the certificate was removed.</p>
@@ -27,7 +27,7 @@ const NotFound = () => (
 );
 
 const Fact = ({ label, children }) => (
-  <div className="flex items-baseline justify-between gap-4 border-b border-line py-2.5 last:border-0">
+  <div className="flex items-baseline justify-between gap-4 border-b border-line-strong py-2.5 last:border-0">
     <dt className="shrink-0 text-xs text-zinc-500">{label}</dt>
     <dd className="min-w-0 text-right text-sm text-zinc-100">{children}</dd>
   </div>
@@ -80,7 +80,7 @@ const CredentialAside = ({ certification, onZoom }) => {
           <ul className="space-y-3">
             {others.map((item) => (
               <li key={item.id}>
-                <Link to={`/certification/${item.id}`} className="group flex items-center gap-3">
+                <Link to={`/certification/${item.id}`} className="group flex items-center gap-5">
                   <CertificationLogo certification={item} className="size-9" />
                   <span className="min-w-0">
                     <span className="block truncate text-sm text-zinc-100 transition-colors group-hover:text-accent">
@@ -150,7 +150,7 @@ const CertificationDetailPage = () => {
             </span>
           </button>
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex gap-6">
             <CertificationLogo certification={certification} className="size-12" />
             <div className="min-w-0">
               <p className="text-base font-medium text-zinc-100">{certification.issuer}</p>
@@ -158,7 +158,7 @@ const CertificationDetailPage = () => {
             </div>
           </div>
 
-          <p className="mt-5 max-w-[65ch] text-[15px] leading-relaxed text-zinc-300">{certification.description}</p>
+          <p className="mt-5 max-w-[47.5em] text-[15px] leading-relaxed text-zinc-300">{certification.description}</p>
 
           {certification.skills?.length > 0 && <TagList items={certification.skills} className="mt-4" />}
 

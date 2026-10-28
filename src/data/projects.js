@@ -30,7 +30,7 @@ export const projects = [
     desc: "Deploy platfrom for Jawa Timur CTF competition",
     repo: "https://github.com/arsitektur-jaringan-komputer/jcc-2026",
     status: "not-deployed",
-    image: "/images/project/JCC.jpeg",
+    image: "/images/project/JCC.webp",
   },
   {
     id: "gerigi-x-ukm-expo",
@@ -42,7 +42,7 @@ export const projects = [
     privateRepo: true,
     status: "live",
     live: "https://gerigixukmexpoits.id",
-    image: "/images/project/gerex.png",
+    image: "/images/project/gerex.webp",
   },
   {
     id: "victoria-property",
@@ -53,7 +53,7 @@ export const projects = [
     desc: "Built a scalable backend system using Go, developed RESTful APIs, and managed the database for reliable property data management.",
     privateRepo: true,
     status: "in-progress",
-    image: "/images/project/vp.png",
+    image: "/images/project/vp.webp",
   },
   {
     id: "tcanteen",
@@ -64,7 +64,7 @@ export const projects = [
     desc: "Built a scalable backend system using Laravel, developed RESTful APIs, and managed the database for efficient canteen data management.",
     repo: "https://github.com/mamahda/tcanteen-backend",
     status: "not-deployed",
-    image: "/images/project/tcanteen.png",
+    image: "/images/project/tcanteen.webp",
   },
   {
     id: "portfolio-website",
@@ -74,7 +74,8 @@ export const projects = [
     tech: ["Javascript", "ReactJS", "Tailwind"],
     desc: "Developed a personal website to showcase projects, skills, and professional experience in a structured and visually clear manner.",
     repo: "https://github.com/mamahda/my-portofolio",
-    status: "not-deployed",
-    image: "/images/project/portofolio.png",
+    status: "live",
+    live: "https://mamahda.vercel.app/",
+    image: "/images/project/portofolio.webp",
   },
 ];

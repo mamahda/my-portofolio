@@ -8,7 +8,7 @@ export const profile = {
     "Informatics Engineering Student at ITS | Backend Engineering, DevOps, Networking & Cyber Security",
   location: "Surabaya, East Java, Indonesia",
   coordinates: "-7.2819, 112.7950",
-  photo: "/images/myphoto.jpeg",
+  photo: "/images/myphoto.webp",
   email: "gilmavira@gmail.com",
   cv: "https://its.id/m/cvmahda",
   site: "https://mamahda-portofolio.vercel.app",
@@ -28,6 +28,7 @@ export const profile = {
       degree: "Bachelor's degree, Informatics Engineering",
       period: "2024 - Present",
       location: "Surabaya, Indonesia",
+      logo: "/images/logo/its.webp",
     },
   ],
   experience: [

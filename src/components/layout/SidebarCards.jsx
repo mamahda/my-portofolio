@@ -156,7 +156,7 @@ export const FacetList = ({ items, active, onSelect, allLabel = "All" }) => {
                 <span className={`size-1.5 shrink-0 rounded-full ${isActive ? "bg-accent" : "bg-transparent"}`} />
                 <span className="truncate">{row.label}</span>
               </span>
-              <span className="font-mono text-[11px] text-zinc-500">{row.count}</span>
+              <span className="text-xs tabular-nums text-zinc-500">{row.count}</span>
             </button>
           </li>
         );
@@ -175,7 +175,7 @@ export const TagCloud = ({ items, active, onSelect }) => (
             type="button"
             onClick={() => onSelect(isActive ? null : item.value)}
             aria-pressed={isActive}
-            className={`rounded-md px-2 py-0.5 text-xs ring-1 ring-inset transition-colors active:scale-[0.97] ${
+            className={`rounded-md px-2 py-1 text-xs ring-1 md:py-0.5 ring-inset transition-colors active:scale-[0.97] ${
               isActive
                 ? "bg-accent text-ink-950 ring-accent"
                 : "bg-white/[0.03] text-zinc-400 ring-white/[0.07] hover:text-zinc-100 hover:ring-white/20"

@@ -72,7 +72,7 @@ const Modal = ({ open, onClose, title, children, className = "max-w-md" }) => {
             transition={snappy}
             className={`relative max-h-[88dvh] w-full overflow-hidden rounded-t-2xl outline-none sm:rounded-2xl ${popover} ${className}`}
           >
-            <header className="flex items-center justify-between gap-4 border-b border-line px-5 py-3.5">
+            <header className="flex items-center justify-between gap-4 border-b border-line-strong px-5 py-3.5">
               <h2 className="font-serif text-base font-bold tracking-tight">{title}</h2>
               <button type="button" onClick={onClose} aria-label="Close" className={`-mr-2 ${iconButton}`}>
                 <XIcon size={18} />

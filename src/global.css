@@ -2,11 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/libre-baskerville-latin.woff2") format("woff2");
+}
+
+/* System fonts resized to the web fonts' metrics, so text keeps its layout when the web fonts swap in.
+   Values computed from the font files against Arial / Times New Roman (metric twins: Liberation Sans / Serif). */
+@font-face {
+  font-family: "Plus Jakarta Sans Fallback";
+  font-weight: 100 500;
+  src: local("Arial"), local("Liberation Sans");
+  size-adjust: 105.07%;
+  ascent-override: 98.79%;
+  descent-override: 21.13%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans Fallback";
+  font-weight: 600 900;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold");
+  size-adjust: 100.13%;
+  ascent-override: 103.67%;
+  descent-override: 22.17%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Libre Baskerville Fallback";
+  font-weight: 100 500;
+  src: local("Times New Roman"), local("Liberation Serif");
+  size-adjust: 128.04%;
+  ascent-override: 75.76%;
+  descent-override: 21.09%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Libre Baskerville Fallback";
+  font-weight: 600 900;
+  src: local("Times New Roman Bold"), local("TimesNewRomanPS-BoldMT"), local("Liberation Serif Bold");
+  size-adjust: 123.2%;
+  ascent-override: 78.73%;
+  descent-override: 21.92%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/geist-mono-latin.woff2") format("woff2");
+}
+
 @layer base {
   html {
     color-scheme: dark;
     scroll-behavior: smooth;
     scrollbar-color: #3d3d45 transparent;
+    scrollbar-gutter: stable both-edges;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -25,7 +92,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Libre Baskerville", ui-serif, Georgia, serif;
+    font-family: "Libre Baskerville", "Libre Baskerville Fallback", ui-serif, Georgia, serif;
   }
 
   h1,
@@ -52,9 +119,16 @@
     @apply bg-accent text-ink-950;
   }
 
-  :focus-visible {
-    @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-ink-950;
-  }
+}
+
+/* Outside @layer on purpose so it lands after the utilities: a resting `ring-1` on a button
+   would otherwise replace the focus ring with its own faint one. Classes such as
+   `focus-visible:ring-0` are more specific and still opt out. */
+:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px theme("colors.ink.950"),
+    0 0 0 4px rgb(181 228 110 / 0.7);
 }
 
 @layer utilities {
@@ -70,9 +144,28 @@
     display: none;
   }
 
+  .route-spinner {
+    opacity: 0;
+    animation:
+      route-spin 1s linear infinite,
+      route-appear 0.2s ease-out 0.4s forwards;
+  }
+
   .bg-dot-grid {
     background-image: radial-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1px);
     background-size: 18px 18px;
+  }
+}
+
+@keyframes route-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes route-appear {
+  to {
+    opacity: 1;
   }
 }
 

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { ImageBrokenIcon } from "@phosphor-icons/react";
 
+/* Images already shown once this session skip the shimmer and fade, so revisiting a page doesn't flicker. */
+const loadedSrcs = new Set();
+
 const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "" }) => {
-  const [state, setState] = useState("loading");
+  const [state, setState] = useState(() => (loadedSrcs.has(src) ? "ready" : "loading"));
 
   return (
     <div className={`relative overflow-hidden bg-ink-800 ${className}`}>
@@ -23,7 +26,10 @@ const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "" }) => 
           alt={alt}
           loading="lazy"
           decoding="async"
-          onLoad={() => setState("ready")}
+          onLoad={() => {
+            loadedSrcs.add(src);
+            setState("ready");
+          }}
           onError={() => setState("error")}
           className={`h-full w-full transition-opacity duration-500 ${
             fit === "contain" ? "object-contain" : "object-cover object-top"

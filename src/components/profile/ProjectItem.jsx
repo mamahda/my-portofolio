@@ -44,7 +44,7 @@ const Summary = ({ project, trailing }) => (
 
 const Details = ({ project }) => (
   <div className="pt-4">
-    <p className="max-w-[65ch] text-sm leading-relaxed text-zinc-300">{project.desc}</p>
+    <p className="max-w-[47.5em] text-[15px] leading-[1.6] text-zinc-300 md:text-base md:leading-relaxed">{project.desc}</p>
 
     <a
       href={project.live || project.repo || project.image}

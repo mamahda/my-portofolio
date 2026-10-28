@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["Libre Baskerville", "ui-serif", "Georgia", "serif"],
+        sans: ["Plus Jakarta Sans", "Plus Jakarta Sans Fallback", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["Libre Baskerville", "Libre Baskerville Fallback", "ui-serif", "Georgia", "serif"],
         mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {

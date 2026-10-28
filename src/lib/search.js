@@ -8,7 +8,8 @@ const index = [
     title: project.title,
     meta: project.category,
     to: `/projects#${project.id}`,
-    image: project.image,
+    // Projects without a screenshot carry a label like "Under Development" instead of a path.
+    image: project.image?.startsWith("/") ? project.image : null,
     keywords: [project.title, project.category, ...project.tech].join(" ").toLowerCase(),
   })),
   ...certifications.map((certification) => ({

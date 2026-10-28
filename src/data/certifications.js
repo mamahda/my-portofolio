@@ -9,8 +9,8 @@ export const certifications = [
     skills: ["Cybersecurity Fundamentals", "Threats & Vulnerabilities", "Network Security"],
     description:
       "It covers the basics of staying safe online, the most common cyber threats, attacks and vulnerabilities, how individuals and organizations protect themselves against them, and career paths in cybersecurity.",
-    logoLabel: "/images/certificate/logo/cisco.jpg",
-    scan: "/images/certificate/introduction-to-cybersecurity.png",
+    logoLabel: "/images/certificate/logo/cisco.webp",
+    scan: "/images/certificate/introduction-to-cybersecurity.webp",
     verifyUrl: "https://www.credly.com/badges/5f8d9a26-49c3-4647-aa78-b3e980dad27b",
     verifyPlatform: "Credly",
   },
@@ -25,7 +25,7 @@ export const certifications = [
     description:
       "It includes working with functions, pointers, file handling, building web services in Go and error handling.",
     logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Intermediate) Certificate.png",
+    scan: "/images/certificate/Go (Intermediate) Certificate.webp",
     verifyUrl: "https://www.hackerrank.com/certificates/050077656183",
   },
   {
@@ -39,7 +39,7 @@ export const certifications = [
     description:
       "It covers topics like basic language features of Golang, simple data structures, arrays, maps, data types, and interfaces.",
     logoLabel: "/images/certificate/logo/hackerrank.jpg",
-    scan: "/images/certificate/Go (Basic) Certificate.png",
+    scan: "/images/certificate/Go (Basic) Certificate.webp",
     verifyUrl: "https://www.hackerrank.com/certificates/b23f0a25b28f",
   },
 ];

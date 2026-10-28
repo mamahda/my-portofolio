@@ -43,7 +43,7 @@ const MeMenu = () => {
             transition={snappy}
             className={`absolute right-0 top-[calc(100%+6px)] w-72 origin-top-right overflow-hidden rounded-xl py-2 ${popover}`}
           >
-            <div className="flex gap-3 px-4 pb-3 pt-1">
+            <div className="flex gap-5 px-4 pb-3 pt-1">
               <img src={profile.photo} alt="" className="size-12 rounded-full object-cover" />
               <div className="min-w-0">
                 <p className="font-medium">{profile.name}</p>
@@ -55,7 +55,7 @@ const MeMenu = () => {
                 View profile
               </Link>
             </div>
-            <div className="border-t border-line pt-2">
+            <div className="pt-2">
               <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={itemClass}>
                 <FileTextIcon size={17} /> View CV
               </a>

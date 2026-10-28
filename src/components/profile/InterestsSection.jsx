@@ -4,6 +4,7 @@ import { interests } from "../../data/interests";
 import { profile } from "../../data/profile";
 import { snappy } from "../../lib/motion";
 import Section from "../ui/Section";
+import { tabPanelProps } from "../../lib/ui";
 import { Tabs } from "./SkillsSection";
 
 const tabs = ["Fields", "Toolkit"];
@@ -13,10 +14,19 @@ const InterestsSection = () => {
 
   return (
     <Section id="interests" title="Interests">
-      <Tabs tabs={tabs} value={tab} onChange={setTab} layoutId="interests-tab" />
+      <Tabs
+        tabs={tabs}
+        value={tab}
+        onChange={setTab}
+        layoutId="interests-tab"
+        id="interests"
+        label="Interests"
+        controlsPanel
+      />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={tab}
+          {...tabPanelProps("interests", tabs, tab)}
           initial={{ opacity: 0, x: 12 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -12 }}
@@ -39,7 +49,7 @@ const InterestsSection = () => {
           {tab === "Toolkit" && (
             <ul className="mt-4 grid gap-x-10 sm:grid-cols-2">
               {profile.toolkit.map((tool) => (
-                <li key={tool.name} className="flex items-baseline justify-between gap-4 border-b border-line py-3">
+                <li key={tool.name} className="flex items-baseline justify-between gap-4 border-b border-line-strong py-3">
                   <p className="text-[15px] text-zinc-100">{tool.name}</p>
                   <p className="truncate text-right text-xs text-zinc-500">{tool.note}</p>
                 </li>

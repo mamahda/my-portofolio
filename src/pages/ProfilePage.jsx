@@ -1,6 +1,7 @@
 import PageShell from "../components/layout/PageShell";
 import { QuickActions, SectionNav, SocialIcons } from "../components/layout/SidebarCards";
 import AboutSection from "../components/profile/AboutSection";
+import FeaturedSection from "../components/profile/FeaturedSection";
 import InterestsSection from "../components/profile/InterestsSection";
 import {
   CertificationsSection,
@@ -23,14 +24,17 @@ const ProfilePage = () => (
     }
   >
     <ProfileHeader />
-    <AboutSection />
-    <EducationSection />
-    <ProjectsSection />
-    <CertificationsSection />
-    <SkillsSection />
-    <ExperienceSection />
-    <VolunteeringSection />
-    <InterestsSection />
+    <div className="md:space-y-6">
+      <AboutSection />
+      <FeaturedSection />
+      <EducationSection />
+      <ProjectsSection />
+      <CertificationsSection />
+      <SkillsSection />
+      <ExperienceSection />
+      <VolunteeringSection />
+      <InterestsSection />
+    </div>
   </PageShell>
 );
 

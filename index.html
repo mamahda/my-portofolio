@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/jpeg" href="/images/myphoto.jpeg" />
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
         <meta name="theme-color" content="#1e1e22" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -18,13 +18,15 @@
         />
         <meta property="og:image" content="https://mamahda-portofolio.vercel.app/images/myphoto.jpeg" />
         <meta name="twitter:card" content="summary" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Plus+Jakarta+Sans:wght@300..700&family=Geist+Mono:wght@400..600&display=swap"
-            rel="stylesheet"
-        />
+        <link rel="preload" href="/images/myphoto.webp" as="image" type="image/webp" fetchpriority="high" />
+        <link rel="preconnect" href="https://api.github.com" crossorigin />
         <title>Gilbran Mahda | mamahda</title>
+        <style>
+            html,
+            body {
+                background-color: #161619;
+            }
+        </style>
     </head>
     <body>
         <div id="root"></div>

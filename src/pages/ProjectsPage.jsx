@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { XIcon } from "@phosphor-icons/react";
@@ -7,10 +7,10 @@ import { AsideBlock, FacetList, StatGrid, TagCloud } from "../components/layout/
 import SubPageHeader from "../components/layout/SubPageHeader";
 import ProjectItem from "../components/profile/ProjectItem";
 import { Tabs } from "../components/profile/SkillsSection";
-import { bleed } from "../components/ui/Section";
+import { pageCard } from "../components/ui/Section";
 import { projects } from "../data/projects";
 import { snappy } from "../lib/motion";
-import { button } from "../lib/ui";
+import { button, revealOnMobile } from "../lib/ui";
 
 const countBy = (values) => {
   const counts = new Map();
@@ -33,6 +33,7 @@ const stats = [
 const ProjectsPage = () => {
   const [category, setCategory] = useState(null);
   const [tech, setTech] = useState(null);
+  const resultsRef = useRef(null);
   const { hash } = useLocation();
   const target = hash.slice(1);
   const [openIds, setOpenIds] = useState(() => new Set(target ? [target] : []));
@@ -76,13 +77,20 @@ const ProjectsPage = () => {
             <FacetList items={categories} active={category} onSelect={setCategory} allLabel="All projects" />
           </AsideBlock>
           <AsideBlock title="Tech stack">
-            <TagCloud items={techs} active={tech} onSelect={setTech} />
+            <TagCloud
+              items={techs}
+              active={tech}
+              onSelect={(next) => {
+                setTech(next);
+                revealOnMobile(resultsRef.current);
+              }}
+            />
           </AsideBlock>
         </>
       }
     >
-      <div className={bleed}>
-        <SubPageHeader eyebrow={`${projects.length} entries`} title="Projects" />
+      <div className={pageCard}>
+        <SubPageHeader title="Projects" />
 
         <div className="mb-4 md:hidden">
           <Tabs
@@ -90,19 +98,22 @@ const ProjectsPage = () => {
             value={category ?? "All"}
             onChange={(next) => setCategory(next === "All" ? null : next)}
             layoutId="project-filter-mobile"
+            id="project-category"
+            label="Project category"
           />
         </div>
 
+        <div ref={resultsRef} className="scroll-mt-20" />
         {filtered && (
-          <div className="flex min-h-[37px] flex-wrap items-center justify-end gap-3 border-b border-line pb-4">
+          <div className="flex min-h-[37px] flex-wrap items-center justify-end gap-3 border-b border-line-strong pb-4">
             <button type="button" onClick={clear} className={button("ghost", "-my-1 px-3 py-1 text-xs")}>
               <XIcon size={12} weight="bold" /> Clear filters
             </button>
           </div>
         )}
 
-        <motion.ul layout className={filtered ? "" : "border-t border-line"}>
-          <AnimatePresence initial={false} mode="popLayout">
+        <motion.ul layout className={filtered ? "" : "border-t border-line-strong"}>
+          <AnimatePresence mode="popLayout">
             {list.map((project, index) => (
               <motion.li
                 layout
@@ -110,7 +121,7 @@ const ProjectsPage = () => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0, transition: { ...snappy, delay: index * 0.05 } }}
                 exit={{ opacity: 0, transition: { duration: 0.12 } }}
-                className={`border-b border-line py-7 ${target === project.id ? "animate-flash" : ""}`}
+                className={`border-b border-line-strong py-7 ${target === project.id ? "animate-flash" : ""}`}
               >
                 <ProjectItem project={project} open={openIds.has(project.id)} onToggle={() => toggle(project.id)} />
               </motion.li>

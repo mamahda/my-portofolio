@@ -8,7 +8,7 @@ const Row = ({ icon: Icon, label, value, href, copyValue, copied, onCopy }) => (
   <li className="flex items-center gap-4 px-5 py-3">
     <Icon size={20} className="shrink-0 text-zinc-500" />
     <div className="min-w-0 flex-1">
-      <p className="font-mono text-[11px] uppercase tracking-widest text-zinc-500">{label}</p>
+      <p className="text-xs text-zinc-500">{label}</p>
       <a
         href={href}
         target={href.startsWith("mailto:") ? undefined : "_blank"}

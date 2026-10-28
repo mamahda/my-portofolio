@@ -1,12 +1,13 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import PageShell from "../components/layout/PageShell";
 import { AsideBlock, FacetList, StatGrid } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
 import CertificationItem from "../components/profile/CertificationItem";
-import { bleed } from "../components/ui/Section";
+import { pageCard } from "../components/ui/Section";
 import { certifications } from "../data/certifications";
 import { snappy } from "../lib/motion";
+import { revealOnMobile } from "../lib/ui";
 
 const countBy = (values) => {
   const counts = new Map();
@@ -28,6 +29,7 @@ const stats = [
 const CertificationsPage = () => {
   const [issuer, setIssuer] = useState(null);
   const [field, setField] = useState(null);
+  const resultsRef = useRef(null);
 
   const list = useMemo(
     () => certifications.filter((item) => (!issuer || item.issuer === issuer) && (!field || item.field === field)),
@@ -42,19 +44,35 @@ const CertificationsPage = () => {
             <StatGrid stats={stats} />
           </AsideBlock>
           <AsideBlock title="Issuer">
-            <FacetList items={issuers} active={issuer} onSelect={setIssuer} allLabel="All issuers" />
+            <FacetList
+              items={issuers}
+              active={issuer}
+              onSelect={(value) => {
+                setIssuer(value);
+                revealOnMobile(resultsRef.current);
+              }}
+              allLabel="All issuers"
+            />
           </AsideBlock>
           <AsideBlock title="Field">
-            <FacetList items={fields} active={field} onSelect={setField} allLabel="All fields" />
+            <FacetList
+              items={fields}
+              active={field}
+              onSelect={(value) => {
+                setField(value);
+                revealOnMobile(resultsRef.current);
+              }}
+              allLabel="All fields"
+            />
           </AsideBlock>
         </>
       }
     >
-      <div className={bleed}>
-        <SubPageHeader eyebrow={`${certifications.length} credentials`} title="Certifications" />
+      <div className={pageCard}>
+        <SubPageHeader title="Certifications" />
 
         {certifications.length === 0 ? (
-          <div className="border-t border-line py-14 text-center">
+          <div className="border-t border-line-strong py-14 text-center">
             <p className="font-medium">No certifications yet</p>
             <p className="mt-1 text-sm text-zinc-500">
               Add an entry to <span className="font-mono">src/data/certifications.js</span> and it will show up here.
@@ -62,8 +80,9 @@ const CertificationsPage = () => {
           </div>
         ) : (
           <>
-            <motion.ul layout className="border-t border-line">
-              <AnimatePresence initial={false} mode="popLayout">
+            <div ref={resultsRef} className="scroll-mt-20" />
+            <motion.ul layout className="border-t border-line-strong">
+              <AnimatePresence mode="popLayout">
                 {list.map((certification, index) => (
                   <motion.li
                     layout
@@ -71,7 +90,7 @@ const CertificationsPage = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0, transition: { ...snappy, delay: index * 0.05 } }}
                     exit={{ opacity: 0, transition: { duration: 0.12 } }}
-                    className="border-b border-line py-7"
+                    className="border-b border-line-strong py-7"
                   >
                     <CertificationItem certification={certification} />
                   </motion.li>

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -26,19 +26,47 @@ const MoreMenu = () => {
   const [open, setOpen] = useState(false);
   const [copied, copy] = useCopy();
   const ref = useRef(null);
+  const triggerRef = useRef(null);
+  const menuRef = useRef(null);
+  const menuId = useId();
   const close = useCallback(() => setOpen(false), []);
   useDismiss(ref, open, close);
 
+  // Follow the menu pattern: focus lands on the first item when it opens.
+  useEffect(() => {
+    if (open) menuRef.current?.querySelector('[role="menuitem"]')?.focus();
+  }, [open]);
+
+  const handleMenuKeyDown = (event) => {
+    const items = [...menuRef.current.querySelectorAll('[role="menuitem"]')];
+    const index = items.indexOf(document.activeElement);
+    const focusAt = (next) => {
+      event.preventDefault();
+      items[(next + items.length) % items.length].focus();
+    };
+    if (event.key === "ArrowDown") focusAt(index + 1);
+    else if (event.key === "ArrowUp") focusAt(index - 1);
+    else if (event.key === "Home") focusAt(0);
+    else if (event.key === "End") focusAt(items.length - 1);
+    else if (event.key === "Escape") {
+      event.preventDefault();
+      close();
+      triggerRef.current?.focus();
+    } else if (event.key === "Tab") close();
+  };
+
   const itemClass =
-    "flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm text-zinc-400 transition-colors hover:bg-white/[0.05] hover:text-zinc-100";
+    "flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm text-zinc-400 transition-colors hover:bg-white/[0.05] hover:text-zinc-100 focus-visible:bg-white/[0.08] focus-visible:text-zinc-100 focus-visible:shadow-none";
 
   return (
     <div ref={ref} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-haspopup="menu"
+        aria-controls={open ? menuId : undefined}
         aria-label="More actions"
         className={`${iconButton} size-[34px] ring-1 ring-inset ring-white/15`}
       >
@@ -47,21 +75,32 @@ const MoreMenu = () => {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={menuRef}
+            id={menuId}
             role="menu"
+            aria-label="More actions"
+            onKeyDown={handleMenuKeyDown}
             initial={{ opacity: 0, y: -4, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -4, scale: 0.98 }}
             transition={snappy}
             className={`absolute right-0 top-[calc(100%+8px)] z-20 w-56 origin-top-right overflow-hidden rounded-xl py-1.5 sm:left-0 sm:right-auto sm:origin-top-left ${popover}`}
           >
-            <button type="button" onClick={() => copy(profile.site, "link")} className={itemClass}>
+            <button type="button" role="menuitem" onClick={() => copy(profile.site, "link")} className={itemClass}>
               {copied === "link" ? <CheckIcon size={17} className="text-accent" /> : <LinkSimpleIcon size={17} />}
               {copied === "link" ? "Link copied" : "Copy link to profile"}
             </button>
-            <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={itemClass}>
+            <a href={profile.cv} target="_blank" rel="noopener noreferrer" role="menuitem" onClick={close} className={itemClass}>
               <FileTextIcon size={17} /> View CV
             </a>
-            <a href={profile.socials[0].url} target="_blank" rel="noopener noreferrer" className={itemClass}>
+            <a
+              href={profile.socials[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              role="menuitem"
+              onClick={close}
+              className={itemClass}
+            >
               <GithubLogoIcon size={17} /> Visit GitHub
             </a>
           </motion.div>
@@ -81,7 +120,7 @@ const ProfileHeader = () => {
         <div className="bg-dot-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_30%,black_10%,transparent_75%)]" />
         <div className="absolute -right-20 -top-40 size-[420px] rounded-full bg-accent/[0.09] blur-3xl" />
         <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink-950 to-transparent" />
-        <p className="absolute left-4 top-4 text-xs text-zinc-400 sm:left-6 sm:top-5">
+        <p className="absolute left-4 right-4 top-4 text-xs text-zinc-400 sm:left-6 sm:right-6 sm:top-5">
           backend <span className="text-zinc-600">/</span> devops <span className="text-zinc-600">/</span> networking{" "}
           <span className="text-zinc-600">/</span> security
         </p>
@@ -98,7 +137,14 @@ const ProfileHeader = () => {
       <motion.div variants={stagger} initial="hidden" animate="show" className="relative sm:px-6">
         <motion.div variants={rise} className="-mt-[68px] sm:-mt-[84px]">
           <div className="size-[132px] shrink-0 rounded-full bg-ink-950 p-1 sm:size-[156px]">
-            <img src={profile.photo} alt={profile.name} className="size-full rounded-full object-cover" />
+            <img
+              src={profile.photo}
+              alt={profile.name}
+              width={156}
+              height={156}
+              fetchPriority="high"
+              className="size-full rounded-full object-cover"
+            />
           </div>
         </motion.div>
 
@@ -111,7 +157,7 @@ const ProfileHeader = () => {
               <SealCheckIcon size={22} weight="fill" className="text-accent" aria-label="Verified student" />
               <span className="text-sm text-zinc-500">{profile.pronouns}</span>
             </motion.div>
-            <motion.p variants={rise} className="mt-3 max-w-[53ch] text-[16px] leading-relaxed text-zinc-200">
+            <motion.p variants={rise} className="mt-3 max-w-[38.75em] text-[15px] leading-[1.55] text-zinc-200 md:text-[16px] md:leading-relaxed">
               {profile.headline}
             </motion.p>
             <motion.p variants={rise} className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500">

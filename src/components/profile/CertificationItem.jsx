@@ -4,12 +4,12 @@ import CertificationLogo from "../CertificationLogo";
 import TagList from "../ui/Tag";
 
 const CertificationItem = ({ certification, showLogo = true }) => (
-  <article className="flex gap-4">
+  <article className="flex gap-6">
     {showLogo && <CertificationLogo certification={certification} className="size-11" />}
     <div className="min-w-0 flex-1">
       <Link
         to={`/certification/${certification.id}`}
-        className="group inline-flex items-center gap-1.5 font-serif text-base font-bold leading-snug text-zinc-100 transition-colors hover:text-accent"
+        className="group -my-1 inline-flex items-center gap-1.5 py-1 font-serif text-base font-bold leading-snug text-zinc-100 transition-colors hover:text-accent"
       >
         {certification.title}
         <ArrowUpRightIcon

@@ -19,9 +19,9 @@ export const ProjectsSection = () => (
       )
     }
   >
-    <ul className="space-y-7">
+    <ul className="divide-y divide-line-strong">
       {projects.slice(0, PREVIEW).map((project) => (
-        <li key={project.id}>
+        <li key={project.id} className="py-5 first:pt-0 last:pb-0">
           <ProjectItem project={project} to={`/projects#${project.id}`} />
         </li>
       ))}
@@ -40,7 +40,7 @@ const RoleDates = ({ role }) => (
 const RoleDetails = ({ role }) => (
   <>
     {role.points?.length > 0 && (
-      <ul className="mt-3 max-w-[65ch] space-y-1.5">
+      <ul className="mt-3 max-w-[47.5em] space-y-1.5">
         {role.points.map((point) => (
           <li key={point} className="flex gap-2.5 text-sm leading-relaxed text-zinc-300">
             <span aria-hidden="true" className="mt-[0.7em] h-px w-2.5 shrink-0 bg-zinc-600" />
@@ -160,8 +160,17 @@ export const EducationSection = () => (
   <Section id="education" title="Education">
     <ul className="space-y-6">
       {profile.education.map((item) => (
-        <li key={item.school}>
-          <div className="min-w-0">
+        <li key={item.school} className="flex items-center gap-6">
+          {item.logo && (
+            <img
+              src={item.logo}
+              alt={`${item.short ?? item.school} logo`}
+              loading="lazy"
+              decoding="async"
+              className="size-[55px] shrink-0 object-contain"
+            />
+          )}
+          <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h3 className="font-serif text-base font-bold leading-snug text-zinc-100">{item.school}</h3>
               <span className="text-xs tabular-nums text-zinc-500">{item.period}</span>
@@ -190,9 +199,9 @@ export const CertificationsSection = () => (
         Certifications will appear here once they are added to <span className="font-mono">certifications.js</span>.
       </p>
     ) : (
-      <ul className="space-y-6">
+      <ul className="divide-y divide-line-strong">
         {certifications.slice(0, 2).map((certification) => (
-          <li key={certification.id}>
+          <li key={certification.id} className="py-5 first:pt-0 last:pb-0">
             <CertificationItem certification={certification} />
           </li>
         ))}

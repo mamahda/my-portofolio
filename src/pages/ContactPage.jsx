@@ -10,16 +10,16 @@ import {
   CheckIcon,
   CircleNotchIcon,
   CopyIcon,
+  MapPinIcon,
   PaperPlaneTiltIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react";
 import PageShell from "../components/layout/PageShell";
 import { AsideBlock } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
-import { bleed } from "../components/ui/Section";
+import { pageCard } from "../components/ui/Section";
 import { profile } from "../data/profile";
 import useCopy from "../hooks/useCopy";
-import { formatMonth } from "../lib/dates";
 import { spring } from "../lib/motion";
 import { button } from "../lib/ui";
 
@@ -34,19 +34,14 @@ const validate = (values) => {
   return errors;
 };
 
-/* Ongoing roles come straight from the experience data, so this stays current on its own. */
-const currentRoles = profile.experience.flatMap((entry) =>
-  entry.roles.filter((role) => !role.end).map((role) => ({ ...role, org: entry.org })),
-);
-
 const resourceRow =
   "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-200 transition-colors hover:bg-white/[0.04] hover:text-zinc-50";
 
 const empty = { from_name: "", from_email: "", subject: "", message: "" };
 
 /* Each form row puts its label in a narrow left column, like a CV, and stacks on mobile. */
-const row = "grid gap-2 border-b border-line py-4 sm:grid-cols-[140px_minmax(0,1fr)] sm:items-start sm:gap-6";
-const rowLabel = "text-sm text-zinc-400 sm:pt-2.5";
+const row = "grid gap-2 border-b border-line-strong py-4 sm:grid-cols-[140px_minmax(0,1fr)] sm:items-start sm:gap-6";
+const rowLabel = "text-base text-zinc-400 sm:pt-2.5";
 
 const Field = ({ label, name, error, as = "input", ...props }) => {
   const Tag = as;
@@ -62,7 +57,7 @@ const Field = ({ label, name, error, as = "input", ...props }) => {
           name={name}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? `${id}-error` : undefined}
-          className={`w-full rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-[15px] text-zinc-100 ring-1 ring-inset transition-shadow placeholder:text-zinc-500 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus-visible:ring-offset-0 ${
+          className={`w-full rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-base text-zinc-100 ring-1 ring-inset transition-shadow placeholder:text-zinc-500 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus-visible:ring-offset-0 ${
             error ? "ring-red-400/70 focus:ring-red-400" : "ring-white/10 focus:ring-accent/70"
           } ${as === "textarea" ? "min-h-32 resize-y" : ""}`}
           {...props}
@@ -82,8 +77,8 @@ const DirectContact = () => {
   const emailCopied = copied === "email";
 
   return (
-    <div className="border-t border-line pt-8">
-      <p className="text-sm text-zinc-500">The fastest way to reach me</p>
+    <div>
+      <p className="text-base text-zinc-500">The fastest way to reach me</p>
       <div className="mt-2 flex flex-wrap items-center gap-3">
         <a
           href={`mailto:${profile.email}`}
@@ -107,7 +102,7 @@ const DirectContact = () => {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 text-zinc-300 transition-colors hover:text-accent"
+              className="group inline-flex items-center gap-1.5 text-base text-zinc-300 transition-colors hover:text-accent"
             >
               <Icon size={16} /> {social.name}
               <ArrowUpRightIcon size={12} className="text-zinc-500 transition-colors group-hover:text-accent" />
@@ -137,7 +132,11 @@ const ContactPage = () => {
     event.preventDefault();
     const nextErrors = validate(values);
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length) return;
+    const firstInvalid = ["from_name", "from_email", "message"].find((name) => nextErrors[name]);
+    if (firstInvalid) {
+      formRef.current.elements[firstInvalid].focus();
+      return;
+    }
 
     setStatus("sending");
     try {
@@ -161,19 +160,25 @@ const ContactPage = () => {
     <PageShell
       aside={
         <>
-          <AsideBlock title="Currently" first>
-            <ul className="space-y-3">
-              {currentRoles.map((role) => (
-                <li key={`${role.org}-${role.title}`}>
-                  <p className="text-sm leading-snug text-zinc-100">{role.title}</p>
-                  <p className="mt-0.5 text-xs leading-snug text-zinc-500">{role.org}</p>
-                  <p className="mt-0.5 font-mono text-[11px] text-zinc-500">Since {formatMonth(role.start)}</p>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-xs text-zinc-500">{profile.openTo.title}</p>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-500">Usually replies within a day</p>
-          </AsideBlock>
+          <div className="py-5 md:pt-8">
+            <Link to="/about" className="group flex flex-col items-start">
+              <img
+                src={profile.photo}
+                alt={profile.name}
+                className="size-28 shrink-0 rounded-full object-cover ring-1 ring-inset ring-white/10"
+              />
+              <p className="mt-4 font-serif text-lg font-bold leading-tight text-zinc-50 transition-colors group-hover:text-accent">
+                {profile.name}
+              </p>
+              <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-zinc-400">{profile.headline}</p>
+              <p className="mt-2 inline-flex items-center gap-1 text-xs text-zinc-500">
+                <MapPinIcon size={13} /> {profile.location}
+              </p>
+            </Link>
+            <Link to="/about" className={button("outline", "mt-4 w-full justify-center py-2 text-sm")}>
+              About me <ArrowRightIcon size={13} />
+            </Link>
+          </div>
           <AsideBlock title="Check my work first">
             <ul className="-mx-2">
               <li>
@@ -199,7 +204,7 @@ const ContactPage = () => {
         </>
       }
     >
-      <div className={bleed}>
+      <div className={pageCard}>
       <SubPageHeader title="Get in touch" />
 
       <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={spring}>
@@ -207,7 +212,7 @@ const ContactPage = () => {
 
         <form ref={formRef} onSubmit={handleSubmit} noValidate className="mt-12">
           <h2 className="font-serif text-xl font-bold text-zinc-50">Or send a message here</h2>
-          <div className="mt-3 border-t border-line">
+          <div className="mt-5">
             <Field
               label="Name"
               name="from_name"
@@ -289,7 +294,7 @@ const ContactPage = () => {
           </AnimatePresence>
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <p className="font-mono text-[11.5px] text-zinc-500">{values.message.length} chars</p>
+            <p className="text-xs tabular-nums text-zinc-500">{values.message.length} chars</p>
             <button type="submit" disabled={sending} className={button("primary", "min-w-[148px] py-2")}>
               {sending ? (
                 <>
