@@ -8,6 +8,7 @@ import { AsideBlock } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
 import Img from "../components/ui/Img";
 import Modal from "../components/ui/Modal";
+import { bleed } from "../components/ui/Section";
 import TagList from "../components/ui/Tag";
 import { certifications } from "../data/certifications";
 import useCopy from "../hooks/useCopy";
@@ -118,6 +119,7 @@ const CertificationDetailPage = () => {
         )
       }
     >
+      <div className={bleed}>
       <SubPageHeader
         eyebrow={certification ? `${certification.issuer} credential` : "Credential"}
         title={certification ? certification.title : "Not found"}
@@ -167,6 +169,7 @@ const CertificationDetailPage = () => {
           </Modal>
         </motion.article>
       )}
+      </div>
     </PageShell>
   );
 };

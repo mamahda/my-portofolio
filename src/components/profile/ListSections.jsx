@@ -193,7 +193,7 @@ export const CertificationsSection = () => (
       <ul className="space-y-6">
         {certifications.slice(0, 2).map((certification) => (
           <li key={certification.id}>
-            <CertificationItem certification={certification} showLogo={false} />
+            <CertificationItem certification={certification} />
           </li>
         ))}
       </ul>

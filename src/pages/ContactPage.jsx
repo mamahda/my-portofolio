@@ -16,6 +16,7 @@ import {
 import PageShell from "../components/layout/PageShell";
 import { AsideBlock } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
+import { bleed } from "../components/ui/Section";
 import { profile } from "../data/profile";
 import useCopy from "../hooks/useCopy";
 import { formatMonth } from "../lib/dates";
@@ -198,6 +199,7 @@ const ContactPage = () => {
         </>
       }
     >
+      <div className={bleed}>
       <SubPageHeader title="Get in touch" />
 
       <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={spring}>
@@ -306,6 +308,7 @@ const ContactPage = () => {
           </div>
         </form>
       </motion.div>
+      </div>
     </PageShell>
   );
 };

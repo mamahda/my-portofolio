@@ -3,21 +3,20 @@ import { Link } from "react-router-dom";
 import { ArrowUpRightIcon, CaretDownIcon, GithubLogoIcon, LockSimpleIcon } from "@phosphor-icons/react";
 import { snappy } from "../../lib/motion";
 import { button, hostOf } from "../../lib/ui";
+import { projectStatus } from "../../lib/projectStatus";
 import Img from "../ui/Img";
 import TagList from "../ui/Tag";
 
-const statusDot = (project) => {
-  if (project.status === "Under Development") return "bg-amber-300";
-  if (project.status) return "bg-zinc-500";
-  return "bg-accent";
-};
+export const ProjectStatus = ({ project }) => {
+  const { label, dot } = projectStatus(project);
 
-export const ProjectStatus = ({ project }) => (
-  <span className="inline-flex items-center gap-1.5 text-xs text-zinc-400">
-    <span className={`size-1.5 rounded-full ${statusDot(project)}`} />
-    {project.status || "Live"}
-  </span>
-);
+  return (
+    <span className="inline-flex items-center gap-1.5 text-xs text-zinc-400">
+      <span className={`size-1.5 rounded-full ${dot}`} />
+      {label}
+    </span>
+  );
+};
 
 const Summary = ({ project, trailing }) => (
   <>
@@ -62,7 +61,7 @@ const Details = ({ project }) => (
     </a>
 
     <div className="mt-4 flex flex-wrap gap-2">
-      {project.live && !project.status && (
+      {project.live && project.status === "live" && (
         <a href={project.live} target="_blank" rel="noopener noreferrer" className={button("primary")}>
           Visit site <ArrowUpRightIcon size={15} weight="bold" />
         </a>

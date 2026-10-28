@@ -7,7 +7,7 @@ export const projects = [
     tech: ["Springboot", "Java", "Gradle", "Android"],
     desc: "Developed backend service for IOX Adventure Club Android Apps",
     privateRepo: true,
-    status: "Under Development",
+    status: "in-progress",
     image: "Under Development",
   },
   {
@@ -18,7 +18,7 @@ export const projects = [
     tech: ["Laravel", "PHP", "MySQL"],
     desc: "Developed backend service for IOX Adventure Club Android Apps",
     privateRepo: true,
-    status: "Under Development",
+    status: "in-progress",
     image: "Under Development",
   },
   {
@@ -29,7 +29,7 @@ export const projects = [
     tech: ["Kubernetes", "Docker", "XML"],
     desc: "Deploy platfrom for Jawa Timur CTF competition",
     repo: "https://github.com/arsitektur-jaringan-komputer/jcc-2026",
-    status: "Not Deployed",
+    status: "not-deployed",
     image: "/images/project/JCC.jpeg",
   },
   {
@@ -40,6 +40,7 @@ export const projects = [
     tech: ["TypeScript", "ReactJS", "Tailwind", "Convex"],
     desc: "Developed a responsive website for Gerigi X UKM Expo ITS, a high-traffic platform supporting the university's annual orientation and exhibition.",
     privateRepo: true,
+    status: "live",
     live: "https://gerigixukmexpoits.id",
     image: "/images/project/gerex.png",
   },
@@ -51,7 +52,7 @@ export const projects = [
     tech: ["Go (Golang)", "HTTP", "JWTAuth"],
     desc: "Built a scalable backend system using Go, developed RESTful APIs, and managed the database for reliable property data management.",
     privateRepo: true,
-    status: "Under Development",
+    status: "in-progress",
     image: "/images/project/vp.png",
   },
   {
@@ -62,7 +63,7 @@ export const projects = [
     tech: ["Laravel", "PHP", "MySQL"],
     desc: "Built a scalable backend system using Laravel, developed RESTful APIs, and managed the database for efficient canteen data management.",
     repo: "https://github.com/mamahda/tcanteen-backend",
-    status: "Not Deployed",
+    status: "not-deployed",
     image: "/images/project/tcanteen.png",
   },
   {
@@ -73,7 +74,7 @@ export const projects = [
     tech: ["Javascript", "ReactJS", "Tailwind"],
     desc: "Developed a personal website to showcase projects, skills, and professional experience in a structured and visually clear manner.",
     repo: "https://github.com/mamahda/my-portofolio",
-    live: "https://mamahda-portofolio.vercel.app",
+    status: "not-deployed",
     image: "/images/project/portofolio.png",
   },
 ];

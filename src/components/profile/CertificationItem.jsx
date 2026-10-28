@@ -3,7 +3,6 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import CertificationLogo from "../CertificationLogo";
 import TagList from "../ui/Tag";
 
-/* The issuer logo only appears on the certification pages; the profile keeps the list text-only. */
 const CertificationItem = ({ certification, showLogo = true }) => (
   <article className="flex gap-4">
     {showLogo && <CertificationLogo certification={certification} className="size-11" />}

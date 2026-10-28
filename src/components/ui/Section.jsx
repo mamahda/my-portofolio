@@ -24,9 +24,8 @@ export const SectionFooterLink = ({ to, onClick, children }) => {
   );
 };
 
-/* Negative margins let the divider run edge to edge across the content column,
-   meeting the frame border on the left and the sidebar divider on the right. */
-const bleed = "-mx-4 px-4 sm:-mx-6 sm:pl-12 sm:pr-6 md:-mr-5 md:pr-5 lg:-mr-7 lg:pr-7";
+/* Lets the divider run edge to edge on mobile; equal padding on both sides from sm up. */
+export const bleed = "-mx-4 px-4 sm:mx-0 sm:px-6";
 
 const Section = ({ id, title, subtitle, action, footer, children, className = "" }) => (
   <motion.section

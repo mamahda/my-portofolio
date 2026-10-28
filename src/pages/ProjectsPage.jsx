@@ -7,6 +7,7 @@ import { AsideBlock, FacetList, StatGrid, TagCloud } from "../components/layout/
 import SubPageHeader from "../components/layout/SubPageHeader";
 import ProjectItem from "../components/profile/ProjectItem";
 import { Tabs } from "../components/profile/SkillsSection";
+import { bleed } from "../components/ui/Section";
 import { projects } from "../data/projects";
 import { snappy } from "../lib/motion";
 import { button } from "../lib/ui";
@@ -24,8 +25,8 @@ const techs = countBy(projects.flatMap((project) => project.tech)).sort(
 
 const stats = [
   { label: "Projects", value: projects.length },
-  { label: "Live", value: projects.filter((project) => project.live && !project.status).length },
-  { label: "In progress", value: projects.filter((project) => project.status === "Under Development").length },
+  { label: "Live", value: projects.filter((project) => project.status === "live").length },
+  { label: "In progress", value: projects.filter((project) => project.status === "in-progress").length },
   { label: "Technologies", value: techs.length },
 ];
 
@@ -80,64 +81,53 @@ const ProjectsPage = () => {
         </>
       }
     >
-      <SubPageHeader eyebrow={`${projects.length} entries`} title="Projects" />
+      <div className={bleed}>
+        <SubPageHeader eyebrow={`${projects.length} entries`} title="Projects" />
 
-      <div className="mb-4 md:hidden">
-        <Tabs
-          tabs={["All", ...categories.map((item) => item.value)]}
-          value={category ?? "All"}
-          onChange={(next) => setCategory(next === "All" ? null : next)}
-          layoutId="project-filter-mobile"
-        />
-      </div>
+        <div className="mb-4 md:hidden">
+          <Tabs
+            tabs={["All", ...categories.map((item) => item.value)]}
+            value={category ?? "All"}
+            onChange={(next) => setCategory(next === "All" ? null : next)}
+            layoutId="project-filter-mobile"
+          />
+        </div>
 
-      <div className="flex min-h-[37px] flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
-        <p className="text-sm text-zinc-500" aria-live="polite">
-          Showing <span className="font-mono text-zinc-200">{list.length}</span> of{" "}
-          <span className="font-mono text-zinc-200">{projects.length}</span>
-          {category && <span> in {category}</span>}
-          {tech && (
-            <span>
-              {" "}
-              using <span className="text-zinc-200">{tech}</span>
-            </span>
-          )}
-        </p>
         {filtered && (
-          <button type="button" onClick={clear} className={button("ghost", "-my-1 px-3 py-1 text-xs")}>
-            <XIcon size={12} weight="bold" /> Clear filters
-          </button>
+          <div className="flex min-h-[37px] flex-wrap items-center justify-end gap-3 border-b border-line pb-4">
+            <button type="button" onClick={clear} className={button("ghost", "-my-1 px-3 py-1 text-xs")}>
+              <XIcon size={12} weight="bold" /> Clear filters
+            </button>
+          </div>
+        )}
+
+        <motion.ul layout className={filtered ? "" : "border-t border-line"}>
+          <AnimatePresence initial={false} mode="popLayout">
+            {list.map((project, index) => (
+              <motion.li
+                layout
+                key={project.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0, transition: { ...snappy, delay: index * 0.05 } }}
+                exit={{ opacity: 0, transition: { duration: 0.12 } }}
+                className={`border-b border-line py-7 ${target === project.id ? "animate-flash" : ""}`}
+              >
+                <ProjectItem project={project} open={openIds.has(project.id)} onToggle={() => toggle(project.id)} />
+              </motion.li>
+            ))}
+          </AnimatePresence>
+        </motion.ul>
+
+        {list.length === 0 && (
+          <div className="py-14 text-center">
+            <p className="font-medium">No project matches these filters</p>
+            <p className="mt-1 text-sm text-zinc-500">Try a different category or technology.</p>
+            <button type="button" onClick={clear} className={button("outline", "mt-4")}>
+              Clear filters
+            </button>
+          </div>
         )}
       </div>
-
-      <motion.ul layout>
-        <AnimatePresence initial={false} mode="popLayout">
-          {list.map((project, index) => (
-            <motion.li
-              layout
-              key={project.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0, transition: { ...snappy, delay: index * 0.05 } }}
-              exit={{ opacity: 0, transition: { duration: 0.12 } }}
-              className={`-mx-4 border-b border-line px-4 py-7 sm:mx-0 sm:px-0 ${
-                target === project.id ? "animate-flash" : ""
-              }`}
-            >
-              <ProjectItem project={project} open={openIds.has(project.id)} onToggle={() => toggle(project.id)} />
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </motion.ul>
-
-      {list.length === 0 && (
-        <div className="py-14 text-center">
-          <p className="font-medium">No project matches these filters</p>
-          <p className="mt-1 text-sm text-zinc-500">Try a different category or technology.</p>
-          <button type="button" onClick={clear} className={button("outline", "mt-4")}>
-            Clear filters
-          </button>
-        </div>
-      )}
     </PageShell>
   );
 };
