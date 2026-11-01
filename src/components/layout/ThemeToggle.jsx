@@ -24,7 +24,9 @@ const ThemeToggle = ({ className = "" }) => {
           transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
           className="flex"
         >
-          {light ? <MoonIcon size={19} /> : <SunIcon size={19} />}
+          {/* Sized against the name beside it: the icon is ~1.23x and the button ~1.86x its font size,
+              matching the mobile proportions where the name is smaller. */}
+          {light ? <MoonIcon size={19} className="md:size-[22px]" /> : <SunIcon size={19} className="md:size-[22px]" />}
         </motion.span>
       </AnimatePresence>
     </button>

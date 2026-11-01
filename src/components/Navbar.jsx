@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-backdrop/80 backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_0_rgb(var(--line-strong))]">
-        <div className="mx-auto flex h-14 max-w-[1128px] items-center gap-3 bg-ink-900/80 px-4 light:bg-white/90 sm:px-6">
+        <div className="mx-auto flex h-[56px] max-w-[1128px] items-center gap-3 bg-ink-900/80 px-4 light:bg-white/90 sm:px-6">
           <Link
             to="/"
             aria-label="mamahda home"
@@ -22,7 +22,7 @@ const Navbar = () => {
             Gilbran<span className="text-accent"> Mahda</span>
           </Link>
           {/* Nudged up to the letters' optical centre: the name has no descenders, so its line box centre sits low. */}
-          <ThemeToggle className="-ml-1 -translate-y-px md:-translate-y-[2.5px]" />
+          <ThemeToggle className="-ml-1 -translate-y-px md:size-[33.5px] md:-translate-y-[2px]" />
 
           {/* Search, the page links and View CV sit flush with equal widths, like one row of tabs. */}
           <div className="ml-auto flex h-full items-center md:items-stretch">
@@ -77,7 +77,7 @@ const Navbar = () => {
         aria-label="Primary mobile"
         className="fixed inset-x-0 bottom-0 z-50 bg-ink-900/95 shadow-[0_-1px_0_rgb(var(--line-strong))] light:bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
       >
-        <div className="grid h-14 grid-cols-4">
+        <div className="grid h-[56px] grid-cols-4">
           {navItems.map((item) => {
             const active = isNavActive(item, location);
             const Icon = item.icon;

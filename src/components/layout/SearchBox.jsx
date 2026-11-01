@@ -143,7 +143,7 @@ const SearchBox = ({ className = "" }) => {
               transition={snappy}
               className={`absolute inset-x-0 top-0 overflow-hidden md:top-[12vh] md:mx-auto md:w-[560px] md:rounded-xl ${popover}`}
             >
-              <div className="flex h-14 items-center gap-3 border-b border-line-strong px-4">
+              <div className="flex h-[56px] items-center gap-3 border-b border-line-strong px-4">
                 <MagnifyingGlassIcon size={18} className="shrink-0 text-zinc-500" />
                 <input
                   ref={inputRef}
