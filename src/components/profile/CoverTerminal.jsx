@@ -36,13 +36,13 @@ const CoverTerminal = () => {
   return (
     <div
       aria-hidden="true"
-      className="w-[300px] overflow-hidden rounded-xl bg-ink-950/70 font-mono text-[12px] leading-relaxed text-zinc-400 ring-1 ring-white/[0.08] backdrop-blur-md"
+      className="w-[300px] overflow-hidden rounded-xl bg-ink-950/70 font-mono text-xs leading-relaxed text-zinc-400 ring-1 ring-white/[0.08] backdrop-blur-md"
     >
       <div className="flex items-center gap-1.5 border-b border-white/[0.05] px-3 py-2">
         <span className="size-2 rounded-full bg-zinc-600" />
         <span className="size-2 rounded-full bg-zinc-600" />
         <span className="size-2 rounded-full bg-zinc-600" />
-        <span className="ml-2 text-[11px] text-zinc-500">mahda@cachyos: ~/code</span>
+        <span className="ml-2 text-2xs text-zinc-500">mahda@cachyos: ~/code</span>
       </div>
       <div className="min-h-[64px] px-3.5 py-3">
         <p className="whitespace-nowrap">

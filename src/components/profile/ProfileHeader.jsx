@@ -150,13 +150,13 @@ const ProfileHeader = () => {
         <div className="mt-5 grid gap-7 lg:grid-cols-[minmax(0,1fr)_190px] lg:gap-12">
           <div className="min-w-0">
             <motion.div variants={rise} className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <h1 className="font-serif text-[32px] font-bold leading-[1.1] tracking-tight text-zinc-50 sm:text-[42px]">
+              <h1 className="font-serif text-4xl font-bold leading-[1.1] tracking-tight text-zinc-50 sm:text-[2.625rem]">
                 {profile.name}
               </h1>
               <SealCheckIcon size={22} weight="fill" className="text-accent" aria-label="Verified student" />
               <span className="text-sm text-zinc-500">{profile.pronouns}</span>
             </motion.div>
-            <motion.p variants={rise} className="mt-3 max-w-[38.75em] text-[15px] leading-[1.55] text-zinc-200 md:text-[16px] md:leading-relaxed">
+            <motion.p variants={rise} className="mt-3 max-w-[38.75em] text-body leading-[1.55] text-zinc-200 md:text-base md:leading-relaxed">
               {profile.headline}
             </motion.p>
             <motion.p variants={rise} className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-500">

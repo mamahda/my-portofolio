@@ -3,6 +3,13 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      /* Sizes read CSS variables so phones get their own scale; values live in global.css. */
+      fontSize: Object.fromEntries(
+        ["2xs", "xs", "sm", "body", "base", "lg", "xl", "2xl", "3xl", "4xl"].map((step) => [
+          step,
+          [`var(--text-${step})`, { lineHeight: `var(--leading-${step})` }],
+        ]),
+      ),
       fontFamily: {
         sans: ["Plus Jakarta Sans", "Plus Jakarta Sans Fallback", "ui-sans-serif", "system-ui", "sans-serif"],
         serif: ["Libre Baskerville", "Libre Baskerville Fallback", "ui-serif", "Georgia", "serif"],

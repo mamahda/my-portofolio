@@ -56,7 +56,7 @@ const Field = ({ label, name, error, as = "input", ...props }) => {
           name={name}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? `${id}-error` : undefined}
-          className={`w-full rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-base text-zinc-100 ring-1 ring-inset transition-shadow placeholder:text-zinc-500 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus-visible:ring-offset-0 ${
+          className={`w-full rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-[16px] text-zinc-100 ring-1 ring-inset transition-shadow placeholder:text-zinc-500 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus-visible:ring-offset-0 ${
             error ? "ring-red-400/70 focus:ring-red-400" : "ring-white/10 focus:ring-accent/70"
           } ${as === "textarea" ? "min-h-32 resize-y" : ""}`}
           {...props}

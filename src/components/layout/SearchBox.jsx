@@ -109,7 +109,7 @@ const SearchBox = ({ className = "" }) => {
         className="flex size-9 items-center justify-center rounded-full text-zinc-400 transition-colors hover:text-zinc-100 active:scale-95 md:h-full md:w-[68px] md:flex-col md:gap-1 md:rounded-none md:text-zinc-500 md:hover:text-zinc-200 lg:w-[78px]"
       >
         <MagnifyingGlassIcon size={22} />
-        <span className="hidden text-[11px] md:block">Search</span>
+        <span className="hidden text-2xs md:block">Search</span>
       </button>
 
       {/* Portalled: the navbar's backdrop-filter would otherwise trap these fixed layers inside it. */}
@@ -159,7 +159,7 @@ const SearchBox = ({ className = "" }) => {
                   aria-expanded="true"
                   aria-controls={listId}
                   aria-autocomplete="list"
-                  className="h-full min-w-0 flex-1 bg-transparent text-base text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="h-full min-w-0 flex-1 bg-transparent text-[16px] text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 {hasQuery && (
                   <button

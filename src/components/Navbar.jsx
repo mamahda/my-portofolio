@@ -39,7 +39,7 @@ const Navbar = () => {
                   }`}
                 >
                   <Icon size={22} weight={active ? "fill" : "regular"} />
-                  <span className="text-[11px]">{item.label}</span>
+                  <span className="text-2xs">{item.label}</span>
                   {active && (
                     <motion.span
                       layoutId="nav-underline"
@@ -62,7 +62,7 @@ const Navbar = () => {
             className="hidden w-[78px] flex-col items-center justify-center gap-1 text-zinc-500 transition-colors hover:text-accent lg:flex"
           >
             <FileTextIcon size={22} />
-            <span className="flex items-center gap-0.5 text-[11px]">
+            <span className="flex items-center gap-0.5 text-2xs">
               View CV <ArrowUpRightIcon size={10} weight="bold" />
             </span>
           </a>

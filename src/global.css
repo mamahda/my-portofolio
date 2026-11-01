@@ -69,12 +69,70 @@
 }
 
 @layer base {
+  /* Type scale. Desktop matches Tailwind's defaults; phones use a tighter scale with a steady
+     ~1.1-1.15 step between sizes, in px so it doesn't depend on the root size. */
+  :root {
+    --text-2xs: 0.6875rem;
+    --leading-2xs: 1rem;
+    --text-xs: 0.75rem;
+    --leading-xs: 1rem;
+    --text-sm: 0.875rem;
+    --leading-sm: 1.25rem;
+    --text-body: 0.9375rem;
+    --leading-body: 1.5rem;
+    --text-base: 1rem;
+    --leading-base: 1.5rem;
+    --text-lg: 1.125rem;
+    --leading-lg: 1.75rem;
+    --text-xl: 1.25rem;
+    --leading-xl: 1.75rem;
+    --text-2xl: 1.5rem;
+    --leading-2xl: 2rem;
+    --text-3xl: 1.875rem;
+    --leading-3xl: 2.25rem;
+    --text-4xl: 2.25rem;
+    --leading-4xl: 2.5rem;
+  }
+
+  @media (max-width: 767px) {
+    :root {
+      --text-2xs: 10px;
+      --leading-2xs: 14px;
+      --text-xs: 11px;
+      --leading-xs: 16px;
+      --text-sm: 12.5px;
+      --leading-sm: 18px;
+      --text-body: 13.5px;
+      --leading-body: 21px;
+      --text-base: 14px;
+      --leading-base: 21px;
+      --text-lg: 15.5px;
+      --leading-lg: 23px;
+      --text-xl: 17px;
+      --leading-xl: 24px;
+      --text-2xl: 19px;
+      --leading-2xl: 26px;
+      --text-3xl: 22px;
+      --leading-3xl: 28px;
+      --text-4xl: 25px;
+      --leading-4xl: 30px;
+    }
+  }
+
+  /* Phones also get a 14.4px root, which tightens rem-based spacing; tablets and desktops keep 16px. */
   html {
+    font-size: 90%;
     color-scheme: dark;
     scroll-behavior: smooth;
     scrollbar-color: #3d3d45 transparent;
     scrollbar-gutter: stable both-edges;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 100%;
+    }
   }
 
   body {

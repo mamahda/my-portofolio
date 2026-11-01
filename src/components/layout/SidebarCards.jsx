@@ -147,7 +147,7 @@ export const MobileFilters = ({ label = "Filters", active = 0, onClear, children
           <FunnelSimpleIcon size={15} />
           {label}
           {active > 0 && (
-            <span className="rounded bg-accent px-1.5 text-[11px] font-semibold tabular-nums text-ink-950">{active}</span>
+            <span className="rounded bg-accent px-1.5 text-2xs font-semibold tabular-nums text-ink-950">{active}</span>
           )}
           <CaretDownIcon size={13} className={`text-zinc-500 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
         </button>

@@ -38,7 +38,7 @@ const InterestsSection = () => {
                 <li key={title} className="flex gap-3.5">
                   <Icon size={22} className="mt-0.5 shrink-0 text-accent" />
                   <div className="min-w-0">
-                    <p className="font-serif text-[15px] font-bold leading-snug text-zinc-100">{title}</p>
+                    <p className="font-serif text-body font-bold leading-snug text-zinc-100">{title}</p>
                     <p className="mt-1 text-sm leading-relaxed text-zinc-500">{desc}</p>
                   </div>
                 </li>
@@ -50,7 +50,7 @@ const InterestsSection = () => {
             <ul className="mt-4 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
               {profile.toolkit.map((tool) => (
                 <li key={tool.name} className="flex items-baseline justify-between gap-4 border-b border-line-strong py-3">
-                  <p className="text-[15px] text-zinc-100">{tool.name}</p>
+                  <p className="text-body text-zinc-100">{tool.name}</p>
                   <p className="truncate text-right text-xs text-zinc-500">{tool.note}</p>
                 </li>
               ))}

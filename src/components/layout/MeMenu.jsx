@@ -28,7 +28,7 @@ const MeMenu = () => {
         className="flex h-full w-[68px] flex-col items-center justify-center gap-1 text-zinc-500 transition-colors hover:text-zinc-100"
       >
         <img src={profile.photo} alt="" className="size-[22px] rounded-full object-cover ring-1 ring-white/10" />
-        <span className="flex items-center gap-0.5 text-[11px]">
+        <span className="flex items-center gap-0.5 text-2xs">
           Me <CaretDownIcon size={10} weight="fill" />
         </span>
       </button>

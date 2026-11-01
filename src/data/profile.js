@@ -23,7 +23,7 @@ export const profile = {
   topSkills: ["Go", "Laravel", "Docker", "Linux", "Networking"],
   education: [
     {
-      school: "Institut Teknologi Sepuluh Nopember (ITS)",
+      school: "Institut Teknologi Sepuluh Nopember",
       short: "ITS",
       degree: "Bachelor's degree, Informatics Engineering",
       period: "2024 - Present",

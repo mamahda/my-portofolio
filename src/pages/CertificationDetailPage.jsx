@@ -51,7 +51,7 @@ const CredentialAside = ({ certification, onZoom }) => {
         <div className="mt-3 rounded-lg bg-white/[0.03] p-3 ring-1 ring-inset ring-white/[0.06]">
           <p className="text-xs text-zinc-500">Credential ID</p>
           <div className="mt-1 flex items-center justify-between gap-2">
-            <span className="min-w-0 break-all font-mono text-[12.5px] text-zinc-100">{certification.code}</span>
+            <span className="min-w-0 break-all font-mono text-xs text-zinc-100">{certification.code}</span>
             <button
               type="button"
               onClick={() => copy(certification.code, "code")}
@@ -158,7 +158,7 @@ const CertificationDetailPage = () => {
             </div>
           </div>
 
-          <p className="mt-5 max-w-[47.5em] text-[15px] leading-relaxed text-zinc-300">{certification.description}</p>
+          <p className="mt-5 max-w-[47.5em] text-body leading-relaxed text-zinc-300">{certification.description}</p>
 
           {certification.skills?.length > 0 && <TagList items={certification.skills} className="mt-4" />}
 

@@ -43,7 +43,7 @@ const Section = ({ id, title, subtitle, action, footer, children, className = ""
     {title && (
       <header className="flex items-end justify-between gap-4">
         <div className="min-w-0">
-          <h2 className="font-serif text-[22px] font-bold leading-tight tracking-tight text-zinc-50 md:text-[30px]">{title}</h2>
+          <h2 className="font-serif text-2xl font-bold leading-tight tracking-tight text-zinc-50 md:text-[1.875rem]">{title}</h2>
           {subtitle && <p className="mt-1.5 text-sm text-zinc-500">{subtitle}</p>}
         </div>
         {action}

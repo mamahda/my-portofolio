@@ -74,7 +74,7 @@ const FeaturedCard = ({ url }) => {
           <p className="truncate text-xs font-medium text-zinc-200 transition-colors group-hover:text-accent">
             {title}
           </p>
-          <p className="text-[11px] text-zinc-500">GitHub</p>
+          <p className="text-2xs text-zinc-500">GitHub</p>
         </div>
       </div>
     </a>

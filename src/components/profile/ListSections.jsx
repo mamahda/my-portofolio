@@ -124,7 +124,7 @@ const RoleSection = ({ id, title, items }) => {
                 last={last}
                 className={last ? "" : row.closesGroup ? "pb-9" : "pb-6"}
               >
-                <p className="text-[15px] font-medium leading-snug text-zinc-100">{row.role.title}</p>
+                <p className="text-body font-medium leading-snug text-zinc-100">{row.role.title}</p>
                 {row.role.type && <p className="mt-0.5 text-sm text-zinc-400">{row.role.type}</p>}
                 <RoleDates role={row.role} />
                 <RoleDetails role={row.role} />

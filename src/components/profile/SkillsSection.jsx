@@ -111,7 +111,7 @@ const SkillsSection = () => {
                 }`}
               >
                 <div className="min-w-0">
-                  <p className="flex items-center gap-2 text-[15px] text-zinc-100">
+                  <p className="flex items-center gap-2 text-body text-zinc-100">
                     {skill.name}
                     {top && <span className="size-1.5 rounded-full bg-accent" title="Top skill" />}
                   </p>

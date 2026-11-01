@@ -94,7 +94,7 @@ const ProjectEntry = ({ project }) => {
     >
       <div className="min-w-0">
         <Heading project={project} />
-        <p className="mt-3 max-w-[65ch] text-pretty text-[15px] leading-[1.6] text-zinc-300">{project.desc}</p>
+        <p className="mt-3 max-w-[65ch] text-pretty text-body leading-[1.6] text-zinc-300">{project.desc}</p>
         <TagList items={project.tech} className="mt-3" />
         <Actions project={project} />
       </div>
