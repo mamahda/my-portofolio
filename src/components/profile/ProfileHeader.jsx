@@ -112,7 +112,6 @@ const MoreMenu = () => {
 
 const ProfileHeader = () => {
   const [contactOpen, setContactOpen] = useState(false);
-  const school = profile.education[0];
 
   return (
     <section className="relative pb-8 sm:pb-10">

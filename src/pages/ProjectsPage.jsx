@@ -1,16 +1,16 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { XIcon } from "@phosphor-icons/react";
 import PageShell from "../components/layout/PageShell";
-import { AsideBlock, FacetList, StatGrid, TagCloud } from "../components/layout/SidebarCards";
+import { AsideBlock, FacetList, MobileFilters, StatGrid, TagCloud } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
 import ProjectItem from "../components/profile/ProjectItem";
 import { Tabs } from "../components/profile/SkillsSection";
 import { pageCard } from "../components/ui/Section";
 import { projects } from "../data/projects";
 import { snappy } from "../lib/motion";
-import { button, revealOnMobile } from "../lib/ui";
+import { button } from "../lib/ui";
 
 const countBy = (values) => {
   const counts = new Map();
@@ -33,24 +33,8 @@ const stats = [
 const ProjectsPage = () => {
   const [category, setCategory] = useState(null);
   const [tech, setTech] = useState(null);
-  const resultsRef = useRef(null);
   const { hash } = useLocation();
   const target = hash.slice(1);
-  const [openIds, setOpenIds] = useState(() => new Set(target ? [target] : []));
-  const [lastTarget, setLastTarget] = useState(target);
-
-  if (target !== lastTarget) {
-    setLastTarget(target);
-    if (target) setOpenIds((current) => new Set(current).add(target));
-  }
-
-  const toggle = (id) =>
-    setOpenIds((current) => {
-      const next = new Set(current);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
 
   const list = useMemo(
     () =>
@@ -70,21 +54,14 @@ const ProjectsPage = () => {
     <PageShell
       aside={
         <>
-          <AsideBlock title="Overview" first>
+          <AsideBlock title="Overview" first mobile={false}>
             <StatGrid stats={stats} />
           </AsideBlock>
-          <AsideBlock title="Category" className="hidden md:block">
+          <AsideBlock title="Category" mobile={false}>
             <FacetList items={categories} active={category} onSelect={setCategory} allLabel="All projects" />
           </AsideBlock>
-          <AsideBlock title="Tech stack">
-            <TagCloud
-              items={techs}
-              active={tech}
-              onSelect={(next) => {
-                setTech(next);
-                revealOnMobile(resultsRef.current);
-              }}
-            />
+          <AsideBlock title="Tech stack" mobile={false}>
+            <TagCloud items={techs} active={tech} onSelect={setTech} />
           </AsideBlock>
         </>
       }
@@ -92,7 +69,7 @@ const ProjectsPage = () => {
       <div className={pageCard}>
         <SubPageHeader title="Projects" />
 
-        <div className="mb-4 md:hidden">
+        <div className="mb-3 md:hidden">
           <Tabs
             tabs={["All", ...categories.map((item) => item.value)]}
             value={category ?? "All"}
@@ -103,7 +80,12 @@ const ProjectsPage = () => {
           />
         </div>
 
-        <div ref={resultsRef} className="scroll-mt-20" />
+        <div className="mb-3 md:hidden">
+          <MobileFilters label="Tech stack" active={tech ? 1 : 0}>
+            <TagCloud items={techs} active={tech} onSelect={setTech} />
+          </MobileFilters>
+        </div>
+
         {filtered && (
           <div className="flex min-h-[37px] flex-wrap items-center justify-end gap-3 border-b border-line-strong pb-4">
             <button type="button" onClick={clear} className={button("ghost", "-my-1 px-3 py-1 text-xs")}>
@@ -123,7 +105,7 @@ const ProjectsPage = () => {
                 exit={{ opacity: 0, transition: { duration: 0.12 } }}
                 className={`border-b border-line-strong py-7 ${target === project.id ? "animate-flash" : ""}`}
               >
-                <ProjectItem project={project} open={openIds.has(project.id)} onToggle={() => toggle(project.id)} />
+                <ProjectItem project={project} />
               </motion.li>
             ))}
           </AnimatePresence>

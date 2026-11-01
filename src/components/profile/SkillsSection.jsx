@@ -10,7 +10,10 @@ const groups = ["All", ...new Set(skills.map((skill) => skill.group))];
 const PREVIEW = 8;
 const PREVIEW_MOBILE = 4;
 
-const projectsUsing = (skill) => projects.filter((project) => project.tech.some((tech) => skill.uses.includes(tech)));
+const projectsUsing = (skill) => {
+  const names = [skill.name, ...skill.uses];
+  return projects.filter((project) => project.tech.some((tech) => names.includes(tech)));
+};
 
 /* WAI-ARIA tabs: arrow keys / Home / End move and select, only the selected tab is a Tab stop. */
 export const Tabs = ({ id, label, tabs, value, onChange, layoutId, controlsPanel = false }) => {
@@ -90,7 +93,7 @@ const SkillsSection = () => {
       />
 
       <div {...tabPanelProps("skill-areas", groups, group)}>
-      <motion.ul layout className="mt-4 grid gap-x-10 sm:grid-cols-2">
+      <motion.ul layout className="mt-4 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
         <AnimatePresence initial={false} mode="popLayout">
           {visible.map((skill, index) => {
             const used = projectsUsing(skill);

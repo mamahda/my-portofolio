@@ -4,7 +4,7 @@ import { ImageBrokenIcon } from "@phosphor-icons/react";
 /* Images already shown once this session skip the shimmer and fade, so revisiting a page doesn't flicker. */
 const loadedSrcs = new Set();
 
-const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "" }) => {
+const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "", onError }) => {
   const [state, setState] = useState(() => (loadedSrcs.has(src) ? "ready" : "loading"));
 
   return (
@@ -30,7 +30,10 @@ const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "" }) => 
             loadedSrcs.add(src);
             setState("ready");
           }}
-          onError={() => setState("error")}
+          onError={() => {
+            setState("error");
+            onError?.();
+          }}
           className={`h-full w-full transition-opacity duration-500 ${
             fit === "contain" ? "object-contain" : "object-cover object-top"
           } ${state === "ready" ? "opacity-100" : "opacity-0"} ${imgClassName}`}

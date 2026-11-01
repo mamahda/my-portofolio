@@ -1,13 +1,12 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import PageShell from "../components/layout/PageShell";
-import { AsideBlock, FacetList, StatGrid } from "../components/layout/SidebarCards";
+import { AsideBlock, FacetList, FilterGroup, MobileFilters, StatGrid, TagCloud } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
 import CertificationItem from "../components/profile/CertificationItem";
 import { pageCard } from "../components/ui/Section";
 import { certifications } from "../data/certifications";
 import { snappy } from "../lib/motion";
-import { revealOnMobile } from "../lib/ui";
 
 const countBy = (values) => {
   const counts = new Map();
@@ -29,7 +28,6 @@ const stats = [
 const CertificationsPage = () => {
   const [issuer, setIssuer] = useState(null);
   const [field, setField] = useState(null);
-  const resultsRef = useRef(null);
 
   const list = useMemo(
     () => certifications.filter((item) => (!issuer || item.issuer === issuer) && (!field || item.field === field)),
@@ -40,30 +38,14 @@ const CertificationsPage = () => {
     <PageShell
       aside={
         <>
-          <AsideBlock title="Overview" first>
+          <AsideBlock title="Overview" first mobile={false}>
             <StatGrid stats={stats} />
           </AsideBlock>
-          <AsideBlock title="Issuer">
-            <FacetList
-              items={issuers}
-              active={issuer}
-              onSelect={(value) => {
-                setIssuer(value);
-                revealOnMobile(resultsRef.current);
-              }}
-              allLabel="All issuers"
-            />
+          <AsideBlock title="Issuer" mobile={false}>
+            <FacetList items={issuers} active={issuer} onSelect={setIssuer} allLabel="All issuers" />
           </AsideBlock>
-          <AsideBlock title="Field">
-            <FacetList
-              items={fields}
-              active={field}
-              onSelect={(value) => {
-                setField(value);
-                revealOnMobile(resultsRef.current);
-              }}
-              allLabel="All fields"
-            />
+          <AsideBlock title="Field" mobile={false}>
+            <FacetList items={fields} active={field} onSelect={setField} allLabel="All fields" />
           </AsideBlock>
         </>
       }
@@ -80,7 +62,22 @@ const CertificationsPage = () => {
           </div>
         ) : (
           <>
-            <div ref={resultsRef} className="scroll-mt-20" />
+            <div className="mb-3 md:hidden">
+              <MobileFilters
+                active={(issuer ? 1 : 0) + (field ? 1 : 0)}
+                onClear={() => {
+                  setIssuer(null);
+                  setField(null);
+                }}
+              >
+                <FilterGroup title="Issuer">
+                  <TagCloud items={issuers} active={issuer} onSelect={setIssuer} />
+                </FilterGroup>
+                <FilterGroup title="Field">
+                  <TagCloud items={fields} active={field} onSelect={setField} />
+                </FilterGroup>
+              </MobileFilters>
+            </div>
             <motion.ul layout className="border-t border-line-strong">
               <AnimatePresence mode="popLayout">
                 {list.map((certification, index) => (

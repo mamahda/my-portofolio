@@ -4,7 +4,7 @@ This is a personal portfolio website built with React and Vite. It showcases my 
 
 ## Live Preview
 
-You can view the live version of the portfolio at [preview](https://mamahda-portofolio.vercel.app/).
+You can view the live version of the portfolio at [preview](https://mamahda.vercel.app/).
 
 ## Features
 
@@ -29,11 +29,11 @@ You can view the live version of the portfolio at [preview](https://mamahda-port
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/mamahda/my-portfolio.git
+    git clone https://github.com/mamahda/my-portofolio.git
     ```
 2.  Navigate to the project directory:
     ```bash
-    cd my-portfolio
+    cd my-portofolio
     ```
 3.  Install the dependencies:
     ```bash

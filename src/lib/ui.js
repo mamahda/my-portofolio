@@ -22,10 +22,4 @@ export const tabPanelProps = (id, tabs, value) => ({
   "aria-labelledby": `${id}-tab-${tabs.indexOf(value)}`,
 });
 
-/* Below md the sidebar filters sit under the list, so after picking one the results are off screen. */
-export const revealOnMobile = (element) => {
-  if (!element || window.matchMedia("(min-width: 768px)").matches) return;
-  requestAnimationFrame(() => element.scrollIntoView({ behavior: "smooth", block: "start" }));
-};
-
 export const hostOf =(url = "") => url.replace(/^https?:\/\//, "").replace(/\/$/, "");

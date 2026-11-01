@@ -1,10 +1,13 @@
-import { motion } from "framer-motion";
+import { useId, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowUpRightIcon,
+  CaretDownIcon,
   CheckIcon,
   CopyIcon,
   FileTextIcon,
+  FunnelSimpleIcon,
   PaperPlaneTiltIcon,
 } from "@phosphor-icons/react";
 import useActiveSection from "../../hooks/useActiveSection";
@@ -15,13 +18,15 @@ import { profileSectionIds, profileSections } from "../../lib/navigation";
 import { hostOf } from "../../lib/ui";
 
 /* The sidebar is sticky and always on screen, so it animates on mount rather than
-   waiting for an in-view trigger that can fail to fire after a route change. */
-export const AsideBlock = ({ title, children, first = false, className = "" }) => (
+   waiting for an in-view trigger that can fail to fire after a route change.
+   Below md the sidebar sits under the page, so blocks that only make sense next to the
+   content (stats, filters that have a mobile version up top) pass mobile={false}. */
+export const AsideBlock = ({ title, children, first = false, mobile = true, className = "" }) => (
   <motion.section
     initial={{ opacity: 0, y: 12 }}
     animate={{ opacity: 1, y: 0 }}
     transition={spring}
-    className={`py-5 ${first ? "md:pt-0" : "mt-2"} ${className}`}
+    className={`py-5 ${first ? "md:pt-0" : "mt-2"} ${mobile ? "" : "max-md:hidden"} ${className}`}
   >
     <h2 className="text-sm font-medium text-zinc-400">{title}</h2>
     <div className="mt-3">{children}</div>
@@ -40,7 +45,7 @@ export const SectionNav = () => {
   };
 
   return (
-    <AsideBlock title="On this page" first className="hidden md:block">
+    <AsideBlock title="On this page" first mobile={false}>
       <ul className="space-y-0.5">
         {profileSections.map((section) => {
           const isActive = active === section.id;
@@ -122,6 +127,60 @@ export const QuickActions = ({ className = "", title = "Quick actions", hideMess
 };
 
 /* Shared building blocks for page-specific sidebars. */
+
+/* Mobile stand-in for sidebar filters: a collapsible panel above the list, so filtering
+   doesn't mean scrolling to the footer and back. */
+export const MobileFilters = ({ label = "Filters", active = 0, onClear, children }) => {
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+
+  return (
+    <div className="md:hidden">
+      <div className="flex min-h-9 items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={() => setOpen((current) => !current)}
+          aria-expanded={open}
+          aria-controls={panelId}
+          className="-mx-2 inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.04] hover:text-zinc-50 active:scale-[0.98]"
+        >
+          <FunnelSimpleIcon size={15} />
+          {label}
+          {active > 0 && (
+            <span className="rounded bg-accent px-1.5 text-[11px] font-semibold tabular-nums text-ink-950">{active}</span>
+          )}
+          <CaretDownIcon size={13} className={`text-zinc-500 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+        </button>
+        {active > 0 && onClear && (
+          <button type="button" onClick={onClear} className="text-xs text-zinc-500 transition-colors hover:text-zinc-100">
+            Clear
+          </button>
+        )}
+      </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={panelId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={snappy}
+            className="overflow-hidden"
+          >
+            <div className="space-y-4 pb-4 pt-2">{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const FilterGroup = ({ title, children }) => (
+  <div>
+    <p className="mb-2 text-xs text-zinc-500">{title}</p>
+    {children}
+  </div>
+);
 
 export const StatGrid = ({ stats }) => (
   <dl className="grid grid-cols-2 gap-2">

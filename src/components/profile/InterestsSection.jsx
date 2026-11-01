@@ -33,7 +33,7 @@ const InterestsSection = () => {
           transition={snappy}
         >
           {tab === "Fields" && (
-            <ul className="mt-5 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            <ul className="mt-5 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2">
               {interests.map(({ icon: Icon, title, desc }) => (
                 <li key={title} className="flex gap-3.5">
                   <Icon size={22} className="mt-0.5 shrink-0 text-accent" />
@@ -47,7 +47,7 @@ const InterestsSection = () => {
           )}
 
           {tab === "Toolkit" && (
-            <ul className="mt-4 grid gap-x-10 sm:grid-cols-2">
+            <ul className="mt-4 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
               {profile.toolkit.map((tool) => (
                 <li key={tool.name} className="flex items-baseline justify-between gap-4 border-b border-line-strong py-3">
                   <p className="text-[15px] text-zinc-100">{tool.name}</p>

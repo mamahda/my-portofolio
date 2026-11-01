@@ -53,18 +53,6 @@ export const profile = {
       ],
     },
     {
-      org: "Himpunan Mahasiswa Teknik Computer-Informatika ITS",
-      location: "Surabaya, East Java, Indonesia",
-      roles: [
-        {
-          title: "Staff of External Affairs",
-          type: "Contract",
-          start: "2026-03",
-          end: null,
-        }
-      ],
-    },
-    {
       org: "IRIS ITS",
       location: "Surabaya, East Java, Indonesia",
       roles: [
@@ -78,6 +66,22 @@ export const profile = {
     },
   ],
   volunteering: [
+    {
+      org: "Himpunan Mahasiswa Teknik Computer-Informatika ITS",
+      location: "Surabaya, East Java, Indonesia",
+      roles: [
+        {
+          title: "Staff of External Affairs",
+          start: "2026-03",
+          end: null,
+        },
+        {
+          title: "Intern of External Affairs",
+          start: "2025-11",
+          end: "2026-02",
+        }
+      ],
+    },
     {
       org: "Schematics ITS",
       roles: [
@@ -142,17 +146,18 @@ export const profile = {
   ],
 };
 
+/* A skill links to every project whose `tech` lists its name; `uses` adds extra tech that also counts. */
 export const skills = [
-  { name: "Go (Golang)", group: "Backend", uses: ["Go (Golang)"] },
-  { name: "Laravel", group: "Backend", uses: ["Laravel"] },
-  { name: "PHP", group: "Backend", uses: ["PHP"] },
-  { name: "REST APIs", group: "Backend", uses: ["HTTP", "Laravel", "Go (Golang)"] },
-  { name: "MySQL", group: "Backend", uses: ["MySQL"] },
-  { name: "JWT Authentication", group: "Backend", uses: ["JWTAuth"] },
-  { name: "TypeScript", group: "Frontend", uses: ["TypeScript"] },
-  { name: "JavaScript", group: "Frontend", uses: ["Javascript"] },
-  { name: "React", group: "Frontend", uses: ["ReactJS"] },
-  { name: "Tailwind CSS", group: "Frontend", uses: ["Tailwind"] },
+  { name: "Go (Golang)", group: "Backend", uses: [] },
+  { name: "Laravel", group: "Backend", uses: [] },
+  { name: "PHP", group: "Backend", uses: [] },
+  { name: "REST APIs", group: "Backend", uses: ["Laravel", "Go (Golang)"] },
+  { name: "MySQL", group: "Backend", uses: [] },
+  { name: "JWT Authentication", group: "Backend", uses: [] },
+  { name: "TypeScript", group: "Frontend", uses: [] },
+  { name: "JavaScript", group: "Frontend", uses: [] },
+  { name: "React", group: "Frontend", uses: [] },
+  { name: "Tailwind CSS", group: "Frontend", uses: [] },
   { name: "Docker", group: "DevOps", uses: [] },
   { name: "GitHub Actions", group: "DevOps", uses: [] },
   { name: "CI/CD Pipelines", group: "DevOps", uses: [] },

@@ -10,7 +10,6 @@ import {
   CheckIcon,
   CircleNotchIcon,
   CopyIcon,
-  MapPinIcon,
   PaperPlaneTiltIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react";
@@ -160,26 +159,7 @@ const ContactPage = () => {
     <PageShell
       aside={
         <>
-          <div className="py-5 md:pt-8">
-            <Link to="/about" className="group flex flex-col items-start">
-              <img
-                src={profile.photo}
-                alt={profile.name}
-                className="size-28 shrink-0 rounded-full object-cover ring-1 ring-inset ring-white/10"
-              />
-              <p className="mt-4 font-serif text-lg font-bold leading-tight text-zinc-50 transition-colors group-hover:text-accent">
-                {profile.name}
-              </p>
-              <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-zinc-400">{profile.headline}</p>
-              <p className="mt-2 inline-flex items-center gap-1 text-xs text-zinc-500">
-                <MapPinIcon size={13} /> {profile.location}
-              </p>
-            </Link>
-            <Link to="/about" className={button("outline", "mt-4 w-full justify-center py-2 text-sm")}>
-              About me <ArrowRightIcon size={13} />
-            </Link>
-          </div>
-          <AsideBlock title="Check my work first">
+          <AsideBlock title="Check my work first" first>
             <ul className="-mx-2">
               <li>
                 <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={resourceRow}>
