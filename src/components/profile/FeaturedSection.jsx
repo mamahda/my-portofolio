@@ -61,14 +61,14 @@ const FeaturedCard = ({ url }) => {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block overflow-hidden rounded-xl ring-1 ring-inset ring-white/[0.06] transition-colors hover:ring-white/[0.14]"
+      className="group block overflow-hidden rounded-xl ring-1 ring-tint/[0.08] transition-colors hover:ring-tint/[0.14]"
     >
       <Img
         src={`https://opengraph.githubassets.com/1/${parsed.owner}/${parsed.repo}`}
         alt={`${parsed.owner}/${parsed.repo} preview`}
         className="aspect-[1200/630] w-full"
       />
-      <div className="flex items-center gap-2 bg-white/[0.03] px-3.5 py-2.5">
+      <div className="flex items-center gap-2 bg-tint/[0.03] px-3.5 py-2.5">
         <GithubLogoIcon size={14} className="shrink-0 text-zinc-500" />
         <div className="min-w-0">
           <p className="truncate text-xs font-medium text-zinc-200 transition-colors group-hover:text-accent">

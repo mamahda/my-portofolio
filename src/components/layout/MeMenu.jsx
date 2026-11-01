@@ -9,7 +9,7 @@ import { snappy } from "../../lib/motion";
 import { button, popover } from "../../lib/ui";
 
 const itemClass =
-  "flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-zinc-400 transition-colors hover:bg-white/[0.05] hover:text-zinc-100";
+  "flex w-full items-center gap-3 px-4 py-2 text-left text-sm text-zinc-400 transition-colors hover:bg-tint/[0.05] hover:text-zinc-100";
 
 const MeMenu = () => {
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ const MeMenu = () => {
         aria-haspopup="menu"
         className="flex h-full w-[68px] flex-col items-center justify-center gap-1 text-zinc-500 transition-colors hover:text-zinc-100"
       >
-        <img src={profile.photo} alt="" className="size-[22px] rounded-full object-cover ring-1 ring-white/10" />
+        <img src={profile.photo} alt="" className="size-[22px] rounded-full object-cover ring-1 ring-tint/10" />
         <span className="flex items-center gap-0.5 text-2xs">
           Me <CaretDownIcon size={10} weight="fill" />
         </span>

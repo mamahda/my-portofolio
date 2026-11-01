@@ -56,7 +56,7 @@ const MoreMenu = () => {
   };
 
   const itemClass =
-    "flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm text-zinc-400 transition-colors hover:bg-white/[0.05] hover:text-zinc-100 focus-visible:bg-white/[0.08] focus-visible:text-zinc-100 focus-visible:shadow-none";
+    "flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm text-zinc-400 transition-colors hover:bg-tint/[0.05] hover:text-zinc-100 focus-visible:bg-tint/[0.08] focus-visible:text-zinc-100 focus-visible:shadow-none";
 
   return (
     <div ref={ref} className="relative">
@@ -68,7 +68,7 @@ const MoreMenu = () => {
         aria-haspopup="menu"
         aria-controls={open ? menuId : undefined}
         aria-label="More actions"
-        className={`${iconButton} size-[34px] ring-1 ring-inset ring-white/15`}
+        className={`${iconButton} size-[34px] ring-1 ring-inset ring-tint/15`}
       >
         <DotsThreeIcon size={18} weight="bold" />
       </button>
@@ -135,7 +135,7 @@ const ProfileHeader = () => {
 
       <motion.div variants={stagger} initial="hidden" animate="show" className="relative sm:px-6">
         <motion.div variants={rise} className="-mt-[68px] sm:-mt-[84px]">
-          <div className="size-[132px] shrink-0 rounded-full bg-ink-950 p-1 sm:size-[156px]">
+          <div className="ml-2 size-[132px] shrink-0 rounded-full bg-ink-950 p-1 sm:size-[156px]">
             <img
               src={profile.photo}
               alt={profile.name}

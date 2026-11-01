@@ -4,7 +4,7 @@ const CertificationLogo = ({ certification, className = "size-12" }) => {
 
   return (
     <div
-      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-ink-800 text-center text-[10px] font-medium tracking-wide text-zinc-400 ring-1 ring-inset ring-white/[0.08] ${className}`}
+      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg bg-ink-800 text-center text-[10px] font-medium tracking-wide text-zinc-400 ring-1 ring-inset ring-tint/[0.08] ${className}`}
     >
       {isImagePath ? (
         <img

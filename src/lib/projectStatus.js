@@ -2,7 +2,7 @@
    matching magic strings wherever a status is displayed. */
 export const PROJECT_STATUS = {
   live: { label: "Live", dot: "bg-accent" },
-  "in-progress": { label: "In progress", dot: "bg-amber-300" },
+  "in-progress": { label: "In progress", dot: "bg-amber-300 light:bg-amber-500" },
   "not-deployed": { label: "Not deployed", dot: "bg-zinc-500" },
 };
 

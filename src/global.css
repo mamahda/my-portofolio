@@ -69,6 +69,67 @@
 }
 
 @layer base {
+  /* Color palette as RGB channels (Tailwind adds the alpha). Dark is the default; `html.light`
+     swaps it. The class is set before first paint by the inline script in index.html. */
+  :root {
+    --backdrop: 22 22 25;
+    --ink-950: 30 30 34;
+    --ink-900: 38 38 43;
+    --ink-850: 42 42 47;
+    --ink-800: 47 47 53;
+    --ink-700: 58 58 65;
+    --zinc-50: 250 250 250;
+    --zinc-100: 244 244 245;
+    --zinc-200: 228 228 231;
+    --zinc-300: 212 212 216;
+    --zinc-400: 161 161 170;
+    /* Stock zinc-500 only reaches 3.4:1 on ink-950; this keeps small meta text at WCAG AA. */
+    --zinc-500: 138 138 147;
+    --zinc-600: 82 82 91;
+    --zinc-700: 63 63 70;
+    --tint: 255 255 255;
+    --line: 48 48 54;
+    --line-strong: 61 61 69;
+    --accent: 181 228 110;
+    --accent-hover: 199 238 141;
+    --shadow-float: 0 24px 64px -16px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.05);
+    --grain: 0.04;
+    --card: rgb(255 255 255 / 0.025);
+    --card-ring: 0 0 0 0 transparent;
+    color-scheme: dark;
+  }
+
+  /* Text steps are inverted, and the lime accent is darkened so it still reads as text on white. */
+  /* Light mode mirrors LinkedIn: an off-white page column with white cards that have a hairline
+     edge, since faint fills that work on dark disappear on white. Text steps are inverted, and the
+     lime accent is darkened so it still reads as text. */
+  :root.light {
+    --backdrop: 236 235 231;
+    --ink-950: 246 246 243;
+    --ink-900: 238 238 234;
+    --ink-850: 233 233 229;
+    --ink-800: 228 228 224;
+    --ink-700: 216 216 211;
+    --zinc-50: 17 17 19;
+    --zinc-100: 24 24 27;
+    --zinc-200: 39 39 42;
+    --zinc-300: 58 58 64;
+    --zinc-400: 70 70 78;
+    --zinc-500: 96 96 105;
+    --zinc-600: 150 150 158;
+    --zinc-700: 205 205 210;
+    --tint: 24 24 27;
+    --line: 222 222 217;
+    --line-strong: 204 204 198;
+    --accent: 77 124 15;
+    --accent-hover: 63 98 18;
+    --shadow-float: 0 24px 64px -16px rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.06);
+    --grain: 0.025;
+    --card: #fff;
+    --card-ring: 0 0 0 1px rgb(var(--line)), 0 1px 3px rgb(0 0 0 / 0.05);
+    color-scheme: light;
+  }
+
   /* Type scale. Desktop matches Tailwind's defaults; phones use a tighter scale with a steady
      ~1.1-1.15 step between sizes, in px so it doesn't depend on the root size. */
   :root {
@@ -122,9 +183,8 @@
   /* Phones also get a 14.4px root, which tightens rem-based spacing; tablets and desktops keep 16px. */
   html {
     font-size: 90%;
-    color-scheme: dark;
     scroll-behavior: smooth;
-    scrollbar-color: #3d3d45 transparent;
+    scrollbar-color: rgb(var(--line-strong)) transparent;
     scrollbar-gutter: stable both-edges;
     -webkit-tap-highlight-color: transparent;
   }
@@ -139,7 +199,7 @@
     @apply bg-backdrop font-sans text-zinc-100 antialiased;
     background-image: repeating-linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.028) 0 1px,
+      rgb(var(--tint) / 0.028) 0 1px,
       transparent 1px 11px
     );
   }
@@ -169,7 +229,7 @@
     inset: 0;
     z-index: 80;
     pointer-events: none;
-    opacity: 0.04;
+    opacity: var(--grain);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
@@ -185,13 +245,19 @@
 :focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px theme("colors.ink.950"),
-    0 0 0 4px rgb(181 228 110 / 0.7);
+    0 0 0 2px rgb(var(--ink-950)),
+    0 0 0 4px rgb(var(--accent) / 0.7);
 }
 
 @layer utilities {
+  /* Section and page cards: a faint lift on dark, a white card with a hairline edge on light. */
+  .card-surface {
+    background-color: var(--card);
+    box-shadow: var(--card-ring);
+  }
+
   .content-surface {
-    background-color: rgba(38, 38, 43, 0.38);
+    background-color: rgb(var(--ink-900) / 0.38);
   }
 
   .no-scrollbar {
@@ -210,9 +276,18 @@
   }
 
   .bg-dot-grid {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.11) 1px, transparent 1px);
+    background-image: radial-gradient(rgb(var(--tint) / 0.11) 1px, transparent 1px);
     background-size: 18px 18px;
   }
+}
+
+/* Set for one frame while the theme changes, so every color swaps at once instead of
+   only the elements that happen to have a color transition. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
 }
 
 @keyframes route-spin {

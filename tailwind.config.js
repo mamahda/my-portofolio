@@ -1,3 +1,5 @@
+import plugin from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -15,30 +17,40 @@ export default {
         serif: ["Libre Baskerville", "Libre Baskerville Fallback", "ui-serif", "Georgia", "serif"],
         mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },
+      /* Every color reads a CSS variable (RGB channels) so the whole palette flips with the theme;
+         the dark and light values live in global.css. */
       colors: {
         ink: {
-          950: "#1e1e22",
-          900: "#26262b",
-          850: "#2a2a2f",
-          800: "#2f2f35",
-          700: "#3a3a41",
+          950: "rgb(var(--ink-950) / <alpha-value>)",
+          900: "rgb(var(--ink-900) / <alpha-value>)",
+          850: "rgb(var(--ink-850) / <alpha-value>)",
+          800: "rgb(var(--ink-800) / <alpha-value>)",
+          700: "rgb(var(--ink-700) / <alpha-value>)",
         },
-        // Stock zinc-500 only reaches 3.4:1 on ink-950; this keeps small meta text at WCAG AA.
         zinc: {
-          500: "#8a8a93",
+          50: "rgb(var(--zinc-50) / <alpha-value>)",
+          100: "rgb(var(--zinc-100) / <alpha-value>)",
+          200: "rgb(var(--zinc-200) / <alpha-value>)",
+          300: "rgb(var(--zinc-300) / <alpha-value>)",
+          400: "rgb(var(--zinc-400) / <alpha-value>)",
+          500: "rgb(var(--zinc-500) / <alpha-value>)",
+          600: "rgb(var(--zinc-600) / <alpha-value>)",
+          700: "rgb(var(--zinc-700) / <alpha-value>)",
         },
-        backdrop: "#161619",
+        // Translucent overlays (hover fills, hairline rings): white on dark, near-black on light.
+        tint: "rgb(var(--tint) / <alpha-value>)",
+        backdrop: "rgb(var(--backdrop) / <alpha-value>)",
         line: {
-          DEFAULT: "#303036",
-          strong: "#3d3d45",
+          DEFAULT: "rgb(var(--line) / <alpha-value>)",
+          strong: "rgb(var(--line-strong) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#b5e46e",
-          hover: "#c7ee8d",
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          hover: "rgb(var(--accent-hover) / <alpha-value>)",
         },
       },
       boxShadow: {
-        float: "0 24px 64px -16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+        float: "var(--shadow-float)",
       },
       keyframes: {
         shimmer: {
@@ -50,7 +62,7 @@ export default {
           "50%, 100%": { opacity: "0" },
         },
         flash: {
-          "0%, 35%": { backgroundColor: "rgba(181, 228, 110, 0.07)" },
+          "0%, 35%": { backgroundColor: "rgb(var(--accent) / 0.07)" },
           "100%": { backgroundColor: "transparent" },
         },
         breathe: {
@@ -66,5 +78,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // `light:` for the few colors that need a different shade rather than a different variable.
+    plugin(({ addVariant }) => addVariant("light", "html.light &")),
+  ],
 };

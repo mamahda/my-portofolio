@@ -48,7 +48,7 @@ const CredentialAside = ({ certification, onZoom }) => {
           </Fact>
           <Fact label="Expires">Never</Fact>
         </dl>
-        <div className="mt-3 rounded-lg bg-white/[0.03] p-3 ring-1 ring-inset ring-white/[0.06]">
+        <div className="mt-3 rounded-lg bg-tint/[0.03] p-3 ring-1 ring-inset ring-tint/[0.06]">
           <p className="text-xs text-zinc-500">Credential ID</p>
           <div className="mt-1 flex items-center justify-between gap-2">
             <span className="min-w-0 break-all font-mono text-xs text-zinc-100">{certification.code}</span>
@@ -134,7 +134,7 @@ const CertificationDetailPage = () => {
           <button
             type="button"
             onClick={() => setZoom(true)}
-            className="group relative block w-full overflow-hidden rounded-2xl bg-ink-900 p-4 ring-1 ring-inset ring-white/[0.06] sm:p-6"
+            className="group relative block w-full overflow-hidden rounded-2xl bg-ink-900 p-4 ring-1 ring-inset ring-tint/[0.06] sm:p-6"
             aria-label="Enlarge certificate"
           >
             <div className="bg-dot-grid absolute inset-0 opacity-40" />
@@ -145,7 +145,7 @@ const CertificationDetailPage = () => {
               className="relative mx-auto aspect-[4/3] w-full rounded-lg bg-transparent"
               imgClassName="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.015]"
             />
-            <span className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full bg-ink-950/80 px-3 py-1.5 text-xs text-zinc-200 opacity-0 ring-1 ring-white/10 backdrop-blur transition-opacity group-hover:opacity-100">
+            <span className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full bg-ink-950/80 px-3 py-1.5 text-xs text-zinc-200 opacity-0 ring-1 ring-tint/10 backdrop-blur transition-opacity group-hover:opacity-100">
               <ArrowsOutIcon size={13} weight="bold" /> Enlarge
             </span>
           </button>

@@ -27,12 +27,13 @@ export const SectionFooterLink = ({ to, onClick, children }) => {
 /* Lets the divider run edge to edge on mobile; equal padding on both sides from sm up. */
 export const bleed = "-mx-4 px-4 sm:mx-0 sm:px-6";
 
-/* Mobile: full-bleed, separated by a thick band edge to edge. From md up: a card. */
+/* Mobile: full-bleed in the card colour, split by a thick band in the desktop column background.
+   From md up: a card. */
 const sectionSurface =
-  "-mx-4 border-t-8 border-backdrop px-4 py-7 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-2xl md:border-t-0 md:bg-white/[0.025] md:p-8";
+  "-mx-4 border-t-8 border-ink-950 bg-[var(--card)] px-4 py-7 sm:-mx-6 sm:px-6 md:mx-0 md:rounded-2xl md:border-t-0 md:p-8 md:card-surface";
 
 /* The single card that holds a sub page's main content (header + list) from md up. */
-export const pageCard = `${bleed} md:rounded-2xl md:bg-white/[0.025] md:px-8 md:pb-8 md:pt-3`;
+export const pageCard = `${bleed} md:rounded-2xl md:px-8 md:card-surface md:pb-8 md:pt-3`;
 
 const Section = ({ id, title, subtitle, action, footer, children, className = "", immediate = false }) => (
   <motion.section

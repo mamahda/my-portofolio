@@ -5,14 +5,15 @@ import { profile } from "../data/profile";
 import { isNavActive, navItems } from "../lib/navigation";
 import { snappy } from "../lib/motion";
 import SearchBox from "./layout/SearchBox";
+import ThemeToggle from "./layout/ThemeToggle";
 
 const Navbar = () => {
   const location = useLocation();
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-backdrop/80 backdrop-blur-xl backdrop-saturate-150">
-        <div className="mx-auto flex h-14 max-w-[1128px] items-center gap-3 bg-ink-950/70 px-4 sm:px-6">
+      <header className="fixed inset-x-0 top-0 z-50 bg-backdrop/80 backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_0_rgb(var(--line-strong))]">
+        <div className="mx-auto flex h-14 max-w-[1128px] items-center gap-3 bg-ink-900/80 px-4 light:bg-white/90 sm:px-6">
           <Link
             to="/"
             aria-label="mamahda home"
@@ -20,6 +21,8 @@ const Navbar = () => {
           >
             Gilbran<span className="text-accent"> Mahda</span>
           </Link>
+          {/* Nudged up to the letters' optical centre: the name has no descenders, so its line box centre sits low. */}
+          <ThemeToggle className="-ml-1 -translate-y-px md:-translate-y-[2.5px]" />
 
           {/* Search, the page links and View CV sit flush with equal widths, like one row of tabs. */}
           <div className="ml-auto flex h-full items-center md:items-stretch">
@@ -72,7 +75,7 @@ const Navbar = () => {
 
       <nav
         aria-label="Primary mobile"
-        className="fixed inset-x-0 bottom-0 z-50 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
+        className="fixed inset-x-0 bottom-0 z-50 bg-ink-900/95 shadow-[0_-1px_0_rgb(var(--line-strong))] light:bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden"
       >
         <div className="grid h-14 grid-cols-4">
           {navItems.map((item) => {

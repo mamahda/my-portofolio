@@ -63,7 +63,7 @@ export const SectionNav = () => {
                 onClick={() => jump(section.id)}
                 aria-current={isActive ? "location" : undefined}
                 className={`flex w-full items-baseline rounded-md py-1.5 pl-3 text-left text-sm transition-colors ${
-                  isActive ? "bg-white/[0.06] text-zinc-50" : "text-zinc-400 hover:bg-white/[0.03] hover:text-zinc-100"
+                  isActive ? "bg-tint/[0.06] text-zinc-50" : "text-zinc-400 hover:bg-tint/[0.03] hover:text-zinc-100"
                 }`}
               >
                 {section.label}
@@ -77,7 +77,7 @@ export const SectionNav = () => {
 };
 
 const actionRow =
-  "group flex w-full items-center gap-3 rounded-md px-2 py-2 text-left transition-colors hover:bg-white/[0.04]";
+  "group flex w-full items-center gap-3 rounded-md px-2 py-2 text-left transition-colors hover:bg-tint/[0.04]";
 const actionIcon = "shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-100";
 
 export const QuickActions = ({ className = "", title = "Quick actions", hideMessage = false }) => {
@@ -142,7 +142,7 @@ export const MobileFilters = ({ label = "Filters", active = 0, onClear, children
           onClick={() => setOpen((current) => !current)}
           aria-expanded={open}
           aria-controls={panelId}
-          className="-mx-2 inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.04] hover:text-zinc-50 active:scale-[0.98]"
+          className="-mx-2 inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-tint/[0.04] hover:text-zinc-50 active:scale-[0.98]"
         >
           <FunnelSimpleIcon size={15} />
           {label}
@@ -208,7 +208,7 @@ export const FacetList = ({ items, active, onSelect, allLabel = "All" }) => {
               onClick={() => onSelect(row.value)}
               aria-pressed={isActive}
               className={`flex w-full items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-left text-sm transition-colors ${
-                isActive ? "bg-white/[0.06] text-zinc-50" : "text-zinc-400 hover:bg-white/[0.03] hover:text-zinc-100"
+                isActive ? "bg-tint/[0.06] text-zinc-50" : "text-zinc-400 hover:bg-tint/[0.03] hover:text-zinc-100"
               }`}
             >
               <span className="flex min-w-0 items-center gap-2">
@@ -237,7 +237,7 @@ export const TagCloud = ({ items, active, onSelect }) => (
             className={`rounded-md px-2 py-1 text-xs ring-1 md:py-0.5 ring-inset transition-colors active:scale-[0.97] ${
               isActive
                 ? "bg-accent text-ink-950 ring-accent"
-                : "bg-white/[0.03] text-zinc-400 ring-white/[0.07] hover:text-zinc-100 hover:ring-white/20"
+                : "bg-tint/[0.03] text-zinc-400 ring-tint/[0.07] hover:text-zinc-100 hover:ring-tint/20"
             }`}
           >
             {item.value}
@@ -282,7 +282,7 @@ export const SocialIcons = () => (
             rel="noopener noreferrer"
             aria-label={`${social.name}: ${social.handle}`}
             title={`${social.name} · ${social.handle}`}
-            className="flex size-10 items-center justify-center rounded-lg text-zinc-400 ring-1 ring-inset ring-white/10 transition-colors hover:bg-white/[0.05] hover:text-accent active:scale-95"
+            className="flex size-10 items-center justify-center rounded-lg text-zinc-400 ring-1 ring-inset ring-tint/10 transition-colors hover:bg-tint/[0.05] hover:text-accent active:scale-95"
           >
             <Icon size={18} />
           </a>

@@ -8,10 +8,10 @@ const OpenToWorkAvatar = ({ src, alt, className = "size-32" }) => (
     <svg viewBox="0 0 100 100" className="pointer-events-none absolute inset-1" aria-hidden="true">
       <defs>
         <linearGradient id="otw-stroke" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0" stopColor="#b5e46e" stopOpacity="0" />
-          <stop offset="0.2" stopColor="#b5e46e" />
-          <stop offset="0.8" stopColor="#b5e46e" />
-          <stop offset="1" stopColor="#b5e46e" stopOpacity="0" />
+          <stop offset="0" stopColor="rgb(var(--accent))" stopOpacity="0" />
+          <stop offset="0.2" stopColor="rgb(var(--accent))" />
+          <stop offset="0.8" stopColor="rgb(var(--accent))" />
+          <stop offset="1" stopColor="rgb(var(--accent))" stopOpacity="0" />
         </linearGradient>
         <path id="otw-text-path" d="M 4.02 62.32 A 47.6 47.6 0 0 0 95.98 62.32" />
       </defs>
@@ -28,7 +28,7 @@ const OpenToWorkAvatar = ({ src, alt, className = "size-32" }) => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.4 }}
-        fill="#1e1e22"
+        fill="rgb(var(--ink-950))"
         fontSize="6.4"
         fontWeight="700"
         letterSpacing="0.7"

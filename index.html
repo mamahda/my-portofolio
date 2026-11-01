@@ -26,7 +26,26 @@
             body {
                 background-color: #161619;
             }
+            html.light,
+            html.light body {
+                background-color: #ecebe7;
+            }
         </style>
+        <script>
+            // Runs before first paint so the page never flashes the wrong theme.
+            // A saved choice wins; otherwise follow the system setting.
+            (function () {
+                var saved = null;
+                try {
+                    saved = localStorage.getItem("theme");
+                } catch (e) {}
+                var light = saved ? saved === "light" : matchMedia("(prefers-color-scheme: light)").matches;
+                if (light) {
+                    document.documentElement.classList.add("light");
+                    document.querySelector('meta[name="theme-color"]').content = "#ecebe7";
+                }
+            })();
+        </script>
     </head>
     <body>
         <div id="root"></div>

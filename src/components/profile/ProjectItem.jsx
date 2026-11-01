@@ -82,7 +82,7 @@ const ProjectEntry = ({ project }) => {
       src={project.image}
       alt={`Screenshot of ${project.title}`}
       onError={() => setBroken(true)}
-      className="aspect-[2/1] w-full rounded-lg ring-1 ring-inset ring-white/[0.06] sm:aspect-[16/10]"
+      className="aspect-[2/1] w-full rounded-lg ring-1 ring-inset ring-tint/[0.06] sm:aspect-[16/10]"
       imgClassName="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/shot:scale-[1.04]"
     />
   );

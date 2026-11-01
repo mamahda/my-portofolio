@@ -9,7 +9,7 @@ const currentRoles = profile.experience.flatMap((entry) =>
 );
 
 const resourceRow =
-  "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-200 transition-colors hover:bg-white/[0.04] hover:text-zinc-50";
+  "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-200 transition-colors hover:bg-tint/[0.04] hover:text-zinc-50";
 
 const CheckMyWork = () => (
   <AsideBlock title="Check my work first">
@@ -40,7 +40,7 @@ const A = () => (
       {currentRoles.map((role) => (
         <li
           key={role.title}
-          className="rounded-md bg-white/[0.04] px-2 py-1 text-xs text-zinc-300 ring-1 ring-inset ring-white/[0.08]"
+          className="rounded-md bg-tint/[0.04] px-2 py-1 text-xs text-zinc-300 ring-1 ring-inset ring-tint/[0.08]"
         >
           {role.title}
         </li>

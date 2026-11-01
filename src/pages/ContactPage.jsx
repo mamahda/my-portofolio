@@ -10,6 +10,7 @@ import {
   CheckIcon,
   CircleNotchIcon,
   CopyIcon,
+  MapPinIcon,
   PaperPlaneTiltIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react";
@@ -34,7 +35,7 @@ const validate = (values) => {
 };
 
 const resourceRow =
-  "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-200 transition-colors hover:bg-white/[0.04] hover:text-zinc-50";
+  "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-200 transition-colors hover:bg-tint/[0.04] hover:text-zinc-50";
 
 const empty = { from_name: "", from_email: "", subject: "", message: "" };
 
@@ -56,13 +57,13 @@ const Field = ({ label, name, error, as = "input", ...props }) => {
           name={name}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? `${id}-error` : undefined}
-          className={`w-full rounded-lg bg-white/[0.03] px-3.5 py-2.5 text-[16px] text-zinc-100 ring-1 ring-inset transition-shadow placeholder:text-zinc-500 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus-visible:ring-offset-0 ${
-            error ? "ring-red-400/70 focus:ring-red-400" : "ring-white/10 focus:ring-accent/70"
+          className={`w-full rounded-lg bg-tint/[0.03] px-3.5 py-2.5 text-[16px] text-zinc-100 ring-1 ring-inset transition-shadow placeholder:text-zinc-500 focus:bg-tint/[0.05] focus:outline-none focus:ring-2 focus-visible:ring-offset-0 ${
+            error ? "ring-red-400/70 focus:ring-red-400" : "ring-tint/10 focus:ring-accent/70"
           } ${as === "textarea" ? "min-h-32 resize-y" : ""}`}
           {...props}
         />
         {error && (
-          <p id={`${id}-error`} className="mt-2 flex items-center gap-1 text-xs text-red-300">
+          <p id={`${id}-error`} className="mt-2 flex items-center gap-1 text-xs text-red-300 light:text-red-700">
             <WarningCircleIcon size={14} weight="fill" /> {error}
           </p>
         )}
@@ -159,7 +160,27 @@ const ContactPage = () => {
     <PageShell
       aside={
         <>
-          <AsideBlock title="Check my work first" first>
+          {/* The intro card only earns its place beside the form; on phones it would sit under it as a footer. */}
+          <div className="py-5 max-md:hidden md:pt-8">
+            <Link to="/about" className="group flex flex-col items-start">
+              <img
+                src={profile.photo}
+                alt={profile.name}
+                className="ml-2 size-28 shrink-0 rounded-full object-cover ring-1 ring-inset ring-tint/10"
+              />
+              <p className="mt-4 font-serif text-lg font-bold leading-tight text-zinc-50 transition-colors group-hover:text-accent">
+                {profile.name}
+              </p>
+              <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-zinc-400">{profile.headline}</p>
+              <p className="mt-2 inline-flex items-center gap-1 text-xs text-zinc-500">
+                <MapPinIcon size={13} /> {profile.location}
+              </p>
+            </Link>
+            <Link to="/about" className={button("outline", "mt-4 w-full justify-center py-2 text-sm")}>
+              About me <ArrowRightIcon size={13} />
+            </Link>
+          </div>
+          <AsideBlock title="Check my work first">
             <ul className="-mx-2">
               <li>
                 <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={resourceRow}>
@@ -247,9 +268,9 @@ const ContactPage = () => {
                 {status === "error" ? (
                   <p
                     role="alert"
-                    className="mt-5 flex items-start gap-2 rounded-lg bg-red-500/[0.08] p-3 text-sm text-red-200 ring-1 ring-inset ring-red-400/20"
+                    className="mt-5 flex items-start gap-2 rounded-lg bg-red-500/[0.08] p-3 text-sm text-red-200 ring-1 light:text-red-800 ring-inset ring-red-400/20"
                   >
-                    <WarningCircleIcon size={18} weight="fill" className="mt-px shrink-0 text-red-300" />
+                    <WarningCircleIcon size={18} weight="fill" className="mt-px shrink-0 text-red-300 light:text-red-600" />
                     <span>
                       The message could not be sent. Check your connection and try again, or email{" "}
                       <a href={`mailto:${profile.email}`} className="underline underline-offset-2">

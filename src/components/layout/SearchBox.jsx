@@ -12,12 +12,12 @@ const ResultThumb = ({ entry }) =>
     <img
       src={entry.image}
       alt=""
-      className={`size-9 shrink-0 rounded-md bg-ink-800 ring-1 ring-inset ring-white/[0.08] ${
+      className={`size-9 shrink-0 rounded-md bg-ink-800 ring-1 ring-inset ring-tint/[0.08] ${
         entry.type === "Projects" ? "object-cover object-left-top" : "object-contain p-0.5"
       }`}
     />
   ) : (
-    <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-ink-800 text-zinc-500 ring-1 ring-inset ring-white/[0.08]">
+    <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-ink-800 text-zinc-500 ring-1 ring-inset ring-tint/[0.08]">
       <HashIcon size={16} />
     </span>
   );
@@ -169,7 +169,7 @@ const SearchBox = ({ className = "" }) => {
                       inputRef.current?.focus();
                     }}
                     aria-label="Clear search"
-                    className="flex size-6 shrink-0 items-center justify-center rounded-full text-zinc-500 hover:bg-white/10 hover:text-zinc-100"
+                    className="flex size-6 shrink-0 items-center justify-center rounded-full text-zinc-500 hover:bg-tint/10 hover:text-zinc-100"
                   >
                     <XIcon size={13} weight="bold" />
                   </button>
@@ -177,7 +177,7 @@ const SearchBox = ({ className = "" }) => {
                 <button
                   type="button"
                   onClick={close}
-                  className="shrink-0 text-sm text-zinc-400 hover:text-zinc-100 md:rounded-md md:bg-white/[0.06] md:px-2 md:py-1 md:text-xs"
+                  className="shrink-0 text-sm text-zinc-400 hover:text-zinc-100 md:rounded-md md:bg-tint/[0.06] md:px-2 md:py-1 md:text-xs"
                 >
                   <span className="md:hidden">Cancel</span>
                   <span className="hidden md:inline">Esc</span>
@@ -202,7 +202,7 @@ const SearchBox = ({ className = "" }) => {
                             setActive(0);
                             inputRef.current?.focus();
                           }}
-                          className="rounded-md bg-white/[0.05] px-3 py-1 text-sm text-zinc-300 transition-colors hover:bg-white/[0.1] hover:text-zinc-100 active:scale-[0.98]"
+                          className="rounded-md bg-tint/[0.05] px-3 py-1 text-sm text-zinc-300 transition-colors hover:bg-tint/[0.1] hover:text-zinc-100 active:scale-[0.98]"
                         >
                           {term}
                         </button>
@@ -238,7 +238,7 @@ const SearchBox = ({ className = "" }) => {
                               onMouseEnter={() => setActive(index)}
                               onClick={() => go(entry)}
                               className={`flex w-full items-center gap-5 px-4 py-2 text-left transition-colors ${
-                                index === active ? "bg-white/[0.05]" : ""
+                                index === active ? "bg-tint/[0.05]" : ""
                               }`}
                             >
                               <ResultThumb entry={entry} />

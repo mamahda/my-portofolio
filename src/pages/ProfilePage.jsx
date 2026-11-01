@@ -24,7 +24,8 @@ const ProfilePage = () => (
     }
   >
     <ProfileHeader />
-    <div className="md:space-y-6">
+    {/* The profile header flows straight into About, as on desktop; the bands only split the sections. */}
+    <div className="md:space-y-3 max-md:[&>section:first-child]:border-t-0">
       <AboutSection />
       <FeaturedSection />
       <EducationSection />

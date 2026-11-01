@@ -11,7 +11,7 @@ const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "", onErr
     <div className={`relative overflow-hidden bg-ink-800 ${className}`}>
       {state === "loading" && (
         <div className="absolute inset-0" aria-hidden="true">
-          <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+          <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-tint/[0.06] to-transparent" />
         </div>
       )}
 
