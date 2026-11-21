@@ -222,7 +222,7 @@ const ContactPage = () => {
               onChange={update}
               error={errors.from_name}
               autoComplete="name"
-              placeholder="Rania Prameswari"
+              placeholder="Your name"
             />
             <Field
               label="Email"
@@ -232,7 +232,7 @@ const ContactPage = () => {
               onChange={update}
               error={errors.from_email}
               autoComplete="email"
-              placeholder="rania@kopikode.id"
+              placeholder="you@example.com"
             />
             <Field
               label={
@@ -243,7 +243,7 @@ const ContactPage = () => {
               name="subject"
               value={values.subject}
               onChange={update}
-              placeholder="Backend internship, spring 2027"
+              placeholder="What is this about?"
             />
             <Field
               as="textarea"
@@ -253,7 +253,7 @@ const ContactPage = () => {
               value={values.message}
               onChange={update}
               error={errors.message}
-              placeholder="Write a message..."
+              placeholder="Write your message"
             />
           </div>
 
