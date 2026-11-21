@@ -58,6 +58,7 @@ export const projects = [
     desc: "Deployed the rCTF competition platform for Quadrathlon CTF 2026 with Docker, then imported and tested all 10 challenges before release. Each team got its own challenge instances on isolated networks with outbound access blocked, each lasting 30 minutes, up to three per team.",
     repo: "https://github.com/mamahda/rctf",
     status: "not-deployed",
+    image: "/images/project/quadrathlon.png"
   },
   {
     id: "gerigi-x-ukm-expo",
@@ -109,6 +110,7 @@ export const projects = [
     desc: "Built a multi-client terminal chat in C++ over TCP with POSIX sockets. The server runs each client on its own thread, protects shared state with mutexes, broadcasts every message, and replays the chat history to new clients. The client sends and receives on separate threads.",
     repo: "https://github.com/mamahda/cli-chat-server",
     status: "not-deployed",
+    image: "/images/project/chat-server.webp",
   },
   {
     id: "tetris",
@@ -118,6 +120,7 @@ export const projects = [
     desc: "Built a terminal Tetris game in C++ with non-blocking keyboard input (termios and fcntl) and a high score saved to a file. The code is split into map, piece and high-score modules.",
     repo: "https://github.com/mamahda/tetris",
     status: "not-deployed",
+    image: "/images/project/tetris.webp",
   },
   {
     id: "flappy-bird",
@@ -127,5 +130,6 @@ export const projects = [
     desc: "Built a terminal Flappy Bird game in C++ with gravity, obstacles, scoring and levels that speed up as the score grows, in separate Linux (termios) and Windows (conio) builds.",
     repo: "https://github.com/mamahda/flappy-bird",
     status: "not-deployed",
+    image: "/images/project/flappy-bird.webp",
   },
 ].map(defineProject);
