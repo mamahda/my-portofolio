@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRightIcon, GithubLogoIcon, LockSimpleIcon } from "@phosphor-icons/react";
 import { hostOf } from "../../lib/ui";
@@ -70,18 +69,15 @@ const Actions = ({ project }) => {
   );
 };
 
-/* Full entry on the projects page. The screenshot column only exists when there is a
-   screenshot that actually loads, so text-only projects use the full width. */
+/* Full entry on the projects page. Projects without a screenshot (or with one that fails
+   to load) get Img's placeholder, so every row keeps the same layout. */
 const ProjectEntry = ({ project }) => {
-  const [broken, setBroken] = useState(false);
-  const showImage = project.image && !broken;
   const href = project.live || project.repo;
 
   const preview = (
     <Img
       src={project.image}
       alt={`Screenshot of ${project.title}`}
-      onError={() => setBroken(true)}
       className="aspect-[2/1] w-full rounded-lg ring-1 ring-inset ring-tint/[0.06] sm:aspect-[16/10]"
       imgClassName="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/shot:scale-[1.04]"
     />
@@ -90,7 +86,7 @@ const ProjectEntry = ({ project }) => {
   return (
     <article
       id={project.id}
-      className={`scroll-mt-24 ${showImage ? "grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_11rem] sm:gap-6 lg:grid-cols-[minmax(0,1fr)_13.5rem]" : ""}`}
+      className="grid scroll-mt-24 grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_11rem] sm:gap-6 lg:grid-cols-[minmax(0,1fr)_13.5rem]"
     >
       <div className="min-w-0">
         <Heading project={project} />
@@ -99,20 +95,19 @@ const ProjectEntry = ({ project }) => {
         <Actions project={project} />
       </div>
 
-      {showImage &&
-        (href ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${project.title}`}
-            className="group/shot -order-1 block self-start rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:order-none"
-          >
-            {preview}
-          </a>
-        ) : (
-          <div className="group/shot -order-1 self-start sm:order-none">{preview}</div>
-        ))}
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${project.title}`}
+          className="group/shot -order-1 block self-start rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:order-none"
+        >
+          {preview}
+        </a>
+      ) : (
+        <div className="group/shot -order-1 self-start sm:order-none">{preview}</div>
+      )}
     </article>
   );
 };

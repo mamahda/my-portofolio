@@ -5,7 +5,8 @@ import { ImageBrokenIcon } from "@phosphor-icons/react";
 const loadedSrcs = new Set();
 
 const Img = ({ src, alt, fit = "cover", className = "", imgClassName = "", onError }) => {
-  const [state, setState] = useState(() => (loadedSrcs.has(src) ? "ready" : "loading"));
+  // No src renders the same placeholder as a failed load.
+  const [state, setState] = useState(() => (!src ? "error" : loadedSrcs.has(src) ? "ready" : "loading"));
 
   return (
     <div className={`relative overflow-hidden bg-ink-800 ${className}`}>
