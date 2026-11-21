@@ -1,0 +1,71 @@
+% Infrastructure / DevOps engineer internship CV
+\input{preamble}
+
+\begin{document}
+
+\cvheader
+
+Informatics Engineering student at ITS seeking an infrastructure or DevOps engineering internship. Ran the infrastructure for two CTF competitions on Kubernetes and Docker, and ships a Spring Boot service to a VPS with Docker Compose, Caddy, and GitHub Actions. Lab administrator and Operating Systems \& Computer Networks teaching assistant.
+
+\cveducation
+
+% ---- TECHNICAL SKILLS ----
+\section{Technical Skills}
+
+\textbf{Containers \& CI/CD:} Docker, Docker Compose, Kubernetes, GitHub Actions, GitHub Container Registry \\
+\textbf{Linux \& Cloud:} Linux System Administration, Linux Hardening, Bash, Microsoft Azure, Git \\
+\textbf{Networking \& Security:} TCP/IP, DNS, HTTP/HTTPS, Routing, Reverse Proxy \& TLS (Caddy), Network Security \\
+\textbf{Programming:} Go, Java, PHP, SQL; Gin, Spring Boot, Laravel \\
+\textbf{Databases:} PostgreSQL, MySQL
+
+% ---- EXPERIENCE ----
+\section{Experience}
+
+\role{Networking Technology \& Intelligent Cybersecurity Laboratory, ITS}{Surabaya, Indonesia}{Laboratory Administrator}{Jun 2026 -- Present}
+\begin{itemize}
+    \item Manage the laboratory's computers, servers, and network infrastructure to support research and practicum sessions.
+\end{itemize}
+
+\vspace{2pt}
+
+\role{Institut Teknologi Sepuluh Nopember (ITS)}{Surabaya, Indonesia}{Teaching Assistant -- Operating Systems \& Computer Networks}{Jan 2026 -- Present}
+\begin{itemize}
+    \item Guide students through Linux and networking practicum modules and evaluate their lab assignments.
+\end{itemize}
+
+% ---- PROJECTS ----
+\section{Infrastructure Projects}
+
+\project{Jatim Cyber Security Competition (JCC) 2026}{Infrastructure Engineer}{2026}{Kubernetes, Docker, GZCTF, GitHub Actions}
+\begin{itemize}
+    \item Deployed GZCTF on Kubernetes for East Java's CTF competition (400 teams) and ran the instancer that starts an isolated container per team for jeopardy and attack-defense challenges.
+    \item Automated challenge builds with GitHub Actions: every push rebuilds and publishes only the changed images.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{Quadrathlon CTF 2026}{Infrastructure Engineer}{2026}{Docker, rCTF, Linux}
+\begin{itemize}
+    \item Set up and deployed the rCTF platform with Docker, hosting the challenges and scoreboard.
+    \item Ran per-team instances on isolated networks with no outbound internet, a 30-minute lifetime, and a 3-per-team cap.
+    \item Imported and tested all 10 challenges before release and wrote the integration guide for challenge authors.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{IOX Adventure Club}{Backend \& DevOps Engineer}{2026 -- Present}{Docker Compose, Caddy, GitHub Actions, GHCR, PostgreSQL, Spring Boot}
+\begin{itemize}
+    \item Built the VPS production stack in Docker Compose: PostgreSQL 16, the Spring Boot API, and Caddy with automatic HTTPS; only Caddy is exposed, and health checks gate startup.
+    \item GitHub Actions builds the image and pushes it to GHCR; the server only pulls a pinned image tag.
+\end{itemize}
+
+% ---- CERTIFICATIONS & ACTIVITIES ----
+\section{Certifications \& Activities}
+
+\begin{itemize}
+    \item \textbf{Introduction to Cybersecurity} -- Cisco (2026); \textbf{Go (Intermediate)} and \textbf{Go (Basic)} -- HackerRank (2026)
+    \item CTF player with public writeups at \href{https://github.com/mamahda/ctf-writeups}{github.com/mamahda/ctf-writeups}
+    \item \textbf{Organisations:} External Affairs Staff, HMTC ITS; Deputy Director of Branding \& Marketing, Schematics ITS; Director of Media Creative, INI LHO ITS! Wengker
+\end{itemize}
+
+\end{document}

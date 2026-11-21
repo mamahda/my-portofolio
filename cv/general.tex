@@ -1,0 +1,129 @@
+% General CV: complete version
+\input{preamble}
+
+\begin{document}
+
+\cvheader
+
+Informatics Engineering student at ITS working across backend engineering, DevOps, networking, and cyber security. Builds REST APIs in Go, Laravel, and Spring Boot, deploys them on Linux servers with Docker and GitHub Actions, and has run the infrastructure for two CTF competitions on Kubernetes and Docker. Laboratory administrator at the Networking Technology \& Intelligent Cybersecurity Lab and teaching assistant for Operating Systems and Computer Networks. Seeking an internship in backend, infrastructure, or IT operations.
+
+\cveducation
+
+% ---- TECHNICAL SKILLS ----
+\section{Technical Skills}
+
+\textbf{Languages:} Go, PHP, Java, TypeScript, JavaScript, SQL, Bash, C++ \\
+\textbf{Backend:} Gin, Laravel, Spring Boot, RESTful API, JWT Authentication, Inertia.js \\
+\textbf{Frontend:} React, Tailwind CSS, Shadcn UI, Framer Motion, Vite \\
+\textbf{DevOps \& Cloud:} Docker, Docker Compose, Kubernetes, GitHub Actions, Caddy, Linux Administration, Azure \\
+\textbf{Networking \& Security:} TCP/IP, DNS, HTTP/HTTPS, Routing, Network Security, Linux Hardening \\
+\textbf{Databases \& Tools:} MySQL, PostgreSQL, Git, Postman, Neovim
+
+% ---- EXPERIENCE ----
+\section{Experience}
+
+\role{Networking Technology \& Intelligent Cybersecurity Laboratory, ITS}{Surabaya, Indonesia}{Laboratory Administrator}{Jun 2026 -- Present}
+\begin{itemize}
+    \item Manage the laboratory's computers, servers, and network infrastructure to support research activities and practicum sessions.
+    \item Coordinate the lab's administrative processes and day-to-day operations.
+\end{itemize}
+
+\vspace{2pt}
+
+\role{Institut Teknologi Sepuluh Nopember (ITS)}{Surabaya, Indonesia}{Teaching Assistant -- Operating Systems \& Computer Networks}{Jan 2026 -- Present}
+\begin{itemize}
+    \item Guide students through practicum modules and evaluate their lab assignments.
+\end{itemize}
+
+\vspace{2pt}
+
+\role{IRIS ITS Robotics Team}{Surabaya, Indonesia}{Programmer Intern}{Oct 2024 -- Nov 2024}
+\begin{itemize}
+    \item Completed the programmer training program, solving robot navigation simulation tasks in C++.
+\end{itemize}
+
+% ---- PROJECTS ----
+\section{Projects}
+
+\project{IOX Adventure Club}{Backend \& DevOps Engineer}{2026 -- Present}{Java, Spring Boot, PostgreSQL, Docker Compose, Caddy, GitHub Actions}
+\begin{itemize}
+    \item Building the Spring Boot REST API for a 4WD club's off-road event app: live GPS tracking, photo-verified checkpoints, and an admin monitoring console, integrated with the Android app.
+    \item Wrote 145 automated tests and deployed it to a VPS with Docker Compose behind a Caddy reverse proxy with automatic HTTPS, using images built by GitHub Actions.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{ADVISE DAST}{Full Stack Developer}{2026 -- Present}{Laravel, React, TypeScript, Inertia.js, Tailwind CSS, MySQL}
+\begin{itemize}
+    \item Building the scan module of a team-built Dynamic Application Security Testing platform: scan CRUD, a step-by-step create wizard, and scan pages with a dashboard, endpoint list, start/stop controls, and a vulnerability side panel.
+    \item Wrote a dummy crawler that simulates scan runs for demo data, and applied the team's design system across the frontend.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{Jatim Cyber Security Competition (JCC) 2026}{Infrastructure Engineer}{2026}{Kubernetes, Docker, GZCTF, GitHub Actions}
+\begin{itemize}
+    \item Deployed the GZCTF platform on Kubernetes for East Java's CTF competition (400 teams) and ran the instancer that starts an isolated container per team for jeopardy and attack-defense challenges.
+    \item Automated challenge builds with GitHub Actions: every push rebuilds and publishes only the changed challenge images.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{Quadrathlon CTF 2026}{Infrastructure Engineer}{2026}{Docker, rCTF, Linux}
+\begin{itemize}
+    \item Deployed the rCTF platform with Docker and imported and tested all 10 challenges before release.
+    \item Ran per-team challenge instances on isolated networks with outbound access blocked, a 30-minute lifetime, and a limit of three instances per team.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{Gerigi X UKM Expo ITS (GEREX 2026)}{Full Stack Developer}{2026}{React, TypeScript, Convex, Tailwind CSS, Shadcn UI, Framer Motion, Vite}
+\begin{itemize}
+    \item Contributed to the official portal for about 7,000 new ITS students (\href{https://gerigixukmexpoits.id}{gerigixukmexpoits.id}): built the navbar, footer, and the Gema Karsa announcement page where students look up their accepted or rejected result.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{Victoria Property}{Backend Engineer}{2026}{Go, Gin, MySQL, JWT}
+\begin{itemize}
+    \item Co-built the REST API for a property listing platform with Clean Architecture (handler, service, repository).
+    \item Handled project setup and the database connection, JWT login and registration with bcrypt, JWT and admin-only middleware, the profile endpoint, and a consistent JSON response format.
+\end{itemize}
+
+\vspace{2pt}
+
+\project{TCanteen}{Backend Developer}{2025}{Laravel, Sanctum, MySQL}
+\begin{itemize}
+    \item Built the REST API for a campus canteen ordering system: menu management, cart, orders, and role-based access for admins and customers.
+\end{itemize}
+
+% ---- CERTIFICATIONS & ACTIVITIES ----
+\section{Certifications \& Activities}
+
+\begin{itemize}
+    \item \textbf{Introduction to Cybersecurity} -- Cisco Networking Academy (2026)
+    \item \textbf{Go (Intermediate)} and \textbf{Go (Basic)} -- HackerRank (2026)
+    \item CTF writeups: \href{https://github.com/mamahda/ctf-writeups}{github.com/mamahda/ctf-writeups}
+    \item Competitive programming solutions: \href{https://github.com/mamahda/cp-solutions}{github.com/mamahda/cp-solutions}
+\end{itemize}
+
+% ---- ORGANISATIONAL EXPERIENCE ----
+\section{Organisational Experience}
+
+\textbf{Himpunan Mahasiswa Teknik Computer-Informatika (HMTC) ITS} $|$ \textit{Staff of External Affairs} \hfill Nov 2025 -- Present \\
+{\color{gray}\small Promoted from External Affairs Intern (Nov 2025 -- Feb 2026).}
+\begin{itemize}
+    \item Organize corporate visits and benchmarking programs with external organizations (e.g., Ciputra University, Planologi ITS).
+\end{itemize}
+
+\vspace{2pt}
+
+\textbf{Schematics ITS} $|$ \textit{Deputy Director of Branding \& Marketing} \hfill Mar 2025 -- Present \\
+{\color{gray}\small Promoted from Staff of Branding \& Marketing (Mar 2025 -- Dec 2025).}
+
+\vspace{2pt}
+
+\textbf{INI LHO ITS! Wengker} $|$ \textit{Director of Media Creative} \hfill Oct 2025 -- Feb 2026 \\
+{\color{gray}\small Staff of Media Creative in the previous edition (Nov 2024 -- Feb 2025).}
+
+\end{document}

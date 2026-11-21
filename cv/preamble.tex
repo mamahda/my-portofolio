@@ -1,0 +1,61 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[top=0.5in, bottom=0.5in, left=0.5in, right=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{carlito}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=black,
+    linkcolor=black
+}
+
+% Section formatting
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{3pt}
+
+\pagestyle{empty}
+
+% No indent
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+
+% Bullet list settings
+\setlist[itemize]{
+    leftmargin=1.2em,
+    topsep=1pt,
+    itemsep=1pt,
+    parsep=0pt
+}
+
+% \project{Name}{Role}{Date}{Tech stack}
+\newcommand{\project}[4]{\textbf{#1} $|$ \textit{#2} \hfill #3 \\ {\color{gray}\small #4}}
+
+% \role{Organisation}{Location}{Title}{Date}
+\newcommand{\role}[4]{\textbf{#1} -- #2 \\ \textit{#3} \hfill #4}
+
+% Shared by every CV variant
+\newcommand{\cvheader}{
+\begin{center}
+    {\LARGE \textbf{GILBRAN MAHDAVIKIA RAJA}} \\[3pt]
+    08999093934 $|$ gilmavira@gmail.com $|$ Sukolilo, Surabaya, Indonesia \\
+    \href{https://linkedin.com/in/gilbran-mahda}{linkedin.com/in/gilbran-mahda} $|$
+    \href{https://github.com/mamahda}{github.com/mamahda} $|$
+    \href{https://mamahda-portofolio.vercel.app}{mamahda-portofolio.vercel.app}
+\end{center}
+\vspace{-2pt}
+}
+
+\newcommand{\cveducation}{
+\section{Education}
+\textbf{Institut Teknologi Sepuluh Nopember (ITS)} -- Surabaya, Indonesia
+\hfill Aug 2024 -- Oct 2028 (Expected) \\
+Bachelor of Informatics Engineering $|$ GPA: 3.76/4.00
+}
