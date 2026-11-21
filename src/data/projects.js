@@ -63,7 +63,7 @@ export const projects = [
   {
     id: "gerigi-x-ukm-expo",
     title: "Gerigi X UKM Expo ITS",
-    category: "Frontend Development",
+    category: "Fullstack Development",
     tech: ["TypeScript", "React", "Tailwind CSS", "Convex", "Shadcn UI", "Framer Motion", "Vite"],
     desc: "Contributed to GEREX 2026, the official portal for about 7,000 new ITS students, with the Survival Kit guide, Maba 101, a campus map and a directory of student clubs (UKM). Built the site's navbar and footer, and the Gema Karsa announcement page where students search for their result and see an accepted or rejected view.",
     privateRepo: true,
@@ -94,7 +94,7 @@ export const projects = [
   {
     id: "portfolio-website",
     title: "Portfolio Website",
-    category: "Frontend Development",
+    category: "Personal Project",
     tech: ["JavaScript", "React", "Vite", "Tailwind CSS", "Framer Motion"],
     desc: "Designed and built this LinkedIn-style portfolio with React and Vite. It has search across projects, certifications and skills, spring-based animations, and a contact form powered by EmailJS.",
     repo: "https://github.com/mamahda/my-portofolio",
@@ -105,7 +105,7 @@ export const projects = [
   {
     id: "cli-chat-server",
     title: "CLI Chat Server",
-    category: "Network Programming",
+    category: "Personal Project",
     tech: ["C++", "TCP/IP"],
     desc: "Built a multi-client terminal chat in C++ over TCP with POSIX sockets. The server runs each client on its own thread, protects shared state with mutexes, broadcasts every message, and replays the chat history to new clients. The client sends and receives on separate threads.",
     repo: "https://github.com/mamahda/cli-chat-server",
@@ -115,7 +115,7 @@ export const projects = [
   {
     id: "tetris",
     title: "Terminal Tetris",
-    category: "Game Development",
+    category: "Personal Project",
     tech: ["C++"],
     desc: "Built a terminal Tetris game in C++ with non-blocking keyboard input (termios and fcntl) and a high score saved to a file. The code is split into map, piece and high-score modules.",
     repo: "https://github.com/mamahda/tetris",
@@ -125,7 +125,7 @@ export const projects = [
   {
     id: "flappy-bird",
     title: "Terminal Flappy Bird",
-    category: "Game Development",
+    category: "Personal Project",
     tech: ["C++"],
     desc: "Built a terminal Flappy Bird game in C++ with gravity, obstacles, scoring and levels that speed up as the score grows, in separate Linux (termios) and Windows (conio) builds.",
     repo: "https://github.com/mamahda/flappy-bird",
