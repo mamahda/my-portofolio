@@ -3,8 +3,8 @@ import { GlobeIcon, HardDrivesIcon, ShieldCheckIcon, TerminalWindowIcon } from "
 export const interests = [
   {
     icon: ShieldCheckIcon,
-    title: "Cyber Security",
-    desc: "Network Security, Linux Hardening, System Security, and Security Fundamentals.",
+    title: "Cybersecurity",
+    desc: "Network security, Linux hardening, system security, and security fundamentals.",
   },
   {
     icon: HardDrivesIcon,
@@ -14,11 +14,11 @@ export const interests = [
   {
     icon: TerminalWindowIcon,
     title: "DevOps & Cloud",
-    desc: "Docker, Docker Compose, Kubernetes, GitHub Actions, Azure, CI/CD Pipelines, and Linux Administration.",
+    desc: "Docker, Docker Compose, Kubernetes, GitHub Actions, Azure, CI/CD pipelines, and Linux administration.",
   },
   {
     icon: GlobeIcon,
     title: "Networking",
-    desc: "TCP/IP, DNS, HTTP/HTTPS, Routing, and Network Infrastructure Fundamentals.",
+    desc: "TCP/IP, DNS, HTTP/HTTPS, routing, and network infrastructure fundamentals.",
   },
 ];

@@ -3,7 +3,7 @@ export const certifications = [
     id: "introduction-to-cybersecurity-cisco",
     title: "Introduction to Cybersecurity",
     issuer: "Cisco Networking Academy",
-    field: "Cyber Security",
+    field: "Cybersecurity",
     year: "2026",
     code: "5f8d9a26-49c3-4647-aa78-b3e980dad27b",
     skills: ["Cybersecurity Fundamentals", "Threats & Vulnerabilities", "Network Security"],
