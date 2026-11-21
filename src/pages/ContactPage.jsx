@@ -19,6 +19,7 @@ import { AsideBlock } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
 import { pageCard } from "../components/ui/Section";
 import { profile } from "../data/profile";
+import { useCvDialog } from "../hooks/useCvDialog";
 import { socials } from "../data/socials";
 import useCopy from "../hooks/useCopy";
 import { spring } from "../lib/motion";
@@ -117,6 +118,7 @@ const DirectContact = () => {
 
 const ContactPage = () => {
   const formRef = useRef(null);
+  const openCv = useCvDialog();
   const [values, setValues] = useState(empty);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
@@ -184,10 +186,10 @@ const ContactPage = () => {
           <AsideBlock title="Check my work first">
             <ul className="-mx-2">
               <li>
-                <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={resourceRow}>
+                <button type="button" onClick={openCv} className={`${resourceRow} text-left`}>
                   <span className="flex-1">Curriculum vitae</span>
-                  <ArrowUpRightIcon size={13} className="text-zinc-500 group-hover:text-accent" />
-                </a>
+                  <ArrowRightIcon size={13} className="text-zinc-500 group-hover:text-accent" />
+                </button>
               </li>
               <li>
                 <Link to="/projects" className={resourceRow}>

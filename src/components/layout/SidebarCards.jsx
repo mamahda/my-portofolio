@@ -16,7 +16,8 @@ import { profile } from "../../data/profile";
 import { socials } from "../../data/socials";
 import { spring, snappy } from "../../lib/motion";
 import { profileSectionIds, profileSections } from "../../lib/navigation";
-import { hostOf } from "../../lib/ui";
+import { useCvDialog } from "../../hooks/useCvDialog";
+import { cvs } from "../../data/cv";
 
 /* The sidebar is sticky and always on screen, so it animates on mount rather than
    waiting for an in-view trigger that can fail to fire after a route change.
@@ -84,6 +85,7 @@ const actionIcon = "shrink-0 text-zinc-400 transition-colors group-hover:text-zi
 export const QuickActions = ({ className = "", title = "Quick actions", hideMessage = false }) => {
   const [copied, copy] = useCopy();
   const emailCopied = copied === "email";
+  const openCv = useCvDialog();
 
   return (
     <AsideBlock title={title} className={className}>
@@ -102,14 +104,13 @@ export const QuickActions = ({ className = "", title = "Quick actions", hideMess
           </button>
         </li>
         <li>
-          <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={actionRow}>
+          <button type="button" onClick={openCv} className={`${actionRow} w-full text-left`}>
             <FileTextIcon size={18} className={actionIcon} />
             <span className="min-w-0 flex-1">
               <span className="block text-sm text-zinc-100">Open CV</span>
-              <span className="block truncate text-xs text-zinc-500">{hostOf(profile.cv)}</span>
+              <span className="block truncate text-xs text-zinc-500">{cvs.length} versions to view or download</span>
             </span>
-            <ArrowUpRightIcon size={13} weight="bold" className="shrink-0 text-zinc-500 group-hover:text-accent" />
-          </a>
+          </button>
         </li>
         {!hideMessage && (
           <li>

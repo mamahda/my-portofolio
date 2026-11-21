@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon, FileTextIcon } from "@phosphor-icons/react";
-import { profile } from "../data/profile";
+import { FileTextIcon } from "@phosphor-icons/react";
+import { useCvDialog } from "../hooks/useCvDialog";
 import { isNavActive, navItems } from "../lib/navigation";
 import { snappy } from "../lib/motion";
 import SearchBox from "./layout/SearchBox";
@@ -9,6 +9,7 @@ import ThemeToggle from "./layout/ThemeToggle";
 
 const Navbar = () => {
   const location = useLocation();
+  const openCv = useCvDialog();
 
   return (
     <>
@@ -55,20 +56,18 @@ const Navbar = () => {
             })}
           </nav>
 
-          {/* External link: set apart from the page tabs by a divider and an outward arrow. */}
+          {/* Opens the CV dialog; set apart from the page tabs by a divider. */}
           <span aria-hidden="true" className="mx-2 hidden h-8 w-px self-center bg-line-strong lg:block" />
-          <a
-            href={profile.cv}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View CV (opens in a new tab)"
+          <button
+            type="button"
+            onClick={openCv}
             className="hidden w-[78px] flex-col items-center justify-center gap-1 text-zinc-500 transition-colors hover:text-accent lg:flex"
           >
             <FileTextIcon size={22} />
             <span className="flex items-center gap-0.5 text-2xs">
-              View CV <ArrowUpRightIcon size={10} weight="bold" />
+              View CV
             </span>
-          </a>
+          </button>
           </div>
         </div>
       </header>

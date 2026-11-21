@@ -1,23 +1,34 @@
 import { CheckIcon, CopyIcon, EnvelopeSimpleIcon, FileTextIcon, GlobeIcon } from "@phosphor-icons/react";
 import useCopy from "../../hooks/useCopy";
 import { profile } from "../../data/profile";
+import { useCvDialog } from "../../hooks/useCvDialog";
 import { socials } from "../../data/socials";
 import { hostOf, iconButton } from "../../lib/ui";
 import Modal from "../ui/Modal";
 
-const Row = ({ icon: Icon, label, value, href, copyValue, copied, onCopy }) => (
+const Row = ({ icon: Icon, label, value, href, onClick, copyValue, copied, onCopy }) => (
   <li className="flex items-center gap-4 px-5 py-3">
     <Icon size={20} className="shrink-0 text-zinc-500" />
     <div className="min-w-0 flex-1">
       <p className="text-xs text-zinc-500">{label}</p>
-      <a
-        href={href}
-        target={href.startsWith("mailto:") ? undefined : "_blank"}
-        rel="noopener noreferrer"
-        className="block truncate text-sm text-zinc-100 transition-colors hover:text-accent"
-      >
-        {value}
-      </a>
+      {onClick ? (
+        <button
+          type="button"
+          onClick={onClick}
+          className="block max-w-full truncate text-left text-sm text-zinc-100 transition-colors hover:text-accent"
+        >
+          {value}
+        </button>
+      ) : (
+        <a
+          href={href}
+          target={href.startsWith("mailto:") ? undefined : "_blank"}
+          rel="noopener noreferrer"
+          className="block truncate text-sm text-zinc-100 transition-colors hover:text-accent"
+        >
+          {value}
+        </a>
+      )}
     </div>
     {copyValue && (
       <button type="button" onClick={() => onCopy(copyValue, label)} aria-label={`Copy ${label}`} className={iconButton}>
@@ -29,6 +40,7 @@ const Row = ({ icon: Icon, label, value, href, copyValue, copied, onCopy }) => (
 
 const ContactInfoModal = ({ open, onClose }) => {
   const [copied, copy] = useCopy();
+  const openCv = useCvDialog();
 
   return (
     <Modal open={open} onClose={onClose} title="Contact info">
@@ -51,7 +63,15 @@ const ContactInfoModal = ({ open, onClose }) => {
           copied={copied}
           onCopy={copy}
         />
-        <Row icon={FileTextIcon} label="Curriculum Vitae" value={hostOf(profile.cv)} href={profile.cv} />
+        <Row
+          icon={FileTextIcon}
+          label="Curriculum Vitae"
+          value="View or download"
+          onClick={() => {
+            onClose();
+            openCv();
+          }}
+        />
         {socials.map((social) => (
           <Row key={social.name} icon={social.icon} label={social.name} value={social.handle} href={social.url} />
         ))}

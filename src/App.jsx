@@ -3,6 +3,7 @@ import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import CvDialogProvider from "./components/layout/CvDialogProvider";
 import PageShell from "./components/layout/PageShell";
 import { button } from "./lib/ui";
 import ProfilePage from "./pages/ProfilePage";
@@ -101,6 +102,7 @@ function App() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <CvDialogProvider>
       <div className="min-h-[100dvh]">
         <a
           href="#main"
@@ -138,6 +140,7 @@ function App() {
           </AnimatePresence>
         </main>
       </div>
+      </CvDialogProvider>
     </MotionConfig>
   );
 }

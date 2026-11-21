@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CaretDownIcon, CheckIcon, FileTextIcon, LinkSimpleIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import useCopy from "../../hooks/useCopy";
 import useDismiss from "../../hooks/useDismiss";
+import { useCvDialog } from "../../hooks/useCvDialog";
 import { profile } from "../../data/profile";
 import { snappy } from "../../lib/motion";
 import { button, popover } from "../../lib/ui";
@@ -16,6 +17,7 @@ const MeMenu = () => {
   const [copied, copy] = useCopy();
   const ref = useRef(null);
   const close = useCallback(() => setOpen(false), []);
+  const openCv = useCvDialog();
   useDismiss(ref, open, close);
 
   return (
@@ -56,9 +58,16 @@ const MeMenu = () => {
               </Link>
             </div>
             <div className="pt-2">
-              <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={itemClass}>
+              <button
+                type="button"
+                onClick={() => {
+                  close();
+                  openCv();
+                }}
+                className={itemClass}
+              >
                 <FileTextIcon size={17} /> View CV
-              </a>
+              </button>
               <button type="button" onClick={() => copy(profile.site, "profile")} className={itemClass}>
                 {copied === "profile" ? <CheckIcon size={17} className="text-accent" /> : <LinkSimpleIcon size={17} />}
                 {copied === "profile" ? "Link copied" : "Copy profile link"}

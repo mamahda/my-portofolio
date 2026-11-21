@@ -8,7 +8,6 @@ export const profile = {
   coordinates: "-7.2819, 112.7950",
   photo: "/images/myphoto.webp",
   email: "gilmavira@gmail.com",
-  cv: "https://its.id/m/cvmahda",
   site: "https://mamahda-portofolio.vercel.app",
   openTo: {
     title: "Open to internships",

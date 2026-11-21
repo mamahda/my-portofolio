@@ -3,6 +3,7 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 import { AsideBlock } from "../components/layout/SidebarCards";
 import { experience } from "../data/experience";
 import { profile } from "../data/profile";
+import { useCvDialog } from "../hooks/useCvDialog";
 import { formatMonth, tenure } from "../lib/dates";
 
 const currentRoles = experience.flatMap((entry) =>
@@ -12,14 +13,16 @@ const currentRoles = experience.flatMap((entry) =>
 const resourceRow =
   "group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-zinc-200 transition-colors hover:bg-tint/[0.04] hover:text-zinc-50";
 
-const CheckMyWork = () => (
+const CheckMyWork = () => {
+  const openCv = useCvDialog();
+  return (
   <AsideBlock title="Check my work first">
     <ul className="-mx-2">
       <li>
-        <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={resourceRow}>
+        <button type="button" onClick={openCv} className={`${resourceRow} text-left`}>
           <span className="flex-1">Curriculum vitae</span>
-          <ArrowUpRightIcon size={13} className="text-zinc-500 group-hover:text-accent" />
-        </a>
+          <ArrowRightIcon size={13} className="text-zinc-500 group-hover:text-accent" />
+        </button>
       </li>
       <li>
         <span className={resourceRow}>
@@ -29,7 +32,8 @@ const CheckMyWork = () => (
       </li>
     </ul>
   </AsideBlock>
-);
+  );
+};
 
 /* A: one stat line, roles collapsed into tags. Low repetition, scans in a glance. */
 const A = () => (

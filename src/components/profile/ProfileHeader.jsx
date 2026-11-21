@@ -13,6 +13,7 @@ import {
 } from "@phosphor-icons/react";
 import useCopy from "../../hooks/useCopy";
 import useDismiss from "../../hooks/useDismiss";
+import { useCvDialog } from "../../hooks/useCvDialog";
 import { certifications } from "../../data/certifications";
 import { profile } from "../../data/profile";
 import { socials } from "../../data/socials";
@@ -25,6 +26,7 @@ import CoverTerminal from "./CoverTerminal";
 
 const MoreMenu = () => {
   const [open, setOpen] = useState(false);
+  const openCv = useCvDialog();
   const [copied, copy] = useCopy();
   const ref = useRef(null);
   const triggerRef = useRef(null);
@@ -91,9 +93,17 @@ const MoreMenu = () => {
               {copied === "link" ? <CheckIcon size={17} className="text-accent" /> : <LinkSimpleIcon size={17} />}
               {copied === "link" ? "Link copied" : "Copy link to profile"}
             </button>
-            <a href={profile.cv} target="_blank" rel="noopener noreferrer" role="menuitem" onClick={close} className={itemClass}>
+            <button
+              type="button"
+              role="menuitem"
+              onClick={() => {
+                close();
+                openCv();
+              }}
+              className={itemClass}
+            >
               <FileTextIcon size={17} /> View CV
-            </a>
+            </button>
             <a
               href={socials[0].url}
               target="_blank"
@@ -113,6 +123,7 @@ const MoreMenu = () => {
 
 const ProfileHeader = () => {
   const [contactOpen, setContactOpen] = useState(false);
+  const openCv = useCvDialog();
 
   return (
     <section className="relative pb-8 sm:pb-10">
@@ -193,9 +204,9 @@ const ProfileHeader = () => {
                   <PaperPlaneTiltIcon size={16} weight="fill" /> Message
                 </Link>
               </Magnetic>
-              <a href={profile.cv} target="_blank" rel="noopener noreferrer" className={button("outline", "py-2")}>
+              <button type="button" onClick={openCv} className={button("outline", "py-2")}>
                 View CV
-              </a>
+              </button>
               <MoreMenu />
             </motion.div>
           </div>
