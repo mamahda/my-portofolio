@@ -4,6 +4,7 @@ import { FileTextIcon } from "@phosphor-icons/react";
 import { useCvDialog } from "../hooks/useCvDialog";
 import { isNavActive, navItems } from "../lib/navigation";
 import { snappy } from "../lib/motion";
+import { navAction } from "../lib/ui";
 import SearchBox from "./layout/SearchBox";
 import ThemeToggle from "./layout/ThemeToggle";
 
@@ -25,10 +26,9 @@ const Navbar = () => {
           {/* Nudged up to the letters' optical centre: the name has no descenders, so its line box centre sits low. */}
           <ThemeToggle className="-ml-1 -translate-y-px md:size-[33.5px] md:-translate-y-[2px]" />
 
-          {/* Search, the page links and View CV sit flush with equal widths, like one row of tabs. */}
+          {/* The page links sit flush with equal widths, like one row of tabs. Search and View CV
+              both open a popup, so they sit together after a divider. */}
           <div className="ml-auto flex h-full items-center md:items-stretch">
-          <SearchBox className="md:h-full" />
-
           <nav aria-label="Primary" className="hidden h-full items-stretch md:flex">
             {navItems.map((item) => {
               const active = isNavActive(item, location);
@@ -56,17 +56,11 @@ const Navbar = () => {
             })}
           </nav>
 
-          {/* Opens the CV dialog; set apart from the page tabs by a divider. */}
-          <span aria-hidden="true" className="mx-2 hidden h-8 w-px self-center bg-line-strong lg:block" />
-          <button
-            type="button"
-            onClick={openCv}
-            className="hidden w-[78px] flex-col items-center justify-center gap-1 text-zinc-500 transition-colors hover:text-accent lg:flex"
-          >
+          <span aria-hidden="true" className="mx-2 hidden h-8 w-px self-center bg-line-strong md:block" />
+          <SearchBox className="md:h-full" />
+          <button type="button" onClick={openCv} aria-label="View CV" aria-haspopup="dialog" className={navAction}>
             <FileTextIcon size={22} />
-            <span className="flex items-center gap-0.5 text-2xs">
-              View CV
-            </span>
+            <span className="hidden text-2xs md:block">View CV</span>
           </button>
           </div>
         </div>

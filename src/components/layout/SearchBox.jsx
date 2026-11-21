@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowUpRightIcon, HashIcon, MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import { search, searchGroups, suggestions } from "../../lib/search";
 import { snappy } from "../../lib/motion";
-import { popover } from "../../lib/ui";
+import { navAction, popover } from "../../lib/ui";
 
 const ResultThumb = ({ entry }) =>
   entry.image ? (
@@ -106,7 +106,7 @@ const SearchBox = ({ className = "" }) => {
         aria-label="Search the portfolio"
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="flex size-9 items-center justify-center rounded-full text-zinc-400 transition-colors hover:text-zinc-100 active:scale-95 md:h-full md:w-[68px] md:flex-col md:gap-1 md:rounded-none md:text-zinc-500 md:hover:text-zinc-200 lg:w-[78px]"
+        className={navAction}
       >
         <MagnifyingGlassIcon size={22} />
         <span className="hidden text-2xs md:block">Search</span>

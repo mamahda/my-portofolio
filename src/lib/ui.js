@@ -13,7 +13,11 @@ export const iconButton =
 export const link =
   "text-zinc-100 underline decoration-zinc-500 decoration-1 underline-offset-4 transition-colors hover:decoration-accent";
 
-export const popover = "bg-ink-900 light:bg-white ring-1 ring-tint/10 shadow-float";
+/* Navbar buttons that open a popup (Search, View CV): a round icon on phones, a tab from md up. */
+export const navAction =
+  "flex size-9 items-center justify-center rounded-full text-zinc-400 transition-colors hover:text-zinc-100 active:scale-95 md:h-full md:w-[68px] md:flex-col md:gap-1 md:rounded-none md:text-zinc-500 md:hover:text-zinc-200 lg:w-[78px]";
+
+export const popover ="bg-ink-900 light:bg-white ring-1 ring-tint/10 shadow-float";
 
 /* Props for the element a <Tabs> row controls; pass the same `id` to both. */
 export const tabPanelProps = (id, tabs, value) => ({
