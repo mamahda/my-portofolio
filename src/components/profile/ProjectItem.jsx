@@ -19,7 +19,7 @@ export const ProjectStatus = ({ project }) => {
 
 const Heading = ({ project }) => (
   <>
-    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5">
       <h3 className="font-serif text-base font-bold leading-snug text-zinc-100 transition-colors group-hover:text-accent">
         {project.title}
       </h3>
