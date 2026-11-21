@@ -1,10 +1,11 @@
 // TEMPORARY: exploring the "Currently" sidebar block. Remove once a variant is chosen.
 import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 import { AsideBlock } from "../components/layout/SidebarCards";
+import { experience } from "../data/experience";
 import { profile } from "../data/profile";
 import { formatMonth, tenure } from "../lib/dates";
 
-const currentRoles = profile.experience.flatMap((entry) =>
+const currentRoles = experience.flatMap((entry) =>
   entry.roles.filter((role) => !role.end).map((role) => ({ ...role, org: entry.org })),
 );
 

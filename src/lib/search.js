@@ -1,6 +1,6 @@
 import { certifications } from "../data/certifications";
 import { projects } from "../data/projects";
-import { skills } from "../data/profile";
+import { skills } from "../data/skills";
 
 const index = [
   ...projects.map((project) => ({

@@ -1,0 +1,24 @@
+/* A skill links to every project whose `tech` lists its name; `uses` adds extra tech that also counts.
+   Tabs in the Skills section come from `group`, in the order groups first appear here. */
+export const skills = [
+  { name: "Go (Golang)", group: "Backend", uses: [] },
+  { name: "Laravel", group: "Backend", uses: [] },
+  { name: "PHP", group: "Backend", uses: [] },
+  { name: "REST APIs", group: "Backend", uses: ["Laravel", "Go (Golang)"] },
+  { name: "MySQL", group: "Backend", uses: [] },
+  { name: "JWT Authentication", group: "Backend", uses: [] },
+  { name: "TypeScript", group: "Frontend", uses: [] },
+  { name: "JavaScript", group: "Frontend", uses: [] },
+  { name: "React", group: "Frontend", uses: [] },
+  { name: "Tailwind CSS", group: "Frontend", uses: [] },
+  { name: "Docker", group: "DevOps", uses: [] },
+  { name: "GitHub Actions", group: "DevOps", uses: [] },
+  { name: "CI/CD Pipelines", group: "DevOps", uses: [] },
+  { name: "Linux Administration", group: "DevOps", uses: [] },
+  { name: "Microsoft Azure", group: "DevOps", uses: [] },
+  { name: "TCP/IP", group: "Networking", uses: [] },
+  { name: "DNS & HTTP/HTTPS", group: "Networking", uses: [] },
+  { name: "Routing", group: "Networking", uses: [] },
+  { name: "Network Security", group: "Security", uses: [] },
+  { name: "Linux Hardening", group: "Security", uses: [] },
+];

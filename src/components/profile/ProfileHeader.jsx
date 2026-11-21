@@ -15,6 +15,7 @@ import useCopy from "../../hooks/useCopy";
 import useDismiss from "../../hooks/useDismiss";
 import { certifications } from "../../data/certifications";
 import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import { projects } from "../../data/projects";
 import { rise, snappy, stagger } from "../../lib/motion";
 import { button, iconButton, popover } from "../../lib/ui";
@@ -94,7 +95,7 @@ const MoreMenu = () => {
               <FileTextIcon size={17} /> View CV
             </a>
             <a
-              href={profile.socials[0].url}
+              href={socials[0].url}
               target="_blank"
               rel="noopener noreferrer"
               role="menuitem"

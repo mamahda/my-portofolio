@@ -1,6 +1,7 @@
 import { CheckIcon, CopyIcon, EnvelopeSimpleIcon, FileTextIcon, GlobeIcon } from "@phosphor-icons/react";
 import useCopy from "../../hooks/useCopy";
 import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import { hostOf, iconButton } from "../../lib/ui";
 import Modal from "../ui/Modal";
 
@@ -51,7 +52,7 @@ const ContactInfoModal = ({ open, onClose }) => {
           onCopy={copy}
         />
         <Row icon={FileTextIcon} label="Curriculum Vitae" value={hostOf(profile.cv)} href={profile.cv} />
-        {profile.socials.map((social) => (
+        {socials.map((social) => (
           <Row key={social.name} icon={social.icon} label={social.name} value={social.handle} href={social.url} />
         ))}
       </ul>

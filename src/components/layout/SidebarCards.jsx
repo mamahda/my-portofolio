@@ -13,6 +13,7 @@ import {
 import useActiveSection from "../../hooks/useActiveSection";
 import useCopy from "../../hooks/useCopy";
 import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import { spring, snappy } from "../../lib/motion";
 import { profileSectionIds, profileSections } from "../../lib/navigation";
 import { hostOf } from "../../lib/ui";
@@ -252,7 +253,7 @@ export const TagCloud = ({ items, active, onSelect }) => (
 export const SocialList = ({ title = "Social media", className = "" }) => (
   <AsideBlock title={title} className={className}>
     <ul className="-mx-2">
-      {profile.socials.map(({ icon: Icon, ...social }) => (
+      {socials.map(({ icon: Icon, ...social }) => (
         <li key={social.name}>
           <a href={social.url} target="_blank" rel="noopener noreferrer" className={actionRow}>
             <Icon size={18} className={actionIcon} />
@@ -274,7 +275,7 @@ export const SocialList = ({ title = "Social media", className = "" }) => (
 export const SocialIcons = () => (
   <AsideBlock title="Elsewhere">
     <ul className="flex gap-2">
-      {profile.socials.map(({ icon: Icon, ...social }) => (
+      {socials.map(({ icon: Icon, ...social }) => (
         <li key={social.name}>
           <a
             href={social.url}

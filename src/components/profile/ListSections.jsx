@@ -1,6 +1,8 @@
 import { certifications } from "../../data/certifications";
+import { experience } from "../../data/experience";
 import { profile } from "../../data/profile";
 import { projects } from "../../data/projects";
+import { volunteering } from "../../data/volunteering";
 import { formatRange, groupTenure, tenure } from "../../lib/dates";
 import Section, { SectionFooterLink } from "../ui/Section";
 import TagList from "../ui/Tag";
@@ -150,10 +152,10 @@ const RoleSection = ({ id, title, items }) => {
   );
 };
 
-export const ExperienceSection = () => <RoleSection id="experience" title="Experience" items={profile.experience} />;
+export const ExperienceSection = () => <RoleSection id="experience" title="Experience" items={experience} />;
 
 export const VolunteeringSection = () => (
-  <RoleSection id="volunteering" title="Volunteering" items={profile.volunteering} />
+  <RoleSection id="volunteering" title="Volunteering" items={volunteering} />
 );
 
 export const EducationSection = () => (

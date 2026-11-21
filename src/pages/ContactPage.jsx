@@ -19,6 +19,7 @@ import { AsideBlock } from "../components/layout/SidebarCards";
 import SubPageHeader from "../components/layout/SubPageHeader";
 import { pageCard } from "../components/ui/Section";
 import { profile } from "../data/profile";
+import { socials } from "../data/socials";
 import useCopy from "../hooks/useCopy";
 import { spring } from "../lib/motion";
 import { button } from "../lib/ui";
@@ -96,7 +97,7 @@ const DirectContact = () => {
         </button>
       </div>
       <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-        {profile.socials.map(({ icon: Icon, ...social }) => (
+        {socials.map(({ icon: Icon, ...social }) => (
           <li key={social.name}>
             <a
               href={social.url}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { profile, skills } from "../../data/profile";
+import { profile } from "../../data/profile";
+import { skills } from "../../data/skills";
 import { projects } from "../../data/projects";
 import { snappy } from "../../lib/motion";
 import { tabPanelProps } from "../../lib/ui";

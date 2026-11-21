@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { interests } from "../../data/interests";
-import { profile } from "../../data/profile";
+import { toolkit } from "../../data/toolkit";
 import { snappy } from "../../lib/motion";
 import Section from "../ui/Section";
 import { tabPanelProps } from "../../lib/ui";
@@ -48,7 +48,7 @@ const InterestsSection = () => {
 
           {tab === "Toolkit" && (
             <ul className="mt-4 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
-              {profile.toolkit.map((tool) => (
+              {toolkit.map((tool) => (
                 <li key={tool.name} className="flex items-baseline justify-between gap-4 border-b border-line-strong py-3">
                   <p className="text-body text-zinc-100">{tool.name}</p>
                   <p className="truncate text-right text-xs text-zinc-500">{tool.note}</p>
