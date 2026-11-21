@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRightIcon, GithubLogoIcon, LockSimpleIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, ArrowsOutIcon, GithubLogoIcon, LockSimpleIcon } from "@phosphor-icons/react";
 import { hostOf } from "../../lib/ui";
 import { projectStatus } from "../../lib/projectStatus";
 import Img from "../ui/Img";
+import Modal from "../ui/Modal";
 import TagList from "../ui/Tag";
 
 export const ProjectStatus = ({ project }) => {
@@ -70,14 +72,18 @@ const Actions = ({ project }) => {
 };
 
 /* Full entry on the projects page. Projects without a screenshot (or with one that fails
-   to load) get Img's placeholder, so every row keeps the same layout. */
+   to load) get Img's placeholder, so every row keeps the same layout. A real screenshot
+   opens enlarged in a modal, like the certificate scans. */
 const ProjectEntry = ({ project }) => {
-  const href = project.live || project.repo;
+  const [zoom, setZoom] = useState(false);
+  const [broken, setBroken] = useState(false);
+  const canZoom = project.image && !broken;
 
   const preview = (
     <Img
       src={project.image}
       alt={`Screenshot of ${project.title}`}
+      onError={() => setBroken(true)}
       className="aspect-[2/1] w-full rounded-lg ring-1 ring-inset ring-tint/[0.06] sm:aspect-[16/10]"
       imgClassName="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/shot:scale-[1.04]"
     />
@@ -95,18 +101,33 @@ const ProjectEntry = ({ project }) => {
         <Actions project={project} />
       </div>
 
-      {href ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open ${project.title}`}
-          className="group/shot -order-1 block self-start rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:order-none"
+      {canZoom ? (
+        <button
+          type="button"
+          onClick={() => setZoom(true)}
+          aria-label={`Enlarge screenshot of ${project.title}`}
+          className="group/shot relative -order-1 block cursor-zoom-in self-start rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:order-none"
         >
           {preview}
-        </a>
+          <span className="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-full bg-ink-950/80 text-zinc-200 opacity-0 ring-1 ring-tint/10 backdrop-blur transition-opacity group-hover/shot:opacity-100 group-focus-visible/shot:opacity-100">
+            <ArrowsOutIcon size={13} weight="bold" />
+          </span>
+        </button>
       ) : (
         <div className="group/shot -order-1 self-start sm:order-none">{preview}</div>
+      )}
+
+      {canZoom && (
+        <Modal open={zoom} onClose={() => setZoom(false)} title={project.title} className="max-w-5xl">
+          <div className="p-3 sm:p-5">
+            {/* Fit the whole screenshot on short screens instead of scrolling inside the modal. */}
+            <img
+              src={project.image}
+              alt={`Screenshot of ${project.title}`}
+              className="mx-auto max-h-[calc(88dvh-60px-2.5rem)] w-auto max-w-full rounded-md"
+            />
+          </div>
+        </Modal>
       )}
     </article>
   );
