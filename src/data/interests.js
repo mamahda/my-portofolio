@@ -9,12 +9,12 @@ export const interests = [
   {
     icon: HardDrivesIcon,
     title: "Backend Engineering",
-    desc: "Golang, REST APIs, MySQL, Laravel, and scalable backend system development.",
+    desc: "Go, Spring Boot, Laravel, REST APIs, MySQL, PostgreSQL, and scalable backend system development.",
   },
   {
     icon: TerminalWindowIcon,
     title: "DevOps & Cloud",
-    desc: "Docker, GitHub Actions, Azure, CI/CD Pipelines, and Linux Administration.",
+    desc: "Docker, Docker Compose, Kubernetes, GitHub Actions, Azure, CI/CD Pipelines, and Linux Administration.",
   },
   {
     icon: GlobeIcon,

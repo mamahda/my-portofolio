@@ -18,18 +18,18 @@ export const experience = [
     org: "Institut Teknologi Sepuluh Nopember (ITS)",
     roles: [
       {
-        title: "Teaching Assistant",
+        title: "Teaching Assistant – Operating Systems & Computer Networks",
         start: "2026-01",
         end: null,
       },
     ],
   },
   {
-    org: "IRIS ITS",
+    org: "IRIS ITS Robotics Team",
     location: "Surabaya, East Java, Indonesia",
     roles: [
       {
-        title: "Programmer Internship",
+        title: "Programmer Intern",
         type: "Internship",
         start: "2024-10",
         end: "2024-11",
